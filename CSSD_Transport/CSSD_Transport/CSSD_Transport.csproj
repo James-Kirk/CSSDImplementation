@@ -63,6 +63,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Journey\FareRules.cs" />
     <Compile Include="Journey\Journey.cs" />
     <Compile Include="Account\Passenger.cs" />
