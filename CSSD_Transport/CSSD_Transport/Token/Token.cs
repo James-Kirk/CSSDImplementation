@@ -9,7 +9,7 @@ namespace CSSD_Transport.Token
 	class Token
 	{
 		private int tokenID;
-		private Account.Passenger tokenUser;
+		protected Account.Passenger tokenUser;
 		private string tokenType;
 		private bool scanned;
 		private int journeyCounter;

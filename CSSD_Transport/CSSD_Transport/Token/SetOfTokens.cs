@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Token
 {
-	class SetOfTokens
+	class SetOfTokens : List<Token>
 	{
+		public Token findToken(int id)
+		{
+			return this.Find(i => i.getID() == id);
+		}
 	}
 }

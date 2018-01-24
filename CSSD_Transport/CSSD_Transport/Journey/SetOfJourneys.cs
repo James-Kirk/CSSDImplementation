@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journey
 {
-	class SetOfJourneys
+	class SetOfJourneys : List<Journey>
 	{
 	}
 }

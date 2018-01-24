@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Account
 {
-	class SetOfAccounts
+	class SetOfAccounts : List<Account>
 	{
 	}
 }
