@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Account.Staff
+namespace CSSD_Transport.Accounts
 {
-	class Staff
+	class NormalAccount : Account
 	{
 	}
 }

@@ -45,14 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Account.cs" />
-    <Compile Include="Account\AccountServer.cs" />
-    <Compile Include="Account\AnonymousAccount.cs" />
-    <Compile Include="Account\NormalAccount.cs" />
-    <Compile Include="Account\SetOfAccounts.cs" />
-    <Compile Include="Account\Staff\SetOfStaffAccounts.cs" />
-    <Compile Include="Account\Staff\Staff.cs" />
-    <Compile Include="Account\Staff\StaffAccount.cs" />
+    <Compile Include="Accounts\Account.cs" />
+    <Compile Include="Accounts\AccountServer.cs" />
+    <Compile Include="Accounts\AnonymousAccount.cs" />
+    <Compile Include="Accounts\NormalAccount.cs" />
+    <Compile Include="Accounts\SetOfAccounts.cs" />
+    <Compile Include="Accounts\Staff\SetOfStaffAccounts.cs" />
+    <Compile Include="Accounts\Staff\Staff.cs" />
+    <Compile Include="Accounts\Staff\StaffAccount.cs" />
     <Compile Include="Equipment\DigitalReader.cs" />
     <Compile Include="Equipment\GateController.cs" />
     <Compile Include="Equipment\InspectorDevice.cs" />
@@ -66,7 +66,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Journey\FareRules.cs" />
     <Compile Include="Journey\Journey.cs" />
-    <Compile Include="Account\Passenger.cs" />
+    <Compile Include="Accounts\Passenger.cs" />
     <Compile Include="Journey\Location.cs" />
     <Compile Include="Journey\SetOfJourneys.cs" />
     <Compile Include="Program.cs" />

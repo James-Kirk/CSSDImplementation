@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Account
+namespace CSSD_Transport.Accounts
 {
-	class AccountServer
+	class SetOfAccounts : List<Account>
 	{
 	}
 }

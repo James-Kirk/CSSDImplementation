@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Account
+namespace CSSD_Transport.Accounts
 {
 	class SetOfStaffAccounts : List<StaffAccount>
 	{
