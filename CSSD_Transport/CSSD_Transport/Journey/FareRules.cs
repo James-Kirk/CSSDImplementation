@@ -8,5 +8,28 @@ namespace CSSD_Transport.Journey
 {
 	class FareRules
 	{
+		private float minAmount;
+		private int dayPassNum;
+
+		private FareRules aFareFule;
+
+		FareRules() { }
+
+		public float calculateFare(string from, string to)
+		{
+
+		}
+
+		public float calculateDiscount(int n)
+		{
+
+		}
+
+		public float getMinAmount() => minAmount;
+
+		public int getNumForDayPass() => dayPassNum;
+
+		public FareRules getFareRules() => aFareFule;
+
 	}
 }

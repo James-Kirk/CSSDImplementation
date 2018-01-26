@@ -8,5 +8,8 @@ namespace CSSD_Transport.Journey
 {
 	class Location
 	{
+		private string locationName;
+
+		public string getLocation() => locationName;
 	}
 }
