@@ -86,6 +86,48 @@
     <Compile Include="Transaction\PaymentHandler.cs" />
     <Compile Include="Transaction\SetOfTransactions.cs" />
     <Compile Include="Transaction\Transaction.cs" />
+    <Compile Include="UI\frmBegin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBegin.Designer.cs">
+      <DependentUpon>frmBegin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmStaffLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmStaffLogin.Designer.cs">
+      <DependentUpon>frmStaffLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmStaffUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmStaffUI.Designer.cs">
+      <DependentUpon>frmStaffUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmTopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmTopUp.Designer.cs">
+      <DependentUpon>frmTopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmTrips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmTrips.Designer.cs">
+      <DependentUpon>frmTrips.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
