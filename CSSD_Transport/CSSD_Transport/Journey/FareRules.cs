@@ -17,13 +17,13 @@ namespace CSSD_Transport.Journey
 
 		public float calculateFare(string from, string to)
 		{
-
-		}
+            throw new NotImplementedException();
+        }
 
 		public float calculateDiscount(int n)
 		{
-
-		}
+            throw new NotImplementedException();
+        }
 
 		public float getMinAmount() => minAmount;
 

@@ -10,13 +10,15 @@ namespace CSSD_Transport.Journey
 	{
 		public float getAmountForAllJourneys(int id)
 		{
-			//TODO: What the hell is the ID supposed to be for if
-			//we're calculating ALL of the joruneys?
-		}
+            //TODO: What the hell is the ID supposed to be for if
+            //we're calculating ALL of the joruneys?
+            throw new NotImplementedException();
+        }
 
 		public Journey findMostRecentJourney(int id)
 		{
-			//TODO: Same with this crap, whats the need for the id?
-		}
+            //TODO: Same with this crap, whats the need for the id?
+            throw new NotImplementedException();
+        }
 	}
 }

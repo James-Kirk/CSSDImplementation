@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace CSSD_Transport
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new frmMain());
-		}
+            //Application.Run(new frmMain());
+            Application.Run(new frmBegin());
+        }
 	}
 }
