@@ -10,7 +10,7 @@ namespace CSSD_Transport.Token
 {
 	class SmartCard : Token
 	{
-		public Accounts.Account getAccount()
+		public Account getAccount()
 		{
 			//TODO: Account is top-level and token is a passenger class
 			//Account also needs to be protected to be accessed properly

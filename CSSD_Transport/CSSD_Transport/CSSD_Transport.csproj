@@ -128,9 +128,6 @@
     <Compile Include="UI\frmTrips.Designer.cs">
       <DependentUpon>frmTrips.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
