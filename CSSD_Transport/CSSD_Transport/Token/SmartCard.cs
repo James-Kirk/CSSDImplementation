@@ -14,16 +14,19 @@ namespace CSSD_Transport.Token
 		{
 			//TODO: Account is top-level and token is a passenger class
 			//Account also needs to be protected to be accessed properly
+			return new Account();
 		}
 
 		public Journey.Journey getRecentJourney()
 		{
 			//TODO: Nothing in design
+			return new Journey.Journey();
 		}
 
 		public float getAmountForJourneys()
 		{
 			//TODO: Nothing in design
+			return 0.0f;
 		}
 
 		public void updateAccountBalance(float a)

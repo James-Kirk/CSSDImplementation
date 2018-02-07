@@ -17,12 +17,12 @@ namespace CSSD_Transport.Journey
 
 		public float calculateFare(string from, string to)
 		{
-
+			return 0.0f;
 		}
 
 		public float calculateDiscount(int n)
 		{
-
+			return 0.0f;
 		}
 
 		public float getMinAmount() => minAmount;
