@@ -19,7 +19,7 @@ namespace CSSD_Transport.UI
 
         private void btnMyTrips_Click(object sender, EventArgs e)
         {
-            frmTrips trips = new frmTrips();
+            frmTrips trips = new frmTrips(this);
             this.Visible = false;
             trips.Show();
         }

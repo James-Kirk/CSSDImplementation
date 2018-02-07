@@ -12,9 +12,17 @@ namespace CSSD_Transport.UI
 {
     public partial class frmTrips : Form
     {
-        public frmTrips()
+        frmMainMenu frmPrevious;
+        public frmTrips(frmMainMenu prev)
         {
+            frmPrevious = prev;
             InitializeComponent();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            frmPrevious.Visible = true;
+            this.Visible = false;
         }
     }
 }

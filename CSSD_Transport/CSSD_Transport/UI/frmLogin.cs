@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,13 @@ namespace CSSD_Transport.UI
             frmMainMenu mm = new frmMainMenu();
             mm.Show();
             this.Visible = false;
+        }
+
+        private bool login(string user, string pass)
+        {
+            AccountServer a = new AccountServer();
+            
+            return false;
         }
     }
 }
