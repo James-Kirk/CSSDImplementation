@@ -8,5 +8,9 @@ namespace CSSD_Transport.Accounts
 {
 	class SetOfAccounts : List<Account>
 	{
+		public Account findAccount(string username, string password)
+		{
+			return this.Find(i => i.getUsername() == username && i.getPass() == password);
+		}
 	}
 }
