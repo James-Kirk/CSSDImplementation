@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Token
 {
-	class Passes : Token
+	public class Passes : Token
 	{
 		private DateTime startDate, expiryDate;
 		private String passType;

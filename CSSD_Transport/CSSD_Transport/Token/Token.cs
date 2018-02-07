@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Token
 {
-	class Token
+	public class Token
 	{
 		private int tokenID;
 		protected Accounts.Passenger tokenUser;

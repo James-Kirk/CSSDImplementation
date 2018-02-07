@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class SetOfAccounts : List<Account>
+	public class SetOfAccounts : List<Account>
 	{
 		public Account findAccount(string username, string password)
 		{

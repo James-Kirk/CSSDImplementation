@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journey
 {
-	class FareRules
+	public class FareRules
 	{
 		private float minAmount;
 		private int dayPassNum;

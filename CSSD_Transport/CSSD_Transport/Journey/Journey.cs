@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journey
 {
-	class Journey
+	public class Journey
 	{
 		private int journeyID;
 		private Token.Token tokenUsed;
