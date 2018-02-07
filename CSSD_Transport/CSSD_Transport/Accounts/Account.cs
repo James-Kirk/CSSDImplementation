@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class Account
+	public class Account
 	{
 		private string username, password, type;
 		private float creditAmount;

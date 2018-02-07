@@ -8,7 +8,7 @@ using CSSD_Transport.Accounts;
 
 namespace CSSD_Transport.Token
 {
-	class SmartCard : Token
+	public class SmartCard : Token
 	{
 		public Account getAccount()
 		{

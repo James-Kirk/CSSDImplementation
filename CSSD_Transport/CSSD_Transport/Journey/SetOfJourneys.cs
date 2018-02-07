@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journey
 {
-	class SetOfJourneys : List<Journey>
+	public class SetOfJourneys : List<Journey>
 	{
 		public float getAmountForAllJourneys(int id)
 		{

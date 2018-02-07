@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journey
 {
-	class Location
+	public class Location
 	{
 		private string locationName;
 
