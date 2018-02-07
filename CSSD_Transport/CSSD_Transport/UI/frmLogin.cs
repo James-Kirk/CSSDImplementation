@@ -16,5 +16,30 @@ namespace CSSD_Transport.UI
         {
             InitializeComponent();
         }
+
+        private void btnSimSmartCard_Click(object sender, EventArgs e)
+        {
+            if (btnSimSmartCard.Text == "Cancel")
+            {
+                btnSimSmartCard.Text = "Simulate Smart Card";
+                txtPin.Visible = false;
+                btnConfirm.Visible = false;
+            }
+            else
+            {
+                btnSimSmartCard.Text = "Cancel";
+                txtPin.Visible = true;
+                btnConfirm.Visible = true;
+            }
+           
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            //Authorise pin using login function in Account.(Not implemented yet)
+            frmMainMenu mm = new frmMainMenu();
+            mm.Show();
+            this.Visible = false;
+        }
     }
 }

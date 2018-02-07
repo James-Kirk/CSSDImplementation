@@ -16,5 +16,12 @@ namespace CSSD_Transport.UI
         {
             InitializeComponent();
         }
+
+        private void btnMyTrips_Click(object sender, EventArgs e)
+        {
+            frmTrips trips = new frmTrips();
+            this.Visible = false;
+            trips.Show();
+        }
     }
 }
