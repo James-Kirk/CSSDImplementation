@@ -14,43 +14,85 @@ namespace CSSD_Transport.Accounts.Tests
         [TestMethod()]
         public void getUsernameTest()
         {
-            Assert.Fail();
+            // Setup
+            // TODO: Once account has a constructor, need to add in parameters
+            var account = new Account();
+            string expected = "Will Smith";
+
+            // Method
+            string actual = account.getUsername();
+
+            // Assertion
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
         public void getPassTest()
         {
-            Assert.Fail();
+            // Setup
+            // TODO: Once account has a constructor, need to add in parameters
+            var account = new Account();
+            string expected = "Fre$hPrince";
+
+            // Method
+            string actual = account.getPass();
+
+            // Assertion
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
         public void getTypeTest()
         {
-            Assert.Fail();
+            // Setup
+            // TODO: Once account has a constructor, need to add in parameters
+            var account = new Account();
+            string expected = "Normal";
+            var anonAccount = new Account();
+            string anonExpected = "Anonymous";
+
+            // Method
+            string actual = account.getType();
+            string anonActual = anonAccount.getType();
+
+            // Assertion
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(anonExpected, anonActual);
         }
 
         [TestMethod()]
         public void getCreditAmountTest()
         {
-            Assert.Fail();
+            // Setup
+            // TODO: Once account has a constructor, need to add in parameters
+            var account = new Account();
+            float expected = 30;
+
+            // Method
+            float actual = account.getCreditAmount();
+
+            // Assertion
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
         public void updateBalanceTest()
         {
-            Assert.Fail();
-        }
+            // Setup
+            // TODO: Once account has a constructor, need to add in parameters
+            var account = new Account();
+            float expected = 30;
+            float negativeExpected = 10;
 
-        [TestMethod()]
-        public void forgotAccountTest()
-        {
-            Assert.Fail();
-        }
+            // Method
+            account.updateBalance(15);
+            float actual = account.getCreditAmount();
+            account.updateBalance(-20);
+            float negativeActual = account.getCreditAmount();
 
-        [TestMethod()]
-        public void processTopUpTest()
-        {
-            Assert.Fail();
+            // Assertion
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(negativeExpected, negativeActual);
         }
     }
 }
