@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Token
 {
-	public class Token
+	public abstract class Token
 	{
-		private int tokenID;
+		protected int tokenID;
 		protected Accounts.Passenger tokenUser;
-		private string tokenType;
-		private bool scanned;
-		private int journeyCounter;
-		private bool discounted;
+		protected string tokenType;
+		protected bool scanned;
+		protected int journeyCounter;
+		protected bool discounted;
 
 		//Public Member Getters (Expression Bodied Member)
 

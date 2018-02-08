@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class Passenger
+	public class Passenger
 	{
 	}
 }
