@@ -8,5 +8,7 @@ namespace CSSD_Transport.Accounts
 {
 	class SetOfStaffAccounts : List<StaffAccount>
 	{
+        //TODO: wouldn't this also need a 'findAccount' like SetOfAccounts class?
+        //      or just scrap this class and have just SetOfAccounts.cs - EF
 	}
 }

@@ -8,5 +8,6 @@ namespace CSSD_Transport.Accounts
 {
 	public class Passenger
 	{
+        //TODO: Delete this whole class? no point imo. - EF
 	}
 }

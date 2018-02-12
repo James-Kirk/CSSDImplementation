@@ -8,5 +8,9 @@ namespace CSSD_Transport.Accounts
 {
 	class StaffAccount
 	{
+        private string username, password;
+
+        public string getUsername() => username;
+        public string getPassword() => password;
 	}
 }
