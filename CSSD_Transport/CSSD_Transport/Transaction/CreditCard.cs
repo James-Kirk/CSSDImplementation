@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Transaction
 {
-	class CreditCard : Transaction
+	public class CreditCard : Transaction
 	{
 	}
 }
