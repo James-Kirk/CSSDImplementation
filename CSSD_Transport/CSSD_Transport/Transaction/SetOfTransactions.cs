@@ -11,6 +11,7 @@ namespace CSSD_Transport.Transaction
 		public Transaction findTransaction(int id)
 		{
 			//return this.Find(i => i.getID() == id);
+			return new Transaction();
 		}
 	}
 }
