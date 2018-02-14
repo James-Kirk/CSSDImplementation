@@ -15,8 +15,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getUsernameTest()
         {
             // Setup
-            // TODO: Once account has a constructor, need to add in parameters
-            var account = new Account();
+            var account = new Account("Will Smith", "Fre$hPrince");
             string expected = "Will Smith";
 
             // Method
@@ -30,8 +29,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getPassTest()
         {
             // Setup
-            // TODO: Once account has a constructor, need to add in parameters
-            var account = new Account();
+            var account = new Account("Will Smith", "Fre$hPrince");
             string expected = "Fre$hPrince";
 
             // Method
@@ -45,8 +43,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getTypeTest()
         {
             // Setup
-            // TODO: Once account has a constructor, need to add in parameters
-            var account = new Account();
+            var account = new Account("Will Smith", "Fre$hPrince");
             string expected = "Normal";
             var anonAccount = new Account();
             string anonExpected = "Anonymous";
@@ -64,8 +61,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getCreditAmountTest()
         {
             // Setup
-            // TODO: Once account has a constructor, need to add in parameters
-            var account = new Account();
+            var account = new Account("Will Smith", "Fre$hPrince");
             float expected = 30;
 
             // Method
@@ -79,8 +75,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void updateBalanceTest()
         {
             // Setup
-            // TODO: Once account has a constructor, need to add in parameters
-            var account = new Account();
+            var account = new Account("Will Smith", "Fre$hPrince");
             float expected = 30;
             float negativeExpected = 10;
 
@@ -93,6 +88,31 @@ namespace CSSD_Transport.Accounts.Tests
             // Assertion
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(negativeExpected, negativeActual);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void updateBalanceNullTest()
+        {
+            // Setup
+            var account = new Account("Will Smith", "Fre$hPrince");
+
+            // Method
+            account.updateBalance(0);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void createNullUsernameAccountTest()
+        {
+            var account = new Account(null, "Fre$hPrince");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void createNullPasswordAccountTest()
+        {
+            var account = new Account("Will Smith", null);
         }
     }
 }
