@@ -65,7 +65,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Journey\FareRules.cs" />
     <Compile Include="Journey\Journey.cs" />
-    <Compile Include="Accounts\Passenger.cs" />
     <Compile Include="Journey\Location.cs" />
     <Compile Include="Journey\SetOfJourneys.cs" />
     <Compile Include="Program.cs" />
