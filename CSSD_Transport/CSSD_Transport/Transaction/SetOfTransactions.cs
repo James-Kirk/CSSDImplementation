@@ -4,14 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Singleton
+
 namespace CSSD_Transport.Transaction
 {
-	class SetOfTransactions : List<Transaction>
+	[Serializable]
+	public class SetOfTransactions
 	{
+		private static SetOfTransactions instance;
+
+		private List<Transaction> transactions = new List<Transaction>();
+
+		private SetOfTransactions() { }
+
+		public static SetOfTransactions Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = new SetOfTransactions();
+				}
+				return instance;
+			}
+			set
+			{
+				instance = value;
+			}
+		}
+
+		public void addTransaction(Transaction t)
+		{
+			transactions.Add(t);
+		}
+
 		public Transaction findTransaction(int id)
 		{
-			//return this.Find(i => i.getID() == id);
-			return new Transaction();
+			return transactions.Find(i => i.getID() == id);
 		}
 	}
 }

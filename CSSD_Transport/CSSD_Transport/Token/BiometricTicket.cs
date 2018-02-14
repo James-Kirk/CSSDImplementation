@@ -23,7 +23,7 @@ namespace CSSD_Transport.Token
 				byte[] hashBytes = md5.ComputeHash(buff);
 
 				StringBuilder sb = new StringBuilder();
-				for (int i = 0; i < hashBytes.Length; i++)
+				for (int i = 0; i < hashBytes.Length; ++i)
 					sb.Append(hashBytes[i].ToString("X2"));
 				fingerPrint = UInt32.Parse(sb.ToString(), System.Globalization.NumberStyles.HexNumber);
 			}
