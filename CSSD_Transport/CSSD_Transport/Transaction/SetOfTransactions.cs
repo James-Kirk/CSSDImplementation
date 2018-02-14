@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Transaction
 {
-	class SetOfTransactions
+	class SetOfTransactions : List<Transaction>
 	{
+		public Transaction findTransaction(int id)
+		{
+			//return this.Find(i => i.getID() == id);
+			return new Transaction();
+		}
 	}
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSSD_Transport.Accounts;
 
 namespace CSSD_Transport
 {
@@ -16,5 +17,12 @@ namespace CSSD_Transport
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            //SetOfAccounts.Instance.addAccount(new Account("Ellie", "password"));
+            //Serialization.saveAll();
+            //Serialization.loadAll();
+        }
+    }
 }
