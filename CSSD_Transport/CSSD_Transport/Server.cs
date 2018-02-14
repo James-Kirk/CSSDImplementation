@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport
 {
-	class Server
+	public class Server
 	{
+        
 	}
 }

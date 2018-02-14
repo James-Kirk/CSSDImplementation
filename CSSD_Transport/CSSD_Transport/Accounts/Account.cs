@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
+    [Serializable]
 	public class Account
 	{
 		private string username, password, type;
 		private float creditAmount;
 
+        public Account() { }
+        public Account(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
+        
 		public string getUsername() => username;
 		public string getPass() => password;
 		public string getType() => type;
