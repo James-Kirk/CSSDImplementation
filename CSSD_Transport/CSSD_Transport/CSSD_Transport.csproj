@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Accounts\Account.cs" />
     <Compile Include="Accounts\AccountServer.cs" />
-    <Compile Include="Accounts\AnonymousAccount.cs" />
     <Compile Include="Accounts\NormalAccount.cs" />
     <Compile Include="Accounts\SetOfAccounts.cs" />
     <Compile Include="Accounts\Staff\SetOfStaffAccounts.cs" />
@@ -66,11 +65,11 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Journey\FareRules.cs" />
     <Compile Include="Journey\Journey.cs" />
-    <Compile Include="Accounts\Passenger.cs" />
     <Compile Include="Journey\Location.cs" />
     <Compile Include="Journey\SetOfJourneys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Token\BiometricTicket.cs" />
     <Compile Include="Token\Passes.cs" />
@@ -128,6 +127,9 @@
     <Compile Include="UI\frmTrips.Designer.cs">
       <DependentUpon>frmTrips.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -150,5 +152,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
