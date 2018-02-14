@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Accounts\Account.cs" />
     <Compile Include="Accounts\AccountServer.cs" />
-    <Compile Include="Accounts\AnonymousAccount.cs" />
     <Compile Include="Accounts\NormalAccount.cs" />
     <Compile Include="Accounts\SetOfAccounts.cs" />
     <Compile Include="Accounts\Staff\SetOfStaffAccounts.cs" />
