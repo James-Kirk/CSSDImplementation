@@ -78,10 +78,6 @@
     <Compile Include="Token\SmartCard.cs" />
     <Compile Include="Token\Tickets.cs" />
     <Compile Include="Token\Token.cs" />
-    <Compile Include="Transaction\Cash.cs" />
-    <Compile Include="Transaction\CreditCard.cs" />
-    <Compile Include="Transaction\DebitCard.cs" />
-    <Compile Include="Transaction\Mobile.cs" />
     <Compile Include="Transaction\OnlineTransfers.cs" />
     <Compile Include="Transaction\PaymentHandler.cs" />
     <Compile Include="Transaction\SetOfTransactions.cs" />
