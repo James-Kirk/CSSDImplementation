@@ -28,16 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
-			// 
-			// frmMain
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(283, 205);
-			this.Name = "frmMain";
-			this.Text = "frmMain";
-			this.ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // frmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(283, 205);
+            this.Name = "frmMain";
+            this.Text = "frmMain";
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.ResumeLayout(false);
 
 		}
 
