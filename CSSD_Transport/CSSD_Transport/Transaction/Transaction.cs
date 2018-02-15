@@ -8,7 +8,7 @@ namespace CSSD_Transport.Transaction
 {
 	public class Transaction
 	{
-		public static int counter = 0;
+		private static int counter = 0;
 
 		private int transactionID;
 		private string transactionType;
