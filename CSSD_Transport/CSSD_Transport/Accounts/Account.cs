@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CSSD_Transport.Accounts
 {
     [Serializable]
-	public class Account
+	public abstract class Account
 	{
 		private string username, password, type;
 		private float creditAmount;
