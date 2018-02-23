@@ -12,10 +12,6 @@ namespace CSSD_Transport.Accounts
 
         public static bool processLogin(string name, string password)
         {
-            //TODO: serialisation stuff to implement here. - EF
-            //TODO: UML says void, but personally I'd return true/false. - EF
-
-            // CRC cards suggest we call 'findAccount' from SetOfAccounts.cs in this class
             if (accounts.findAccount(name, password) != null)
             {
                 return true;
