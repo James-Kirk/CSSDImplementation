@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Token
 {
@@ -14,13 +15,13 @@ namespace CSSD_Transport.Token
 		{
 			//TODO: Account is top-level and token is a passenger class
 			//Account also needs to be protected to be accessed properly
-			return new Account();
+			return new NormalAccount();
 		}
 
-		public Journey.Journey getRecentJourney()
+		public Journey getRecentJourney()
 		{
 			//TODO: Nothing in design
-			return new Journey.Journey();
+			return new Journey();
 		}
 
 		public float getAmountForJourneys()
