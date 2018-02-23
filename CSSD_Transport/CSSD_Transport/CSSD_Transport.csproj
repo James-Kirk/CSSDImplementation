@@ -49,7 +49,6 @@
     <Compile Include="Accounts\AccountServer.cs" />
     <Compile Include="Accounts\AnonymousAccount.cs" />
     <Compile Include="Accounts\NormalAccount.cs" />
-    <Compile Include="Accounts\IPassenger.cs" />
     <Compile Include="Accounts\SetOfAccounts.cs" />
     <Compile Include="Accounts\Staff\SetOfStaffAccounts.cs" />
     <Compile Include="Accounts\Staff\Staff.cs" />
