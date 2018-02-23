@@ -27,6 +27,7 @@ namespace CSSD_Transport.Token
 					sb.Append(hashBytes[i].ToString("X2"));
 				fingerPrint = UInt32.Parse(sb.ToString(), System.Globalization.NumberStyles.HexNumber);
 			}
+
 		}
 
 		public UInt32 getFingerPrint() => fingerPrint;

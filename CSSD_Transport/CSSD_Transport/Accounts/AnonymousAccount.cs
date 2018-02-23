@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	public class AnonymousAccount : Account, IPassenger
+	[Serializable]
+	public class AnonymousAccount : Account
 	{
 
 	}

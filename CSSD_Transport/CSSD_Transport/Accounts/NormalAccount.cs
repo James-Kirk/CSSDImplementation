@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	public class NormalAccount : Account, IPassenger
+	[Serializable]
+	public class NormalAccount : Account
 	{
 		private DateTime DOB;
 
