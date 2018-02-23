@@ -28,11 +28,6 @@ namespace CSSD_Transport.Accounts
 		{
 
 		}
-        
-		public void forgotAccount()
-		{
-
-		}
 
 		public void processTopUp(float a, string m)
 		{

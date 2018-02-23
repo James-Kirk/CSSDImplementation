@@ -12,5 +12,10 @@ namespace CSSD_Transport.Accounts
 		private DateTime DOB;
 
 		public DateTime getDOB() => DOB;
+
+		public void forgotAccount()
+		{
+
+		}
 	}
 }
