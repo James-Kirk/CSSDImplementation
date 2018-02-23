@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class AccountServer
+	public static class AccountServer
 	{
-        private SetOfAccounts accounts;
+        private static SetOfAccounts accounts;
 
-        public bool processLogin(string name, string password)
+        public static bool processLogin(string name, string password)
         {
             //TODO: serialisation stuff to implement here. - EF
             //TODO: UML says void, but personally I'd return true/false. - EF
