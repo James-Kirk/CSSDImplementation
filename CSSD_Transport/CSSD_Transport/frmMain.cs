@@ -20,9 +20,23 @@ namespace CSSD_Transport
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //SetOfAccounts.Instance.addAccount(new Account("Ellie", "password"));
-            //Serialization.saveAll();
-            //Serialization.loadAll();
+            //this will need to be called at the very beginning of program ALWAYS
+            Serialization.loadAll();
+
+            // USE TO CREATE A STAFF ACCOUNT
+            // StaffAccount staffAccount = new StaffAccount("EllieFuller", "password");
+
+            // USE TO CREATE A NORMAL ACCOUNT
+            // SetOfAccounts.Instance.addAccount(new NormalAccount("smelon", "password", DateTime.Now));
+
+            // USE FOR STAFF LOGIN FUNCTIONALITY
+            // StaffAccount x = SetOfStaffAccounts.Instance.FindStaffAccount("EllieFuller", "password");
+
+            // USE FOR NORMAL PERSON LOGIN FUNCTIONALITY
+            // Account y = SetOfAccounts.Instance.findAccount("smelon", "password");
+
+            //this will need to be called at the very end of program ALWAYS
+            Serialization.saveAll();
         }
     }
 }

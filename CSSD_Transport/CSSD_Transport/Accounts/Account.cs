@@ -7,7 +7,7 @@ namespace CSSD_Transport.Accounts
     [Serializable]
 	public abstract class Account
 	{
-		private string username, password, type;
+		protected string username, password, type;
 		private float creditAmount;
 
         public Account() { }

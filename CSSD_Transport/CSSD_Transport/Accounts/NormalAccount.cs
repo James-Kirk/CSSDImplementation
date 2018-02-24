@@ -8,8 +8,10 @@ namespace CSSD_Transport.Accounts
 	public class NormalAccount : Account
 	{
 		private DateTime DOB;
-
 		public DateTime getDOB() => DOB;
+
+        // call base constructor
+        public NormalAccount(string u, string p, DateTime dob) : base(u, p) { this.DOB = dob; }
 
 		public void forgotAccount()
 		{
