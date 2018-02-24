@@ -64,10 +64,10 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Journey\FareRules.cs" />
-    <Compile Include="Journey\Journey.cs" />
-    <Compile Include="Journey\Location.cs" />
-    <Compile Include="Journey\SetOfJourneys.cs" />
+    <Compile Include="Journeys\FareRules.cs" />
+    <Compile Include="Journeys\Journey.cs" />
+    <Compile Include="Journeys\Location.cs" />
+    <Compile Include="Journeys\SetOfJourneys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization.cs" />

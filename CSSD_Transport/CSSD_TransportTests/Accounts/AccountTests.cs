@@ -15,7 +15,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getUsernameTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             string expected = "Will Smith";
 
             // Method
@@ -29,7 +29,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getPassTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             string expected = "Fre$hPrince";
 
             // Method
@@ -43,9 +43,9 @@ namespace CSSD_Transport.Accounts.Tests
         public void getTypeTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             string expected = "Normal";
-            var anonAccount = new Account();
+            var anonAccount = new AnonymousAccount();
             string anonExpected = "Anonymous";
 
             // Method
@@ -61,7 +61,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void getCreditAmountTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             float expected = 30;
 
             // Method
@@ -75,7 +75,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void updateBalanceTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             float expected = 30;
             float negativeExpected = 10;
 
@@ -95,7 +95,7 @@ namespace CSSD_Transport.Accounts.Tests
         public void updateBalanceNullTest()
         {
             // Setup
-            var account = new Account("Will Smith", "Fre$hPrince");
+            var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
 
             // Method
             account.updateBalance(0);
@@ -105,14 +105,14 @@ namespace CSSD_Transport.Accounts.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void createNullUsernameAccountTest()
         {
-            var account = new Account(null, "Fre$hPrince");
+            var account = new NormalAccount(null, "Fre$hPrince", DateTime.Now);
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentException))]
         public void createNullPasswordAccountTest()
         {
-            var account = new Account("Will Smith", null);
+            var account = new NormalAccount("Will Smith", null, DateTime.Now);
         }
     }
 }

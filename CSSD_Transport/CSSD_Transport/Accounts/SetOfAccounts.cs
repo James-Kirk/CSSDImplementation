@@ -16,18 +16,9 @@ namespace CSSD_Transport.Accounts
         // Only allows 1 set of accounts to be created.
         public static SetOfAccounts Instance
         {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new SetOfAccounts();
-                }
-                return instance;
-            }
-            set
-            {
-                instance = value;
-            }
+            get { return instance == null ? instance = new SetOfAccounts() : instance; }
+           
+            set { instance = value; }
         }
 
         public void addAccount(Account a)

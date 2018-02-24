@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSSD_Transport.Accounts;
+
 namespace CSSD_Transport.Token
 {
 	public abstract class Token
 	{
 		protected int tokenID;
-		protected Accounts.Passenger tokenUser;
+		protected Account tokenUser;
 		protected string tokenType;
 		protected bool scanned;
 		protected int journeyCounter;
 		protected bool discounted;
 
-		//Public Member Getters (Expression Bodied Member)
 
 		public bool getScannedStatus() => scanned;
 
