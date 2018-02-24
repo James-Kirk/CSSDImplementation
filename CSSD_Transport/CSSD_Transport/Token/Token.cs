@@ -17,7 +17,6 @@ namespace CSSD_Transport.Token
 		protected int journeyCounter;
 		protected bool discounted;
 
-		//Public Member Getters (Expression Bodied Member)
 
 		public bool getScannedStatus() => scanned;
 
