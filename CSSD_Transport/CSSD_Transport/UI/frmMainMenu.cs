@@ -23,5 +23,10 @@ namespace CSSD_Transport.UI
             this.Visible = false;
             trips.Show();
         }
+
+        private void btnTopUp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

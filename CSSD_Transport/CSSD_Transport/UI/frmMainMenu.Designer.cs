@@ -60,6 +60,7 @@
             this.btnTopUp.TabIndex = 4;
             this.btnTopUp.Text = "Top-Up";
             this.btnTopUp.UseVisualStyleBackColor = true;
+            this.btnTopUp.Click += new System.EventHandler(this.btnTopUp_Click);
             // 
             // frmMainMenu
             // 
