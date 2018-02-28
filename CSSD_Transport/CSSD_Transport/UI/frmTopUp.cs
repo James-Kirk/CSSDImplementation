@@ -17,6 +17,7 @@ namespace CSSD_Transport.UI
         {
             this.frmPrevious = prev;
             InitializeComponent();
+            txtCurrentBalance.Text = prev.currentAccount.getBalance().ToString("N2");
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -27,10 +28,35 @@ namespace CSSD_Transport.UI
 
         private void btnInsertNote_Click(object sender, EventArgs e)
         {
-            ShowDialog(new frmInsertNoteSim());
+            frmInsertNoteSim insertNote = new frmInsertNoteSim();
+             insertNote.ShowDialog();
         }
 
         private void btnEnterTopUpAmount_Click(object sender, EventArgs e)
+        {
+            ShowDialog(new frmKeypad());
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if(frmPrevious.currentAccount.processTopUp(Convert.ToSingle(txtTopUpAmount.Text), ""))
+            {
+                paymentComplete();
+            }
+        }
+
+        private void paymentComplete()
+        {
+            txtCurrentBalance.Text = frmPrevious.currentAccount.getBalance().ToString("N2");
+            lblTopUpAmount.Visible = false;
+            lblInsertBill.Visible = false;
+            btnPayAgain.Visible = true;
+            btnInsertNote.Visible = false;
+            btnEnterTopUpAmount.Visible = false;
+            txtTopUpAmount.Visible = false;
+        }
+
+        private void btnPayAgain_Click(object sender, EventArgs e)
         {
 
         }

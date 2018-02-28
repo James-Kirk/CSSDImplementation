@@ -39,7 +39,12 @@ namespace CSSD_Transport.Accounts
 		public bool processTopUp(float amount, string m)
 		{
             // TODO: i have no fucking idea what strings they want passing in. - EF
-            return Transaction.PaymentHandler.authorise(amount, m, "");
+            if(Transaction.PaymentHandler.authorise(amount, m, ""))
+            {
+                updateBalance(amount);
+                return true;
+            }
+            return false; 
         } 
 	}
 }

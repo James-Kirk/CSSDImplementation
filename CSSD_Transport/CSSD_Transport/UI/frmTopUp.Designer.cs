@@ -34,9 +34,9 @@
             this.lblTopUpAmount = new System.Windows.Forms.Label();
             this.lblInsertBill = new System.Windows.Forms.Label();
             this.btnInsertNote = new System.Windows.Forms.Button();
-            this.btnEnterTopUpAmount = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTopUpAmount = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnPayAgain = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -95,23 +95,12 @@
             this.btnInsertNote.UseVisualStyleBackColor = true;
             this.btnInsertNote.Click += new System.EventHandler(this.btnInsertNote_Click);
             // 
-            // btnEnterTopUpAmount
+            // txtTopUpAmount
             // 
-            this.btnEnterTopUpAmount.Location = new System.Drawing.Point(95, 131);
-            this.btnEnterTopUpAmount.Name = "btnEnterTopUpAmount";
-            this.btnEnterTopUpAmount.Size = new System.Drawing.Size(92, 35);
-            this.btnEnterTopUpAmount.TabIndex = 11;
-            this.btnEnterTopUpAmount.Text = "Enter Amount";
-            this.btnEnterTopUpAmount.UseVisualStyleBackColor = true;
-            this.btnEnterTopUpAmount.Click += new System.EventHandler(this.btnEnterTopUpAmount_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(81, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtTopUpAmount.Location = new System.Drawing.Point(81, 92);
+            this.txtTopUpAmount.Name = "txtTopUpAmount";
+            this.txtTopUpAmount.Size = new System.Drawing.Size(118, 20);
+            this.txtTopUpAmount.TabIndex = 12;
             // 
             // btnConfirm
             // 
@@ -122,15 +111,27 @@
             this.btnConfirm.TabIndex = 13;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnPayAgain
+            // 
+            this.btnPayAgain.Location = new System.Drawing.Point(95, 129);
+            this.btnPayAgain.Name = "btnPayAgain";
+            this.btnPayAgain.Size = new System.Drawing.Size(92, 35);
+            this.btnPayAgain.TabIndex = 14;
+            this.btnPayAgain.Text = "Make Another Payment";
+            this.btnPayAgain.UseVisualStyleBackColor = true;
+            this.btnPayAgain.Visible = false;
+            this.btnPayAgain.Click += new System.EventHandler(this.btnPayAgain_Click);
             // 
             // frmTopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 330);
+            this.Controls.Add(this.btnPayAgain);
             this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.btnEnterTopUpAmount);
+            this.Controls.Add(this.txtTopUpAmount);
             this.Controls.Add(this.btnInsertNote);
             this.Controls.Add(this.lblInsertBill);
             this.Controls.Add(this.lblTopUpAmount);
@@ -152,8 +153,8 @@
         private System.Windows.Forms.Label lblTopUpAmount;
         private System.Windows.Forms.Label lblInsertBill;
         private System.Windows.Forms.Button btnInsertNote;
-        private System.Windows.Forms.Button btnEnterTopUpAmount;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTopUpAmount;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnPayAgain;
     }
 }
