@@ -88,6 +88,18 @@
     <Compile Include="UI\frmBegin.Designer.cs">
       <DependentUpon>frmBegin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmInsertNoteSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmInsertNoteSim.Designer.cs">
+      <DependentUpon>frmInsertNoteSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmKeypad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmKeypad.Designer.cs">
+      <DependentUpon>frmKeypad.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +151,20 @@
     <EmbeddedResource Include="UI\frmBegin.resx">
       <DependentUpon>frmBegin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmInsertNoteSim.resx">
+      <DependentUpon>frmInsertNoteSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmKeypad.resx">
+      <DependentUpon>frmKeypad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmTopUp.resx">
+      <DependentUpon>frmTopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmTrips.resx">
       <DependentUpon>frmTrips.cs</DependentUpon>

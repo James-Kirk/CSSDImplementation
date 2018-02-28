@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace CSSD_Transport.UI
 {
-    public partial class frmTrips : Form
+    public partial class frmKeypad : Form
     {
-        frmMainMenu frmPrevious;
-        public frmTrips(frmMainMenu prev)
+        public frmKeypad()
         {
-            frmPrevious = prev;
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnKeypad1_Click(object sender, EventArgs e)
         {
-            frmPrevious.Visible = true;
-            this.Close();
+            
         }
     }
 }

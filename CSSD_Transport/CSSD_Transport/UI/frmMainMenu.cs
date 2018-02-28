@@ -29,7 +29,7 @@ namespace CSSD_Transport.UI
 
         private void btnTopUp_Click(object sender, EventArgs e)
         {
-
+            frmTopUp topUp = new frmTopUp(this);
         }
     }
 }
