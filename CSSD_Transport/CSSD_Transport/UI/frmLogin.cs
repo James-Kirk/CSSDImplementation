@@ -32,12 +32,10 @@ namespace CSSD_Transport.UI
                 txtPin.Visible = true;
                 btnConfirm.Visible = true;
             }
-           
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            //Authorise pin using login function in Account.(Not implemented yet)
             //SOME FORM OF PASS HASHING SHOULD BE DONE HERE
             Account a = login("ASDFGH", txtPin.Text);
             if (a != null)
