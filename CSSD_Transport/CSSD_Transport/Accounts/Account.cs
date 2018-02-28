@@ -8,7 +8,8 @@ namespace CSSD_Transport.Accounts
 	public abstract class Account
 	{
 		protected string username, password, type;
-		private float creditAmount ;
+
+		private float creditAmount;
 
         public Account() { }
         public Account(string username, string password)
