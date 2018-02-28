@@ -8,11 +8,10 @@ namespace CSSD_Transport.Accounts
 {
 	public static class AccountServer
 	{
-        private static SetOfAccounts accounts;
 
         public static Account processLogin(string name, string password)
         {
-            return accounts.findAccount(name, password);
+            return SetOfAccounts.Instance.findAccount(name, password);
         }
 	}
 }
