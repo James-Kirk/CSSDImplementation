@@ -9,7 +9,7 @@ namespace CSSD_Transport.Accounts
 	{
 		protected string username, password, type;
 		private float creditAmount;
-
+        // Ellie likes ass
         public Account() { }
         public Account(string username, string password)
         {
