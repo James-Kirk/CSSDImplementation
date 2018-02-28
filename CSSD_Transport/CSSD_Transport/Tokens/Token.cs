@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using CSSD_Transport.Accounts;
 
-namespace CSSD_Transport.Token
+namespace CSSD_Transport.Tokens
 {
 	public abstract class Token
 	{
