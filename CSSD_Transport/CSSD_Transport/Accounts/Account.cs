@@ -8,13 +8,14 @@ namespace CSSD_Transport.Accounts
 	public abstract class Account
 	{
 		protected string username, password, type;
-		private float creditAmount;
+		private float creditAmount ;
 
         public Account() { }
         public Account(string username, string password)
         {
             this.username = username;
             this.password = password;
+            this.creditAmount = 0.0f;
         }
         
 		public string getUsername() => username;
@@ -22,14 +23,22 @@ namespace CSSD_Transport.Accounts
 		public string getType() => type;
 		public float getCreditAmount() => creditAmount;
 
-		public void updateBalance(float a)
+		public void updateBalance(float amount)
 		{
-
+            this.creditAmount += amount;
 		}
 
-		public void processTopUp(float a, string m)
-		{
+        public float getBalance()
+        {
+            return creditAmount;
+        }
 
-		}
+        // TODO: WHAT IS THIS m PARAMETER  - EF
+        // NOTE: changed to bool. not in accordance with UML.
+		public bool processTopUp(float amount, string m)
+		{
+            // TODO: i have no fucking idea what strings they want passing in. - EF
+            return Transaction.PaymentHandler.authorise(amount, m, "") == true ? true : false;
+        }
 	}
 }
