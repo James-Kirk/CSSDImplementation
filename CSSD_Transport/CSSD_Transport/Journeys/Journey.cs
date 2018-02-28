@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Journey
+namespace CSSD_Transport.Journeys
 {
-	class Journey
+	public class Journey
 	{
 		private int journeyID;
 		private Token.Token tokenUsed;

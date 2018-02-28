@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Journey
+namespace CSSD_Transport.Journeys
 {
-	class Location
+	public class Location
 	{
 		private string locationName;
 

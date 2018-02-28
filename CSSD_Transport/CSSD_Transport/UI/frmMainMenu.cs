@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace CSSD_Transport.UI
 {
     public partial class frmMainMenu : Form
     {
-        public frmMainMenu()
+        Account currentAccount;
+        public frmMainMenu(Account currentAccount)
         {
+            this.currentAccount = currentAccount;
             InitializeComponent();
         }
 

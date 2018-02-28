@@ -5,29 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Token
 {
-	class SmartCard : Token
+	public class SmartCard : Token
 	{
 		public Account getAccount()
 		{
             //TODO: Account is top-level and token is a passenger class
             //Account also needs to be protected to be accessed properly
-            throw new NotImplementedException();
+            
+            //TODO: why would we want to return new NormalAccount here? or was this just to  make it compile properly?
+            // commented it out becuase I make normalAccount take 2 parameters for constructor now - EF
+            // return new NormalAccount();
+            return null;
+
         }
 
-		public Journey.Journey getRecentJourney()
+        public Journey getRecentJourney()
 		{
             //TODO: Nothing in design
             throw new NotImplementedException();
         }
+
 
 		public float getAmountForJourneys()
 		{
-            //TODO: Nothing in design
-            throw new NotImplementedException();
-        }
+			//TODO: Nothing in design
+			return 0.0f;
+		}
 
 		public void updateAccountBalance(float a)
 		{

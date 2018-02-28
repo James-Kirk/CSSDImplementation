@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Token
 {
-	class Tickets
+	public class Tickets
 	{
 	}
 }

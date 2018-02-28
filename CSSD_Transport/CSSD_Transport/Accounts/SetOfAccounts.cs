@@ -6,11 +6,29 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class SetOfAccounts : List<Account>
+    [Serializable]
+    public class SetOfAccounts
 	{
+        private List<Account> accounts = new List<Account>();
+        private static SetOfAccounts instance;
+        private SetOfAccounts() { }
+
+        // Only allows 1 set of accounts to be created.
+        public static SetOfAccounts Instance
+        {
+            get { return instance == null ? instance = new SetOfAccounts() : instance; }
+           
+            set { instance = value; }
+        }
+
+        public void addAccount(Account a)
+        {
+            this.accounts.Add(a);
+        }
+
 		public Account findAccount(string username, string password)
 		{
-			return this.Find(i => i.getUsername() == username && i.getPass() == password);
+			return accounts.Find(i => i.getUsername() == username && i.getPass() == password);
 		}
 	}
 }

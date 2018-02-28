@@ -38,16 +38,24 @@ namespace CSSD_Transport.UI
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             //Authorise pin using login function in Account.(Not implemented yet)
-            frmMainMenu mm = new frmMainMenu();
-            mm.Show();
-            this.Visible = false;
+            //SOME FORM OF PASS HASHING SHOULD BE DONE HERE
+            Account a = login("ASDFGH", txtPin.Text);
+            if (a != null)
+            {
+                frmMainMenu mm = new frmMainMenu(a);
+                mm.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Invalid Pin");
+            }
+            
         }
 
-        private bool login(string user, string pass)
+        private Account login(string user, string pass)
         {
-            AccountServer a = new AccountServer();
-            
-            return false;
+           return AccountServer.processLogin(user, pass);
         }
     }
 }

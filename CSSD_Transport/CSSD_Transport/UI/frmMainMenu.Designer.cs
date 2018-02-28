@@ -71,7 +71,7 @@
             this.Controls.Add(this.btnBookTickets);
             this.Controls.Add(this.btnMyTrips);
             this.Name = "frmMainMenu";
-            this.Text = "frmMainMenu";
+            this.Text = "|";
             this.ResumeLayout(false);
 
         }

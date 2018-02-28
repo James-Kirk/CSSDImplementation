@@ -64,13 +64,13 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Journey\FareRules.cs" />
-    <Compile Include="Journey\Journey.cs" />
-    <Compile Include="Accounts\Passenger.cs" />
-    <Compile Include="Journey\Location.cs" />
-    <Compile Include="Journey\SetOfJourneys.cs" />
+    <Compile Include="Journeys\FareRules.cs" />
+    <Compile Include="Journeys\Journey.cs" />
+    <Compile Include="Journeys\Location.cs" />
+    <Compile Include="Journeys\SetOfJourneys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Token\BiometricTicket.cs" />
     <Compile Include="Token\Passes.cs" />
@@ -78,10 +78,6 @@
     <Compile Include="Token\SmartCard.cs" />
     <Compile Include="Token\Tickets.cs" />
     <Compile Include="Token\Token.cs" />
-    <Compile Include="Transaction\Cash.cs" />
-    <Compile Include="Transaction\CreditCard.cs" />
-    <Compile Include="Transaction\DebitCard.cs" />
-    <Compile Include="Transaction\Mobile.cs" />
     <Compile Include="Transaction\OnlineTransfers.cs" />
     <Compile Include="Transaction\PaymentHandler.cs" />
     <Compile Include="Transaction\SetOfTransactions.cs" />
@@ -128,6 +124,9 @@
     <Compile Include="UI\frmTrips.Designer.cs">
       <DependentUpon>frmTrips.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -162,5 +161,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

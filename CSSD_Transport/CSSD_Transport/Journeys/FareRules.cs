@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Journey
+namespace CSSD_Transport.Journeys
 {
-	class FareRules
+	public class FareRules
 	{
 		private float minAmount;
 		private int dayPassNum;
@@ -22,8 +22,8 @@ namespace CSSD_Transport.Journey
 
 		public float calculateDiscount(int n)
 		{
-            throw new NotImplementedException();
-        }
+			return 0.0f;
+		}
 
 		public float getMinAmount() => minAmount;
 

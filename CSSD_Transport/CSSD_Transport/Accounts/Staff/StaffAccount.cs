@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class StaffAccount
+    [Serializable]
+	public class StaffAccount
 	{
-	}
+        private string username, password;
+
+        public StaffAccount(string usernameIn, string passwordIn)
+        {
+            this.username = usernameIn;
+            this.password = passwordIn;
+            SetOfStaffAccounts.Instance.AddStaffAccount(this);
+        }
+
+        public string getUsername() => username;
+        public string getPassword() => password;
+    }
 }

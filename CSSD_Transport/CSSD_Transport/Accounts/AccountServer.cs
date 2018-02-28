@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Accounts
 {
-	class AccountServer
+	public static class AccountServer
 	{
+        private static SetOfAccounts accounts;
+
+        public static Account processLogin(string name, string password)
+        {
+            return accounts.findAccount(name, password);
+        }
 	}
 }
