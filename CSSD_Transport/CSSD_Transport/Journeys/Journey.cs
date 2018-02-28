@@ -16,6 +16,16 @@ namespace CSSD_Transport.Journeys
 		private DateTime toDate;
 		private float amountPaid;
 
+        public Journey(Token.Token t, String aFromLocation, String aToLocation, DateTime aStartDate, DateTime aToDate, float paid)
+        {
+            tokenUsed = t;
+            fromLocation = aFromLocation;
+            toLocation = aToLocation;
+            startDate = aStartDate;
+            toDate = aToDate;
+            amountPaid = paid;
+        }
+
 		public string getStartLocation() => fromLocation;
 
 		public string getEndLocation() => toLocation;

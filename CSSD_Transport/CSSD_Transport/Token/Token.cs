@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Token
 {
@@ -16,6 +17,7 @@ namespace CSSD_Transport.Token
 		protected bool scanned;
 		protected int journeyCounter;
 		protected bool discounted;
+        
 
 
 		public bool getScannedStatus() => scanned;
@@ -29,7 +31,12 @@ namespace CSSD_Transport.Token
 		public bool hasDiscount() => discounted;
 
 		//TODO: wut?
-		public bool hasSufficientCredit() => false;
+		public bool hasSufficientCredit()
+        {
+            // Has details of what to do with a smart card... but not with anything else?
+            float min = FareRules.Instance.getFareRules().getMinAmount();
+            return false;
+        }
 
 		public void incrementJourney() => journeyCounter++;
 
