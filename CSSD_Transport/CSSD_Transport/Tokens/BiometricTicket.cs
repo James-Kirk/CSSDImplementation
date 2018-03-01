@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 using CSSD_Transport.Accounts;
 
-namespace CSSD_Transport.Token
+namespace CSSD_Transport.Tokens
 {
 	public class BiometricTicket : Token
 	{

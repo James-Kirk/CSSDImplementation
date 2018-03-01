@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CSSD_Transport.Accounts;
 using CSSD_Transport.Journeys;
 
-namespace CSSD_Transport.Token
+namespace CSSD_Transport.Tokens
 {
 	public class SmartCard : Token
 	{

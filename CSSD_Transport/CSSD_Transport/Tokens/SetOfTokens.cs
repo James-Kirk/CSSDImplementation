@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CSSD_Transport.Token
+namespace CSSD_Transport.Tokens
 {
 	public class SetOfTokens : List<Token>
 	{
