@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSSD_Transport.Tokens;
+
 namespace CSSD_Transport.Journeys
 {
 	public class Journey
 	{
 		private int journeyID;
-		private Token.Token tokenUsed;
+		private Token tokenUsed;
 		private string fromLocation;
 		private string toLocation;
 		private DateTime startDate;
 		private DateTime toDate;
 		private float amountPaid;
 
-        public Journey(Token.Token t, String aFromLocation, String aToLocation, DateTime aStartDate, DateTime aToDate, float paid)
+        public Journey(Token t, String aFromLocation, String aToLocation, DateTime aStartDate, DateTime aToDate, float paid)
         {
             tokenUsed = t;
             fromLocation = aFromLocation;

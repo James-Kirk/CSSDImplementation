@@ -1,10 +1,11 @@
-﻿using CSSD_Transport.Journeys;
-using CSSD_Transport.Token;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using CSSD_Transport.Journeys;
+using CSSD_Transport.Tokens;
 
 namespace CSSD_Transport.Equipment
 {
@@ -19,7 +20,7 @@ namespace CSSD_Transport.Equipment
 
         public void readTokenAtEntry(int id)
         {
-            Token.Token aT = tokenList.findToken(id);
+            Token aT = tokenList.findToken(id);
             bool e = aT.hasSufficientCredit();
             String s = aT.getType();
             if (s == "SmartCard")
@@ -75,7 +76,7 @@ namespace CSSD_Transport.Equipment
         }
 
         // TODO: Token.Token... need to update Token namespace to Tokens
-        public void createJourney(Token.Token aToken)
+        public void createJourney(Token aToken)
         {
             aToken.setScanned(true);
             String s = currentLocation.getLocation();
