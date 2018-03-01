@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSSD_Transport.Util;
+
 namespace CSSD_Transport.Journeys
 {
 	public class FareRules
 	{
-		private float minAmount; 
-		private int dayPassNum; // number of journeys required before a day pass discount is applied
+		private const float minAmount = 5.0f; 
+		private const int dayPassNum = 7;
+		private const float costPerStation = 0.75f;
 
         private static FareRules aFareRule;
 
@@ -30,7 +33,8 @@ namespace CSSD_Transport.Journeys
 
 		public float calculateFare(string from, string to)
 		{
-            throw new NotImplementedException();
+			int distance = RailMap.Instance.getDistance(from, to);
+			return (distance * costPerStation);
         }
 
 		public float calculateDiscount(int n)
