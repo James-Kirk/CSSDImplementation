@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,44 @@ namespace CSSD_Transport.UI
         public frmLogin()
         {
             InitializeComponent();
+        }
+
+        private void btnSimSmartCard_Click(object sender, EventArgs e)
+        {
+            if (btnSimSmartCard.Text == "Cancel")
+            {
+                btnSimSmartCard.Text = "Simulate Smart Card";
+                txtPin.Visible = false;
+                btnConfirm.Visible = false;
+            }
+            else
+            {
+                btnSimSmartCard.Text = "Cancel";
+                txtPin.Visible = true;
+                btnConfirm.Visible = true;
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            //SOME FORM OF PASS HASHING SHOULD BE DONE HERE
+            Account a = login("ASDFGH", txtPin.Text);
+            if (a != null)
+            {
+                frmMainMenu mm = new frmMainMenu(a);
+                mm.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Invalid Pin");
+            }
+            
+        }
+
+        private Account login(string user, string pass)
+        {
+           return AccountServer.processLogin(user, pass);
         }
     }
 }

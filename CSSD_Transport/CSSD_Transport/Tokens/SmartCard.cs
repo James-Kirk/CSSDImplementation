@@ -20,13 +20,15 @@ namespace CSSD_Transport.Tokens
             // commented it out becuase I make normalAccount take 2 parameters for constructor now - EF
             // return new NormalAccount();
             return null;
+
         }
 
         public Journey getRecentJourney()
 		{
-			//TODO: Nothing in design
-			return new Journey();
-		}
+            //TODO: Nothing in design
+            throw new NotImplementedException();
+        }
+
 
 		public float getAmountForJourneys()
 		{

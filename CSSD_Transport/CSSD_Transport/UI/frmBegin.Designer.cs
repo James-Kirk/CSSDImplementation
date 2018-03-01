@@ -28,11 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnBegin = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnBegin
+            // 
+            this.btnBegin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnBegin.Location = new System.Drawing.Point(46, 59);
+            this.btnBegin.Name = "btnBegin";
+            this.btnBegin.Size = new System.Drawing.Size(184, 141);
+            this.btnBegin.TabIndex = 0;
+            this.btnBegin.Text = "Touch To Begin";
+            this.btnBegin.UseVisualStyleBackColor = true;
+            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
+            // 
+            // frmBegin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnBegin);
+            this.Name = "frmBegin";
             this.Text = "frmBegin";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnBegin;
     }
 }
