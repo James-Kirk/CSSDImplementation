@@ -75,7 +75,6 @@ namespace CSSD_Transport.Equipment
 
         }
 
-        // TODO: Token.Token... need to update Token namespace to Tokens
         public void createJourney(Token aToken)
         {
             aToken.setScanned(true);

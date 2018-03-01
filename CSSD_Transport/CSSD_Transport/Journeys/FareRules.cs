@@ -33,7 +33,7 @@ namespace CSSD_Transport.Journeys
 
 		public float calculateFare(string from, string to)
 		{
-			int distance = RailMap.Instance.getDistance(from, to);
+			int distance = RailMap.Instance.getDistance(ref from, ref to);
 			return (distance * costPerStation);
         }
 

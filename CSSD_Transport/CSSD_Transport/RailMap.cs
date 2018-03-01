@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Individual Work
+//Alex
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +37,7 @@ namespace CSSD_Transport.Util
 			locations.Add(l);
 		}
 
-		public int getDistance(string Loc1, string Loc2)
+		public int getDistance(ref string Loc1, ref string Loc2)
 		{
 			int loc1IDX = 0;
 			int loc2IDX = 0;
