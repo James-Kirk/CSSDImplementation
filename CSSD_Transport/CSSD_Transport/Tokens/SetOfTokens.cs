@@ -18,6 +18,11 @@ namespace CSSD_Transport.Tokens
 			set { instance = value; }
 		}
 
+		public void addToken(Token t)
+		{
+			tokens.Add(t);
+		}
+
 		public Token findToken(int id)
 		{
 			return tokens.Find(i => i.getID() == id);

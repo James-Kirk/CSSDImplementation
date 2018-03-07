@@ -11,7 +11,14 @@ namespace CSSD_Transport.Accounts
 	{
         private List<Account> accounts = new List<Account>();
         private static SetOfAccounts instance;
-        private SetOfAccounts() { }
+        private SetOfAccounts()
+		{
+			//TEMPORARY
+			//This hardcode adds the accounts to the system, but should really be handled by Serialisation!
+			accounts.Add(new NormalAccount("James", "Bob", DateTime.Now));
+			accounts.Add(new NormalAccount("Doom", "Guy", DateTime.Now));
+			accounts.Add(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
+		}
 
         // Only allows 1 set of accounts to be created.
         public static SetOfAccounts Instance
