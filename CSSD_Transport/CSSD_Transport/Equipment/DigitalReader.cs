@@ -19,15 +19,13 @@ namespace CSSD_Transport.Equipment
         {
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            SmartCard testUser = new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenkins")), "SmartCard", false, 0);
-            testUser.updateAccountBalance(20);
             currentLocation = new Location("Backend sucks");
-			SetOfTokens.Instance.addToken(testUser);
         }
 
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);
+            Account testAccount = SetOfAccounts.Instance.findAccount("Leroy", "Jenkins");
             if (aToken == null)
             {
                 return entryDenied();

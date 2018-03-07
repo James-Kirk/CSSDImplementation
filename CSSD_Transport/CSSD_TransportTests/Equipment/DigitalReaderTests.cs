@@ -15,14 +15,14 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtEntryTestBasicBus()
         {
             var reader = new DigitalReader("Bus", 1);
-            Assert.AreEqual(true, reader.readTokenAtEntry(1));
+            Assert.AreEqual(true, reader.readTokenAtEntry(2));
         }
 
         [TestMethod()]
         public void readTokenAtEntryTestBasicTrain()
         {
             var reader = new DigitalReader("Train", 2);
-            Assert.AreEqual(true, reader.readTokenAtEntry(1));
+            Assert.AreEqual(true, reader.readTokenAtEntry(2));
         }
 
         [TestMethod()]
@@ -35,13 +35,14 @@ namespace CSSD_Transport.Equipment.Tests
         [TestMethod()]
         public void readTokenAtEntryTestInsufficientFunds()
         {
-            Assert.Fail();
+            var reader = new DigitalReader("Bus", 4);
+            Assert.AreEqual(false, reader.readTokenAtEntry(1));
         }
 
         [TestMethod()]
         public void readTokenAtEntryTestInvalidType()
         {
-            var reader = new DigitalReader("Waffle Iron", 1);
+            var reader = new DigitalReader("Waffle Iron", 5);
             Assert.Fail();
         }
     }

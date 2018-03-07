@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.Accounts;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,7 +10,11 @@ namespace CSSD_Transport.Tokens
 		private List<Token> tokens = new List<Token>();
 		private static SetOfTokens instance;
 
-		public SetOfTokens() { }
+		public SetOfTokens()
+        {
+            tokens.Add(new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenkins")), "SmartCard", false, 0));
+            tokens.Add(new SmartCard(2, (SetOfAccounts.Instance.findAccount("James", "Bob")), "SmartCard", false, 0));
+        }
 
 		public static SetOfTokens Instance
 		{
