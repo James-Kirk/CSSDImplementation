@@ -11,6 +11,15 @@ namespace CSSD_Transport.Tokens
 {
 	public class SmartCard : Token
 	{
+        public SmartCard(int id, Account aTokenUser, string aTokenType, bool newScanned, int aJourneyCounter)
+        {
+            tokenID = id;
+            tokenUser = aTokenUser;
+            tokenType = aTokenType;
+            scanned = newScanned;
+            journeyCounter = aJourneyCounter;
+        }
+
 		public Account getAccount()
 		{
             return tokenUser;
@@ -32,7 +41,7 @@ namespace CSSD_Transport.Tokens
 
 		public void updateAccountBalance(float a)
 		{
-			//TODO: Nothing in design
+            this.tokenUser.updateBalance(a);
 		}
 	}
 }

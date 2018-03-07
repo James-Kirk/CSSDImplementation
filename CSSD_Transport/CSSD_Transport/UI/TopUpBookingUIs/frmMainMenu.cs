@@ -13,7 +13,7 @@ namespace CSSD_Transport.UI
 {
     public partial class frmMainMenu : Form
     {
-        Account currentAccount;
+        public Account currentAccount;
         public frmMainMenu(Account currentAccount)
         {
             this.currentAccount = currentAccount;
@@ -29,7 +29,9 @@ namespace CSSD_Transport.UI
 
         private void btnTopUp_Click(object sender, EventArgs e)
         {
-
+            frmTopUp topUp = new frmTopUp(this);
+            topUp.Show();
+            this.Visible = false;
         }
     }
 }
