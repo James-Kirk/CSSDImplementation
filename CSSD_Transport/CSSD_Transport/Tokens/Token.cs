@@ -17,8 +17,6 @@ namespace CSSD_Transport.Tokens
 		protected bool scanned;
 		protected int journeyCounter;
 		protected bool discounted;
-        
-
 
 		public bool getScannedStatus() => scanned;
 
@@ -29,13 +27,15 @@ namespace CSSD_Transport.Tokens
 		public int getID() => tokenID;
 
 		public bool hasDiscount() => discounted;
-
-		//TODO: wut?
+        
 		public bool hasSufficientCredit()
         {
-            // Has details of what to do with a smart card... but not with anything else?
             float min = FareRules.Instance.getFareRules().getMinAmount();
-            return false;
+            float accountCredit = tokenUser.getBalance();
+            if (accountCredit < min)
+                return false;
+            else
+                return true;
         }
 
 		public void incrementJourney() => journeyCounter++;

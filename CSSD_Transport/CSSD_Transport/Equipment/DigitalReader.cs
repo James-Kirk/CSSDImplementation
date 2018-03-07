@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 using CSSD_Transport.Journeys;
 using CSSD_Transport.Tokens;
+using CSSD_Transport.Accounts;
 
 namespace CSSD_Transport.Equipment
 {
@@ -20,18 +22,26 @@ namespace CSSD_Transport.Equipment
 
         public void readTokenAtEntry(int id)
         {
-            Token aT = tokenList.findToken(id);
-            bool e = aT.hasSufficientCredit();
-            String s = aT.getType();
-            if (s == "SmartCard")
+            Token aToken = tokenList.findToken(id);
+            bool sufficientCredit = aToken.hasSufficientCredit();
+            String tokenType = aToken.getType();    // TODO change to enum
+            if (tokenType == "SmartCard")
             {
-                // do some stuff
+                SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
+                Account cardAccount = smartCard.getAccount();
+                float minAmount = FareRules.Instance.getMinAmount();
+                float cardAccountBalance = cardAccount.getBalance();
+                // TODO - isn't all of this the same route as taken later on in here?
+                if (cardAccountBalance < minAmount) // if lower than the minimum amount on the smartcard, do not allow
+                    entryDenied();  
+                    return;
             }
 
-            if (aT != null && e)
+            String readerType = getReaderType();
+
+            if (aToken != null && sufficientCredit)
             {
-                String r = getReaderType();
-                if (r == "Bus")
+                if (readerType == "Bus")
                 {
                     entryPermitted();
                     playAudio();
@@ -39,9 +49,17 @@ namespace CSSD_Transport.Equipment
                 else
                 {
                     gate.operateGate();
-                    aT.incrementJourney();
-                    createJourney(aT);
                 }
+
+
+                aToken.incrementJourney();
+                createJourney(aToken);
+            }
+
+            // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
+            if ((aToken == null || !sufficientCredit) && readerType == "Bus")
+            {
+                entryDenied();
             }
         }
 
@@ -67,12 +85,13 @@ namespace CSSD_Transport.Equipment
 
         public void playAudio()
         {
-            
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\tada.wav");
+            simpleSound.Play();
         }
 
         public void entryPermitted()
         {
-
+            // TODO JK Output to a form that entry is permitted?
         }
 
         public void createJourney(Token aToken)
@@ -80,12 +99,12 @@ namespace CSSD_Transport.Equipment
             aToken.setScanned(true);
             String s = currentLocation.getLocation();
             DateTime t = getTime();
-            Journey theJourney = new Journey(aToken, s, "", t, null, 0.00f);
+            Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
         }
 
         public void entryDenied()
         {
-
+            // TODO JK Output to a form that entry has been denied?
         }
 	}
 }
