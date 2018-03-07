@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 using CSSD_Transport.Journeys;
 using CSSD_Transport.Tokens;
@@ -39,8 +40,15 @@ namespace CSSD_Transport.Equipment
                 else
                 {
                     gate.operateGate();
-                    aT.incrementJourney();
-                    createJourney(aT);
+                }
+
+
+                aT.incrementJourney();
+                createJourney(aT);
+
+                if((aT == null || !e) && r == "Bus")
+                {
+                    entryDenied();
                 }
             }
         }
@@ -67,7 +75,8 @@ namespace CSSD_Transport.Equipment
 
         public void playAudio()
         {
-            
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\tada.wav");
+            simpleSound.Play();
         }
 
         public void entryPermitted()
@@ -80,7 +89,7 @@ namespace CSSD_Transport.Equipment
             aToken.setScanned(true);
             String s = currentLocation.getLocation();
             DateTime t = getTime();
-            Journey theJourney = new Journey(aToken, s, "", t, null, 0.00f);
+            Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
         }
 
         public void entryDenied()

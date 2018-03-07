@@ -23,7 +23,6 @@ namespace CSSD_Transport.Journeys
         public Journey(Token t, String aFromLocation, String aToLocation, DateTime aStartDate, DateTime aEndDate, float paid)
         {
 			journeyID = idCounter++;
-
             tokenUsed = t;
             fromLocation = aFromLocation;
             toLocation = aToLocation;
