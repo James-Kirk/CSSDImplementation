@@ -16,9 +16,10 @@ namespace CSSD_Transport.Equipment
         private SetOfTokens tokenList = new SetOfTokens();
         private GateController gate = new GateController();
 
-        public DigitalReader()
+        public DigitalReader(String aReaderType, int aDigitalReaderID)
         {
-            this.readerType = "Bus";
+            this.readerType = aReaderType;
+            this.digitalReaderID = aDigitalReaderID;
             SmartCard testUser = new SmartCard(1, (new NormalAccount("James", "Bob", DateTime.Now)), "SmartCard", false, 0);
             testUser.updateAccountBalance(20);
             currentLocation = new Location("Backend sucks");
@@ -37,7 +38,7 @@ namespace CSSD_Transport.Equipment
                 bool sufficientCredit = aToken.hasSufficientCredit();
                 String tokenType = aToken.getType();    // TODO change to enum
                 if (tokenType == "SmartCard")
-                {
+                { 
                     SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
                     Account cardAccount = smartCard.getAccount();
                     float minAmount = FareRules.Instance.getMinAmount();

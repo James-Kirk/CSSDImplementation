@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Accounts\AccountTests.cs" />
     <Compile Include="Accounts\SetOfAccountsTests.cs" />
+    <Compile Include="Equipment\DigitalReaderTests.cs" />
     <Compile Include="Journey\FareRulesTests.cs" />
     <Compile Include="Journey\JourneyTests.cs" />
     <Compile Include="Journey\LocationTests.cs" />

@@ -20,7 +20,7 @@ namespace CSSD_Transport.UI.Travel_UI
 
         private void btnEnterGate_Click(object sender, EventArgs e)
         {
-            DigitalReader currentReader = new DigitalReader();
+            DigitalReader currentReader = new DigitalReader("Bus", 1);
             if(currentReader.readTokenAtEntry(1))
             {
                 MessageBox.Show("Gate Open");
