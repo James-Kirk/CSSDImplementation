@@ -16,8 +16,8 @@ namespace CSSD_Transport.Journeys
         }
 		public Journey findMostRecentJourney(int id)
 		{
-			//TODO: Same with this crap, whats the need for the id?
-			return new Journey();
-		}
+            //JK - changed this back due to new Journey contructor
+            throw new NotImplementedException();
+        }
 	}
 }

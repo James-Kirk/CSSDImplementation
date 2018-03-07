@@ -22,7 +22,7 @@ namespace CSSD_Transport.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             frmPrevious.Visible = true;
-            this.Visible = false;
+            this.Close();
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CSSD_Transport.UI
 {
-    public partial class frmTopUp : Form
+    public partial class frmInsertBillSim : Form
     {
-        public frmTopUp()
+        public frmInsertBillSim()
         {
             InitializeComponent();
         }

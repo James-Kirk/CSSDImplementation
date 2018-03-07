@@ -1,4 +1,5 @@
 ﻿using CSSD_Transport.UI;
+using CSSD_Transport.UI.Travel_UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace CSSD_Transport
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
-            Application.Run(new frmBegin());
+            // Application.Run(new frmBegin());
+            Application.Run(new frmGateEntry());
         }
 	}
 }
