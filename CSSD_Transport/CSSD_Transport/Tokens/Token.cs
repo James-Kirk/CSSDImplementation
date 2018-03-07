@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
 
-namespace CSSD_Transport.Token
+namespace CSSD_Transport.Tokens
 {
 	public abstract class Token
 	{
@@ -17,7 +18,6 @@ namespace CSSD_Transport.Token
 		protected int journeyCounter;
 		protected bool discounted;
 
-
 		public bool getScannedStatus() => scanned;
 
 		public string getType() => tokenType;
@@ -27,9 +27,16 @@ namespace CSSD_Transport.Token
 		public int getID() => tokenID;
 
 		public bool hasDiscount() => discounted;
-
-		//TODO: wut?
-		public bool hasSufficientCredit() => false;
+        
+		public bool hasSufficientCredit()
+        {
+            float min = FareRules.Instance.getFareRules().getMinAmount();
+            float accountCredit = tokenUser.getBalance();
+            if (accountCredit < min)
+                return false;
+            else
+                return true;
+        }
 
 		public void incrementJourney() => journeyCounter++;
 

@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using CSSD_Transport.Accounts;
 
-namespace CSSD_Transport
+namespace CSSD_Transport.Util
 {
 	public static class Serialization
 	{

@@ -32,10 +32,6 @@ namespace CSSD_Transport.UI
              insertNote.ShowDialog();
         }
 
-        private void btnEnterTopUpAmount_Click(object sender, EventArgs e)
-        {
-            ShowDialog(new frmKeypad());
-        }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -52,7 +48,6 @@ namespace CSSD_Transport.UI
             lblInsertBill.Visible = false;
             btnPayAgain.Visible = true;
             btnInsertNote.Visible = false;
-            btnEnterTopUpAmount.Visible = false;
             txtTopUpAmount.Visible = false;
         }
 

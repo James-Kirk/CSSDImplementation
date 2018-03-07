@@ -4,20 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSSD_Transport.Util;
+
 namespace CSSD_Transport.Journeys
 {
 	public class FareRules
 	{
-		private float minAmount;
-		private int dayPassNum;
+		private const float minAmount = 5.0f; 
+		private const int dayPassNum = 7;
+		private const float costPerStation = 0.75f;
 
-		private FareRules aFareFule;
+        private static FareRules aFareRule;
 
 		FareRules() { }
 
+        // Singleton
+        public static FareRules Instance
+        {
+            get
+            {
+                if (aFareRule == null)
+                {
+                    aFareRule = new FareRules();
+                }
+                return aFareRule;
+            }
+        }
+
 		public float calculateFare(string from, string to)
 		{
-            throw new NotImplementedException();
+			int distance = RailMap.Instance.getDistance(ref from, ref to);
+			return (distance * costPerStation);
         }
 
 		public float calculateDiscount(int n)
@@ -29,7 +46,7 @@ namespace CSSD_Transport.Journeys
 
 		public int getNumForDayPass() => dayPassNum;
 
-		public FareRules getFareRules() => aFareFule;
+		public FareRules getFareRules() => aFareRule;
 
 	}
 }
