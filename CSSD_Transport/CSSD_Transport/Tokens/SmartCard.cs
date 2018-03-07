@@ -13,13 +13,7 @@ namespace CSSD_Transport.Tokens
 	{
 		public Account getAccount()
 		{
-            //TODO: Account is top-level and token is a passenger class
-            //Account also needs to be protected to be accessed properly
-            
-            //TODO: why would we want to return new NormalAccount here? or was this just to  make it compile properly?
-            // commented it out becuase I make normalAccount take 2 parameters for constructor now - EF
-            // return new NormalAccount();
-            return null;
+            return tokenUser;
 
         }
 
