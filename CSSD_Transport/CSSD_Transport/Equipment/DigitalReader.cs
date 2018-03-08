@@ -13,22 +13,19 @@ namespace CSSD_Transport.Equipment
         private String readerType;
         private DateTime currentTime;
         private Location currentLocation;
-        private SetOfTokens tokenList = new SetOfTokens();
         private GateController gate = new GateController();
 
         public DigitalReader(String aReaderType, int aDigitalReaderID)
         {
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            SmartCard testUser = new SmartCard(1, (new NormalAccount("James", "Bob", DateTime.Now)), "SmartCard", false, 0);
-            testUser.updateAccountBalance(20);
             currentLocation = new Location("Backend sucks");
-            tokenList.Add(testUser);
         }
 
         public bool readTokenAtEntry(int id)
         {
-            Token aToken = tokenList.findToken(id);
+            Token aToken = SetOfTokens.Instance.findToken(id);
+            Account testAccount = SetOfAccounts.Instance.findAccount("Leroy", "Jenkins");
             if (aToken == null)
             {
                 return entryDenied();
