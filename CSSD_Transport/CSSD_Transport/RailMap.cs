@@ -23,6 +23,15 @@ namespace CSSD_Transport.Util
 			//MUST intialise all locations here.
 			locations.Add(new Location("Baker Street"));
 			locations.Add(new Location("Green Park"));
+            locations.Add(new Location("Kings Cross"));
+            locations.Add(new Location("Angel"));
+            locations.Add(new Location("Old Street"));
+            locations.Add(new Location("Moorgate"));
+            locations.Add(new Location("Bank"));
+            locations.Add(new Location("London Bridge"));
+            locations.Add(new Location("Borough"));
+            locations.Add(new Location("Elephant & Castle"));
+            locations.Add(new Location("Kennington"));
 		}
 
 		public static RailMap Instance

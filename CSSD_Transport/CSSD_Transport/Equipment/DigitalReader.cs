@@ -24,7 +24,7 @@ namespace CSSD_Transport.Equipment
             }
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            currentLocation = new Location("Backend sucks");
+            currentLocation = new Location("Baker Street");
         }
 
         public bool readTokenAtEntry(int id)
@@ -74,9 +74,12 @@ namespace CSSD_Transport.Equipment
             }
         }
 
-        public void readTokenAtExit(int id)
+        // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
+        // catch in UI, invalid token exception - BW
+        // -1 is insufficient credit, otherwise current balance - BW
+        public float readTokenAtExit(int id)
         {
-
+            return 0.0f;
         }
 
         public String getReaderType()
@@ -119,6 +122,18 @@ namespace CSSD_Transport.Equipment
         public bool entryDenied()
         {
             return false;
+        }
+
+        // this is entirely to simulate location updating for testing
+        public void setLocation(Location aLocation)
+        {
+            this.currentLocation = aLocation;
+        }
+
+        // this is entirely to simulate current time updating for testing
+        public void setCurrentTime(DateTime aDateTime)
+        {
+            this.currentTime = aDateTime;
         }
 	}
 }

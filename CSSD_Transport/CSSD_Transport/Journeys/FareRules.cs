@@ -48,5 +48,6 @@ namespace CSSD_Transport.Journeys
 
 		public FareRules getFareRules() => aFareRule;
 
+        public float getCostPerStation() => costPerStation; // for testing
 	}
 }
