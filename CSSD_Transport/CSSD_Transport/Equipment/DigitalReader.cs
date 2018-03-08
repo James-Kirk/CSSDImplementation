@@ -15,6 +15,7 @@ namespace CSSD_Transport.Equipment
         private Location currentLocation;
         private GateController gate = new GateController();
 
+        // TODO Current location should probably be in the constructor here too
         public DigitalReader(String aReaderType, int aDigitalReaderID)
         {
             if(aReaderType == "Waffle Iron")
@@ -29,7 +30,6 @@ namespace CSSD_Transport.Equipment
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);
-            Account testAccount = SetOfAccounts.Instance.findAccount("Leroy", "Jenkins");
             if (aToken == null)
             {
                 return entryDenied();
@@ -83,12 +83,14 @@ namespace CSSD_Transport.Equipment
         {
             return readerType;
         }
-
+           
+        // Ben says get rid
         public DateTime getTime()
         {
             return currentTime;
         }
 
+        // Ben says get rid
         public DateTime getDay()
         {
             return currentTime;
