@@ -36,8 +36,20 @@ namespace CSSD_Transport.Util
 			CircleLine.Add(new Location("Embankment"));
 			CircleLine.Add(new Location("Westminster"));
 			CircleLine.Add(new Location("Victoria"));
+		
+			List<Location> VictoriaLine = new List<Location>();
+			VictoriaLine.Add(new Location("Euston"));
+			VictoriaLine.Add(new Location("Warren Street"));
+			VictoriaLine.Add(new Location("Oxford Circus"));
+			VictoriaLine.Add(new Location("Green Park"));
+			VictoriaLine.Add(new Location("Victoria"));
+			VictoriaLine.Add(new Location("Pimlico"));
+			VictoriaLine.Add(new Location("Vauxhall"));
+			VictoriaLine.Add(new Location("Stockwell"));
+			VictoriaLine.Add(new Location("Brixton"));
 
 			railLines.Add(new Tuple<String, List<Location>>("Circle", CircleLine));
+			railLines.Add(new Tuple<String, List<Location>>("Victoria", VictoriaLine));
 		}
 
 		public static RailMap Instance
@@ -65,6 +77,11 @@ namespace CSSD_Transport.Util
 				names.Add(l.Item1);
 			}
 			return names;
+		}
+
+		public List<Location> getLine(String name)
+		{
+			return railLines.Find(i => i.Item1 == name).Item2;
 		}
 
 		public int getDistance(String lineName, ref String Loc1, ref String Loc2)
