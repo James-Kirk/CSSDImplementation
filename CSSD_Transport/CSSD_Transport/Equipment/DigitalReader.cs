@@ -17,6 +17,10 @@ namespace CSSD_Transport.Equipment
 
         public DigitalReader(String aReaderType, int aDigitalReaderID)
         {
+            if(aReaderType == "Waffle Iron")
+            {
+                throw new ArgumentException();
+            }
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
             currentLocation = new Location("Backend sucks");

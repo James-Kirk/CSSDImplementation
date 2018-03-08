@@ -40,10 +40,10 @@ namespace CSSD_Transport.Equipment.Tests
         }
 
         [TestMethod()]
-        public void readTokenAtEntryTestInvalidType()
+        [ExpectedException(typeof(ArgumentException))]
+        public void readTokenAtEntryTestInvalidTypes()
         {
             var reader = new DigitalReader("Waffle Iron", 5);
-            Assert.Fail();
         }
     }
 }
