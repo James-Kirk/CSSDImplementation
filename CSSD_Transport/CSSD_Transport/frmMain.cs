@@ -30,6 +30,9 @@ namespace CSSD_Transport
             //// USE TO CREATE A STAFF ACCOUNT
             //StaffAccount staffAccount = new StaffAccount("EllieFuller", "password");
 
+            //SetOfAccounts.Instance.addAccount(new NormalAccount("James", "Bob", DateTime.Now));
+            //SetOfAccounts.Instance.addAccount(new NormalAccount("Doom", "Guy", DateTime.Now));
+            //SetOfAccounts.Instance.addAccount(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
             //// USE TO CREATE A NORMAL ACCOUNT
             //SetOfAccounts.Instance.addAccount(new NormalAccount("ASDFGH", "1234", DateTime.Now));
 
