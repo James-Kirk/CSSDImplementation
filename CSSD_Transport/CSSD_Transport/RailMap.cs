@@ -14,15 +14,30 @@ namespace CSSD_Transport.Util
 	[Serializable]
 	public class RailMap
 	{
-		private List<Location> locations = new List<Location>();
+		private List<Tuple<String, List<Location>>> railLines = new List<Tuple<String, List<Location>>>();
+
 		private static RailMap instance;
 
 		private RailMap()
 		{
-			//Examples
-			//MUST intialise all locations here.
-			locations.Add(new Location("Baker Street"));
-			locations.Add(new Location("Green Park"));
+			//Creating and adding a line to the map
+			List<Location> CircleLine = new List<Location>();
+			CircleLine.Add(new Location("Edgware Road"));
+			CircleLine.Add(new Location("Baker Street"));
+			CircleLine.Add(new Location("Great Portland Street"));
+			CircleLine.Add(new Location("Euston Square"));
+			CircleLine.Add(new Location("Kings Cross"));
+			CircleLine.Add(new Location("Farringdon"));
+			CircleLine.Add(new Location("Moorgate"));
+			CircleLine.Add(new Location("Liverpool Street"));
+			CircleLine.Add(new Location("Aldgate"));
+			CircleLine.Add(new Location("Tower Hill"));
+			CircleLine.Add(new Location("Monument"));
+			CircleLine.Add(new Location("Embankment"));
+			CircleLine.Add(new Location("Westminster"));
+			CircleLine.Add(new Location("Victoria"));
+
+			railLines.Add(new Tuple<String, List<Location>>("Circle", CircleLine));
 		}
 
 		public static RailMap Instance
@@ -32,20 +47,36 @@ namespace CSSD_Transport.Util
 			set { instance = value; }
 		}
 
-		public void addLocation(Location l)
+		public void addLocation(String line, Location location)
 		{
-			locations.Add(l);
+			railLines.Find(i => i.Item1 == line).Item2.Add(location);
 		}
 
-		public int getDistance(ref string Loc1, ref string Loc2)
+		public void addLine(String name, List<Location> line)
 		{
+			railLines.Add(new Tuple<String, List<Location>>("name", line));
+		}
+
+		public List<String> getLineNames()
+		{
+			List<String> names = new List<String>();
+			foreach(var l in railLines)
+			{
+				names.Add(l.Item1);
+			}
+			return names;
+		}
+
+		public int getDistance(String lineName, ref String Loc1, ref String Loc2)
+		{
+			List<Location> line = railLines.Find(i => i.Item1 == lineName).Item2;
 			int loc1IDX = 0;
 			int loc2IDX = 0;
-			for (int i = 0; i < locations.Count; i++)
+			for (int i = 0; i < line.Count; i++)
 			{
-				if (locations[i].getLocation() == Loc1)
+				if (line[i].getLocation() == Loc1)
 					loc1IDX = i;
-				else if (locations[i].getLocation() == Loc2)
+				else if (line[i].getLocation() == Loc2)
 					loc2IDX = i;
 			}
 
