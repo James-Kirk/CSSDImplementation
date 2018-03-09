@@ -66,23 +66,30 @@ namespace CSSD_Transport.Util
 
 		public void addLine(String name, List<Location> line)
 		{
-			railLines.Add(new Tuple<String, List<Location>>("name", line));
-		}
-
-		public List<String> getLineNames()
-		{
-			List<String> names = new List<String>();
-			foreach(var l in railLines)
-			{
-				names.Add(l.Item1);
-			}
-			return names;
+			railLines.Add(new Tuple<String, List<Location>>(name, line));
 		}
 
 		public List<Location> getLine(String name)
 		{
 			return railLines.Find(i => i.Item1 == name).Item2;
 		}
+
+		public List<String> getLineNames()
+		{
+			List<String> names = new List<String>();
+			foreach(var l in railLines)
+				names.Add(l.Item1);
+			return names;
+		}
+
+		public List<String> getStationNames(String lineName)
+		{
+			List<String> names = new List<String>();
+			foreach (var s in getLine(lineName))
+				names.Add(s.getLocation());
+			return names;
+		}
+	
 
 		public int getDistance(String lineName, ref String Loc1, ref String Loc2)
 		{
