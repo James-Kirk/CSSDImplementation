@@ -36,8 +36,8 @@ namespace CSSD_Transport.Equipment
             else
             {
                 bool sufficientCredit = aToken.hasSufficientCredit();
-                String tokenType = aToken.getType();    // TODO change to enum
-                if (tokenType == "SmartCard")
+                TokenType tokenType = aToken.getType();    // TODO change to enum
+                if (tokenType == TokenType.SmartCard)
                 { 
                     SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
                     Account cardAccount = smartCard.getAccount();

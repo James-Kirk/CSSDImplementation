@@ -9,18 +9,24 @@ using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Tokens
 {
+
+	public enum TokenType
+	{
+		SmartCard, Pass, Ticket, Biometric
+	}
+
 	public abstract class Token
 	{
 		protected int tokenID;
 		protected Account tokenUser;
-		protected string tokenType;
+		protected TokenType tokenType;
 		protected bool scanned;
 		protected int journeyCounter;
 		protected bool discounted;
 
 		public bool getScannedStatus() => scanned;
 
-		public string getType() => tokenType;
+		public TokenType getType() => tokenType;
 
 		public int getNumOfJourneys() => journeyCounter;
 
