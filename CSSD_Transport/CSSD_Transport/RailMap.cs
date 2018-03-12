@@ -89,9 +89,8 @@ namespace CSSD_Transport.Util
 				names.Add(s.getLocation());
 			return names;
 		}
-	
 
-		public int getDistance(String lineName, ref String Loc1, ref String Loc2)
+		public int getDistance(String lineName, String Loc1, String Loc2)
 		{
 			List<Location> line = railLines.Find(i => i.Item1 == lineName).Item2;
 			int loc1IDX = 0;
