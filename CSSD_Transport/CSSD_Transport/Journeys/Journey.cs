@@ -45,5 +45,7 @@ namespace CSSD_Transport.Journeys
 		public void setToLocation(string s) => toLocation = s;
 
 		public void setEndDate(DateTime d) => endDate = d;
+
+		public float getAmountPaid() => amountPaid;
 	}
 }
