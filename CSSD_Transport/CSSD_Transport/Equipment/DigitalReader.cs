@@ -9,6 +9,9 @@ namespace CSSD_Transport.Equipment
 {
     public class DigitalReader
 	{
+		private const bool entryDenied = false;
+		private const bool entryPermitted = true;
+
         private int digitalReaderID;
         private String readerType;
         private DateTime currentTime;
@@ -28,7 +31,7 @@ namespace CSSD_Transport.Equipment
             Account testAccount = SetOfAccounts.Instance.findAccount("Leroy", "Jenkins");
             if (aToken == null)
             {
-                return entryDenied();
+                return entryDenied;
             }
             else
             {
@@ -43,7 +46,7 @@ namespace CSSD_Transport.Equipment
                     // TODO - isn't all of this the same route as taken later on in here?
                     // ASK MARK If we can make it not shit
                     if (cardAccountBalance < minAmount) // if lower than the minimum amount on the smartcard, do not allow
-                        return entryDenied();
+                        return entryDenied;
                 }
 
                 String readerType = getReaderType();
@@ -61,17 +64,20 @@ namespace CSSD_Transport.Equipment
                     }
                     aToken.incrementJourney();
                     createJourney(aToken);
-                    return entryPermitted();
+                    return entryPermitted;
                 }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
                 //Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
-                return entryDenied();
+                return entryDenied;
             }
         }
 
-        public void readTokenAtExit(int id)
+        public bool readTokenAtExit(int id)
         {
+			Token exitToken = SetOfTokens.Instance.findToken(id);
+			if (exitToken == null)
+				return entryDenied;
 
         }
 
@@ -96,23 +102,12 @@ namespace CSSD_Transport.Equipment
             simpleSound.Play();
         }
 
-        public bool entryPermitted()
-        {
-            return true;
-
-        }
-
         public void createJourney(Token aToken)
         {
             aToken.setScanned(true);
             String s = currentLocation.getLocation();
             DateTime t = getTime();
             Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
-        }
-
-        public bool entryDenied()
-        {
-            return false;
         }
 	}
 }
