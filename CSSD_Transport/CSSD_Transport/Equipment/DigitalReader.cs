@@ -87,6 +87,7 @@ namespace CSSD_Transport.Equipment
 						break;
 				}
 			}
+			return false;
         }
 
         public String getReaderType()

@@ -89,6 +89,9 @@ namespace CSSD_Transport.Util
 			return names;
 		}
 
+		///<param name = "lineName" >String for the name of the Rail Line</param>
+		///<param name = "Loc1" >Name of the starting station</param>
+		///<param name = "Loc2" >Name of the destination station</param>
 		public int getDistance(String lineName, String Loc1, String Loc2)
 		{
 			List<Location> line = railLines.Find(i => i.Item1 == lineName).Item2;
