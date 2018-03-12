@@ -36,8 +36,7 @@ namespace CSSD_Transport.Equipment
             else
             {
                 bool sufficientCredit = aToken.hasSufficientCredit();
-                TokenType tokenType = aToken.getType();    // TODO change to enum
-                if (tokenType == TokenType.SmartCard)
+                if (aToken.getType() == TokenType.SmartCard)
                 { 
                     SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
                     Account cardAccount = smartCard.getAccount();
@@ -79,6 +78,15 @@ namespace CSSD_Transport.Equipment
 			if (exitToken == null)
 				return entryDenied;
 
+			if(exitToken.getScannedStatus())
+			{
+				switch(exitToken.getType())
+				{
+					case TokenType.SmartCard:
+						//stuff
+						break;
+				}
+			}
         }
 
         public String getReaderType()
