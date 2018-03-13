@@ -12,14 +12,14 @@ namespace CSSD_Transport.Tokens
 
 		public SetOfTokens()
         {
-            tokens.Add(new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenkins")), "SmartCard", false, 0));
-            tokens.Add(new SmartCard(2, (SetOfAccounts.Instance.findAccount("James", "Bob")), "SmartCard", false, 0));
-            tokens.Add(new SmartCard(3, (SetOfAccounts.Instance.findAccount("Doom", "Guy")), "SmartCard", false, 0));
+            tokens.Add(new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenkins")),  false, 0));
+            tokens.Add(new SmartCard(2, (SetOfAccounts.Instance.findAccount("James", "Bob")),  false, 0));
+            tokens.Add(new SmartCard(3, (SetOfAccounts.Instance.findAccount("Doom", "Guy")),  false, 0));
         }
 
 		public static SetOfTokens Instance
 		{
-			get { return instance == null ? instance = new SetOfTokens() : instance; }
+			get { return instance ?? (instance = new SetOfTokens()); }
 
 			set { instance = value; }
 		}

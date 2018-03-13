@@ -45,9 +45,7 @@ namespace CSSD_Transport.UI
         {
             txtCurrentBalance.Text = frmPrevious.currentAccount.getBalance().ToString("N2");
             lblTopUpAmount.Visible = false;
-            lblInsertBill.Visible = false;
             btnPayAgain.Visible = true;
-            btnInsertNote.Visible = false;
             txtTopUpAmount.Visible = false;
         }
 

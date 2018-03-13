@@ -78,6 +78,7 @@ namespace CSSD_Transport.Util
 			List<String> names = new List<String>();
 			foreach(var l in railLines)
 				names.Add(l.Item1);
+            //names.Sort();
 			return names;
 		}
 
@@ -86,6 +87,7 @@ namespace CSSD_Transport.Util
 			List<String> names = new List<String>();
 			foreach (var s in getLine(lineName))
 				names.Add(s.getLocation());
+           // names.Sort();
 			return names;
 		}
 

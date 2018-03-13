@@ -39,6 +39,7 @@ namespace CSSD_Transport.Journeys
 
 		public float calculateDiscount(int n)
 		{
+            //needs implementing
 			return 0.0f;
 		}
 
