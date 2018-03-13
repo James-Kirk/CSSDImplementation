@@ -18,17 +18,21 @@ namespace CSSD_Transport.Equipment
         private Location currentLocation;
         private GateController gate = new GateController();
 
+        // TODO Current location should probably be in the constructor here too
         public DigitalReader(String aReaderType, int aDigitalReaderID)
         {
+            if(aReaderType == "Waffle Iron")
+            {
+                throw new ArgumentException();
+            }
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            currentLocation = new Location("Backend sucks");
+            currentLocation = new Location("Baker Street");
         }
 
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);
-            Account testAccount = SetOfAccounts.Instance.findAccount("Leroy", "Jenkins");
             if (aToken == null)
             {
                 return entryDenied;
@@ -72,6 +76,9 @@ namespace CSSD_Transport.Equipment
             }
         }
 
+        // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
+        // catch in UI, invalid token exception - BW
+        // -1 is insufficient credit, otherwise current balance - BW
         public bool readTokenAtExit(int id)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
@@ -94,12 +101,14 @@ namespace CSSD_Transport.Equipment
         {
             return readerType;
         }
-
+           
+        // Ben says get rid
         public DateTime getTime()
         {
             return currentTime;
         }
 
+        // Ben says get rid
         public DateTime getDay()
         {
             return currentTime;
@@ -117,6 +126,18 @@ namespace CSSD_Transport.Equipment
             String s = currentLocation.getLocation();
             DateTime t = getTime();
             Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
+        }
+
+        // this is entirely to simulate location updating for testing
+        public void setLocation(Location aLocation)
+        {
+            this.currentLocation = aLocation;
+        }
+
+        // this is entirely to simulate current time updating for testing
+        public void setCurrentTime(DateTime aDateTime)
+        {
+            this.currentTime = aDateTime;
         }
 	}
 }

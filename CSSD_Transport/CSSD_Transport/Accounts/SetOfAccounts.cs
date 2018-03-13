@@ -19,6 +19,7 @@ namespace CSSD_Transport.Accounts
 			accounts.Add(new NormalAccount("Doom", "Guy", DateTime.Now));
 			accounts.Add(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
             this.findAccount("James", "Bob").updateBalance(20);
+            this.findAccount("Doom", "Guy").updateBalance(5);
 		}
 
         // Only allows 1 set of accounts to be created.
