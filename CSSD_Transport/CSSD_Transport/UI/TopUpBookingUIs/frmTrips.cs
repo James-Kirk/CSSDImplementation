@@ -17,6 +17,9 @@ namespace CSSD_Transport.UI
         {
             frmPrevious = prev;
             InitializeComponent();
+            lbxMyTrips.Items.Add("Victoria - Baker Street");
+            lbxMyTrips.Items.Add("Piccadilly Circus - Trafalgar Square");
+            lbxMyTrips.Items.Add("Euston - Green Park");
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
