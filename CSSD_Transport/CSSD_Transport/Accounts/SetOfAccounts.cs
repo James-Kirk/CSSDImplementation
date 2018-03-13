@@ -37,8 +37,7 @@ namespace CSSD_Transport.Accounts
 
 		public Account findAccount(string username, string password)
 		{
-			Account a = accounts.Find(i => i.getUsername() == username && i.getPass() == password);
-			return a; //Break here, check a
+			return accounts.Find(i => i.getUsername() == username && i.getPass() == password);
 		}
 	}
 }

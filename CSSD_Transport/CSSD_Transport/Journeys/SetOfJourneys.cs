@@ -8,16 +8,19 @@ namespace CSSD_Transport.Journeys
 {
 	public class SetOfJourneys : List<Journey>
 	{
-		public float getAmountForAllJourneys(int id)
+		public float getAmountForAllJourneys()
 		{
-            //TODO: What the hell is the ID supposed to be for if
-            //we're calculating ALL of the joruneys?
-            throw new NotImplementedException();
+			float sum = 0;
+            foreach(var J in this)
+			{
+				sum += J.getAmountPaid();
+			}
+
+			return sum;
         }
-		public Journey findMostRecentJourney(int id)
+		public Journey findMostRecentJourney()
 		{
-            //JK - changed this back due to new Journey contructor
-            throw new NotImplementedException();
+			return this[this.Count];
         }
 	}
 }

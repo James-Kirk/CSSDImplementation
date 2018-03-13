@@ -9,6 +9,9 @@ namespace CSSD_Transport.Equipment
 {
     public class DigitalReader
 	{
+		private const bool entryDenied = false;
+		private const bool entryPermitted = true;
+
         private int digitalReaderID;
         private String readerType;
         private DateTime currentTime;
@@ -32,13 +35,12 @@ namespace CSSD_Transport.Equipment
             Token aToken = SetOfTokens.Instance.findToken(id);
             if (aToken == null)
             {
-                return entryDenied();
+                return entryDenied;
             }
             else
             {
                 bool sufficientCredit = aToken.hasSufficientCredit();
-                String tokenType = aToken.getType();    // TODO change to enum
-                if (tokenType == "SmartCard")
+                if (aToken.getType() == TokenType.SmartCard)
                 { 
                     SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
                     Account cardAccount = smartCard.getAccount();
@@ -47,7 +49,7 @@ namespace CSSD_Transport.Equipment
                     // TODO - isn't all of this the same route as taken later on in here?
                     // ASK MARK If we can make it not shit
                     if (cardAccountBalance < minAmount) // if lower than the minimum amount on the smartcard, do not allow
-                        return entryDenied();
+                        return entryDenied;
                 }
 
                 String readerType = getReaderType();
@@ -65,21 +67,34 @@ namespace CSSD_Transport.Equipment
                     }
                     aToken.incrementJourney();
                     createJourney(aToken);
-                    return entryPermitted();
+                    return entryPermitted;
                 }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
                 //Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
-                return entryDenied();
+                return entryDenied;
             }
         }
 
         // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
         // catch in UI, invalid token exception - BW
         // -1 is insufficient credit, otherwise current balance - BW
-        public float readTokenAtExit(int id)
+        public bool readTokenAtExit(int id)
         {
-            return 0.0f;
+			Token exitToken = SetOfTokens.Instance.findToken(id);
+			if (exitToken == null)
+				return entryDenied;
+
+			if(exitToken.getScannedStatus())
+			{
+				switch(exitToken.getType())
+				{
+					case TokenType.SmartCard:
+						//stuff
+						break;
+				}
+			}
+			return false;
         }
 
         public String getReaderType()
@@ -105,23 +120,12 @@ namespace CSSD_Transport.Equipment
             simpleSound.Play();
         }
 
-        public bool entryPermitted()
-        {
-            return true;
-
-        }
-
         public void createJourney(Token aToken)
         {
             aToken.setScanned(true);
             String s = currentLocation.getLocation();
             DateTime t = getTime();
             Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
-        }
-
-        public bool entryDenied()
-        {
-            return false;
         }
 
         // this is entirely to simulate location updating for testing

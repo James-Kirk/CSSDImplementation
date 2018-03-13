@@ -18,7 +18,7 @@ namespace CSSD_Transport
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+			Application.Run(new frmMain());
             // Application.Run(new frmBegin());
             Application.Run(new frmGateEntry());
         }
