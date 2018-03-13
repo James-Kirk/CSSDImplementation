@@ -1,4 +1,5 @@
 ﻿using CSSD_Transport.Accounts;
+using CSSD_Transport.UI.TopUpBookingUIs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,13 @@ namespace CSSD_Transport.UI
         {
             frmTopUp topUp = new frmTopUp(this);
             topUp.Show();
+            this.Visible = false;
+        }
+
+        private void btnBookTickets_Click(object sender, EventArgs e)
+        {
+            frmBookTicket bookTicket = new frmBookTicket(this);
+            bookTicket.Show();
             this.Visible = false;
         }
     }

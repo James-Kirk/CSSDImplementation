@@ -37,7 +37,7 @@ namespace CSSD_Transport.UI
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             //SOME FORM OF PASS HASHING SHOULD BE DONE HERE
-            Account a = login("ASDFGH", txtPin.Text);
+            Account a = login("James", txtPin.Text);
             if (a != null)
             {
                 frmMainMenu mm = new frmMainMenu(a);
