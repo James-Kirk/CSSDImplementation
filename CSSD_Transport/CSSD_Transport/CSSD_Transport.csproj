@@ -143,6 +143,18 @@
     <Compile Include="UI\Travel UI\frmGateEntry.Designer.cs">
       <DependentUpon>frmGateEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Travel UI\frmGateExit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Travel UI\frmGateExit.Designer.cs">
+      <DependentUpon>frmGateExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Travel UI\frmRailTravelSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Travel UI\frmRailTravelSim.Designer.cs">
+      <DependentUpon>frmRailTravelSim.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Travel UI\frmGateEntry.resx">
       <DependentUpon>frmGateEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Travel UI\frmGateExit.resx">
+      <DependentUpon>frmGateExit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Travel UI\frmRailTravelSim.resx">
+      <DependentUpon>frmRailTravelSim.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

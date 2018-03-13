@@ -90,7 +90,7 @@ namespace CSSD_Transport.Equipment
 				switch(exitToken.getType())
 				{
 					case TokenType.SmartCard:
-						//stuff
+						
 						break;
 				}
 			}

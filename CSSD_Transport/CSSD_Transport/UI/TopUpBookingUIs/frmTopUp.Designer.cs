@@ -32,8 +32,6 @@
             this.txtCurrentBalance = new System.Windows.Forms.TextBox();
             this.lblBalance = new System.Windows.Forms.Label();
             this.lblTopUpAmount = new System.Windows.Forms.Label();
-            this.lblInsertBill = new System.Windows.Forms.Label();
-            this.btnInsertNote = new System.Windows.Forms.Button();
             this.txtTopUpAmount = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnPayAgain = new System.Windows.Forms.Button();
@@ -76,25 +74,6 @@
             this.lblTopUpAmount.TabIndex = 7;
             this.lblTopUpAmount.Text = "Enter Top-up Amount";
             // 
-            // lblInsertBill
-            // 
-            this.lblInsertBill.AutoSize = true;
-            this.lblInsertBill.Location = new System.Drawing.Point(92, 181);
-            this.lblInsertBill.Name = "lblInsertBill";
-            this.lblInsertBill.Size = new System.Drawing.Size(95, 13);
-            this.lblInsertBill.TabIndex = 8;
-            this.lblInsertBill.Text = "Or Insert Bill Below";
-            // 
-            // btnInsertNote
-            // 
-            this.btnInsertNote.Location = new System.Drawing.Point(95, 208);
-            this.btnInsertNote.Name = "btnInsertNote";
-            this.btnInsertNote.Size = new System.Drawing.Size(92, 35);
-            this.btnInsertNote.TabIndex = 9;
-            this.btnInsertNote.Text = "Insert Note";
-            this.btnInsertNote.UseVisualStyleBackColor = true;
-            this.btnInsertNote.Click += new System.EventHandler(this.btnInsertNote_Click);
-            // 
             // txtTopUpAmount
             // 
             this.txtTopUpAmount.Location = new System.Drawing.Point(81, 92);
@@ -132,8 +111,6 @@
             this.Controls.Add(this.btnPayAgain);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtTopUpAmount);
-            this.Controls.Add(this.btnInsertNote);
-            this.Controls.Add(this.lblInsertBill);
             this.Controls.Add(this.lblTopUpAmount);
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.txtCurrentBalance);
@@ -151,8 +128,6 @@
         private System.Windows.Forms.TextBox txtCurrentBalance;
         private System.Windows.Forms.Label lblBalance;
         private System.Windows.Forms.Label lblTopUpAmount;
-        private System.Windows.Forms.Label lblInsertBill;
-        private System.Windows.Forms.Button btnInsertNote;
         private System.Windows.Forms.TextBox txtTopUpAmount;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnPayAgain;
