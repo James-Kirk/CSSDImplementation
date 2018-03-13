@@ -77,7 +77,7 @@
     <Compile Include="Tokens\Passes.cs" />
     <Compile Include="Tokens\SetOfTokens.cs" />
     <Compile Include="Tokens\SmartCard.cs" />
-    <Compile Include="Tokens\Tickets.cs" />
+    <Compile Include="Tokens\Ticket.cs" />
     <Compile Include="Tokens\Token.cs" />
     <Compile Include="Transaction\OnlineTransfers.cs" />
     <Compile Include="Transaction\PaymentHandler.cs" />

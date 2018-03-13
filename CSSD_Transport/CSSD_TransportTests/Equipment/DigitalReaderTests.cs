@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CSSD_Transport.Accounts;
 using CSSD_Transport.Journeys;
+using CSSD_Transport.Util;
 
 namespace CSSD_Transport.Equipment.Tests
 {
@@ -75,21 +76,21 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtExitTestBasic()
         {
             var reader = new DigitalReader("Train", 1);
-            reader.setLocation(new Journeys.Location("Baker Street"));
+            reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
             reader.readTokenAtEntry(2);
-            reader.setLocation(new Journeys.Location("Green Park")); // may be using this wrong for RailMap?
+            reader.setLocation(RailMap.Instance.getLocation("Great Portland Street"));
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance() - FareRules.Instance.getCostPerStation();
             Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2));
         }
-
+         
         [TestMethod()]
         public void readTokenAtExitTestMultipleStops()
         {
             var reader = new DigitalReader("Train", 1);
-            reader.setLocation(new Journeys.Location("Baker Street"));
+            reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
             reader.readTokenAtEntry(2);
-            reader.setLocation(new Journeys.Location("Kings Cross"));
+            reader.setLocation(RailMap.Instance.getLocation("Kings Cross"));
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance() - (FareRules.Instance.getCostPerStation() * 2);
             Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2));
@@ -99,7 +100,7 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtExitTestSameStopNoCharge()
         {
             var reader = new DigitalReader("Train", 1);
-            reader.setLocation(new Journeys.Location("Baker Street"));
+            reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
             reader.readTokenAtEntry(2);
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance();
@@ -110,7 +111,7 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtExitTestSameStopCharged()
         {
             var reader = new DigitalReader("Train", 1);
-            reader.setLocation(new Journeys.Location("Baker Street"));
+            reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
             reader.readTokenAtEntry(2);
             DateTime aDateTime = DateTime.Now.AddMinutes(15);
             reader.setCurrentTime(aDateTime);
@@ -131,9 +132,9 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtExitInsufficientFunds()
         {
             var reader = new DigitalReader("Train", 1);
-            reader.setLocation(new Journeys.Location("Baker Street"));
+            reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
             reader.readTokenAtEntry(3); // Doom guy has enough to get on but not enough to complete a journey
-            reader.setLocation(new Journeys.Location("Kennington"));
+            reader.setLocation(RailMap.Instance.getLocation("Victoria"));
             float expectedResult = -1f;
             Assert.AreEqual(expectedResult, reader.readTokenAtExit(3));
         }
@@ -154,6 +155,10 @@ namespace CSSD_Transport.Equipment.Tests
             reader.readTokenAtExit(999999);
         }
 
+        // public void readTokenAtExitTestDifferentLines
+
+        // public void readTokenAtExitTestDayPassAllowed
+
         [TestMethod()]
         public void getReaderTypeTestBasic()
         {
@@ -163,20 +168,6 @@ namespace CSSD_Transport.Equipment.Tests
             Assert.AreEqual("Train", anotherReader.getReaderType());
         }
 
-        [TestMethod()]
-        public void entryPermittedTestBasic()
-        {
-            var reader = new DigitalReader("Bus", 1);
-            Assert.AreEqual(true, reader.entryPermitted());
-        }
-
-        [TestMethod()]
-        public void entryDeniedTestBasic()
-        {
-            var reader = new DigitalReader("Bus", 1);
-            Assert.AreEqual(false, reader.entryDenied());
-        }
-        
         [TestMethod()]
         public void getTimeTestBasic()
         {
@@ -192,6 +183,6 @@ namespace CSSD_Transport.Equipment.Tests
         }
 
         // create journey tests
-
+        
     }
 }
