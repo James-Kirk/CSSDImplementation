@@ -79,36 +79,58 @@ namespace CSSD_Transport.Equipment
         // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
         // catch in UI, invalid token exception - BW
         // -1 is insufficient credit, otherwise current balance - BW
-        public bool readTokenAtExit(int id)
+        public float readTokenAtExit(int id)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-				return entryDenied;
-
-			if(exitToken.getScannedStatus())
+                throw new ArgumentException("Parameter cannot be null", "original");
+            if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
 				{
 					case TokenType.SmartCard:
+                        Journey a;
                         //get recent journey (not implemented)
                         //if(FareRules.Instance.getNumForDayPass() < exitToken.getNumOfJourneys())
                         int todaysJourneys = exitToken.getNumOfJourneys();
                         int dayPass = FareRules.Instance.getNumForDayPass();
                         bool alreadyPaid = exitToken.hasDiscount();
+                        a.setAmountPaid(0.0f); // set journey cost at the start why would we do it after?
                         if (dayPass <= todaysJourneys && !alreadyPaid)
                         {
                             float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
                             float amount = 20.0f; //get totalAmountPaid
-                            if (amount > FareRules.Instance.getDayPassCost())
+                            //although actually putting in checks makes this entirely redundant so good job group b
+                            //why would you ever refund when you can just stop it going above the amount.
+                            if (amount > dayPassCost)
                             {
-                                exitToken.getAccount().updateBalance(amount - dayPassCost);
+                                exitToken.getAccount().updateBalance(amount - dayPassCost); //refunds any cost over daypass
+                                exitToken.setDiscounted(true);
+                                //update journey
+                                return exitToken.getAccount().getCreditAmount();
                             }
-                            else
+                            else if((amount + a.getAmountPaid()) > dayPassCost)
                             {
-                                exitToken.getAccount().updateBalance(dayPassCost - amount);
+                                a.setAmountPaid((amount + a.getAmountPaid() - dayPassCost));
+                                if (a.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                                    return -1; //insufficient credit.
+                                exitToken.getAccount().updateBalance(-a.getAmountPaid());
+                                exitToken.setDiscounted(true);
+                                //update journey 
+                                //reutrn balance left
                             }
                         }
-
+                        else
+                        {
+                            if (a.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                                return -1; //insufficient credit.
+                            else
+                            {
+                                exitToken.getAccount().updateBalance(-a.getAmountPaid());
+                                //update journey 
+                                return exitToken.getAccount().getCreditAmount();
+                            }
+                        }
 						break;
 				}
 			}

@@ -40,7 +40,7 @@ namespace CSSD_Transport.Journeys
 		public int getTokenId() => tokenUsed.getID();
 
 		//TODO: Added param i, not present in UML
-		public void setAmountPaid(int i) => amountPaid = i;
+		public void setAmountPaid(float i) => amountPaid = i;
 
 		public void setToLocation(string s) => toLocation = s;
 
