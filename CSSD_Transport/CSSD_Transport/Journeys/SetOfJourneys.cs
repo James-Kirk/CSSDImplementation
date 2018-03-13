@@ -21,6 +21,10 @@ namespace CSSD_Transport.Journeys
             set { instance = value; }
         }
 
+        public void addJourney(Journey j)
+        {
+            journeys.Add(j);
+        }
         public float getAmountForAllJourneys()
 		{
 			float sum = 0;
@@ -34,8 +38,15 @@ namespace CSSD_Transport.Journeys
         public float getAmountForAllJourneys(int id)
         {
             float sum = 0;
-            List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
-            foreach (var J in a)
+            List<Journey> journeysToday = new List<Journey>();
+            foreach (var item in journeys)
+            {
+                if (item.getTokenId() == id)
+                {
+                    journeysToday.Add(item);
+                }
+            }
+            foreach (var J in journeysToday)
             {
                 sum += J.getAmountPaid();
             }
@@ -49,8 +60,17 @@ namespace CSSD_Transport.Journeys
 
         public Journey findTokensMostRecentJourney(int id)
         {
-            List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
-            return a[a.Count - 1];
+
+            foreach (var item in journeys)
+            {
+                if (item.getTokenId() == id)
+                {
+                    return item;
+                }
+            }
+            return null;
+            //List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
+            //return a[a.Count - 1];
         }
 	}
 }

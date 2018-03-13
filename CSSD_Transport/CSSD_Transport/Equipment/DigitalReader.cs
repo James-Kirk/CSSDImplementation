@@ -19,7 +19,7 @@ namespace CSSD_Transport.Equipment
         private GateController gate = new GateController();
 
         // TODO Current location should probably be in the constructor here too
-        public DigitalReader(String aReaderType, int aDigitalReaderID)
+        public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
         {
             if(aReaderType == "Waffle Iron")
             {
@@ -27,7 +27,7 @@ namespace CSSD_Transport.Equipment
             }
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            currentLocation = new Location("Baker Street");
+            this.currentLocation = new Location(currentLocation);
         }
 
         // Scanner into the transport - train station barrier/conductor's reader
@@ -100,24 +100,25 @@ namespace CSSD_Transport.Equipment
                         int todaysJourneys = exitToken.getNumOfJourneys();
                         int dayPass = FareRules.Instance.getNumForDayPass();
                         bool alreadyPaid = exitToken.hasDiscount();
-                        currentJourney.setAmountPaid(FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation())); // set journey cost at the start why would we do it after?
+                        float cTripFare = FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation());
+                        //currentJourney.setAmountPaid(FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation())); // set journey cost at the start why would we do it after?
                         if (dayPass <= todaysJourneys && !alreadyPaid)
                         {
                             float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
-                            float amount = 20.0f; //get totalAmountPaid
+                            float amount = SetOfJourneys.Instance.getAmountForAllJourneys(id); //get totalAmountPaid
                             //although actually putting in checks makes this entirely redundant so good job group b
                             //why would you ever refund when you can just stop it going above the amount.
-                            if (amount > dayPassCost)
+                            if (amount  > dayPassCost)
                             {
-                                exitToken.getAccount().updateBalance(amount - dayPassCost); //refunds any cost over daypass
+                                exitToken.getAccount().updateBalance(amount- dayPassCost); //refunds any cost over daypass
                                 exitToken.setDiscounted(true);
                                 currentJourney.setEndDate(DateTime.Now);
                                 currentJourney.setToLocation(currentLocation.getLocation());
                                 return exitToken.getAccount().getCreditAmount();
                             }
-                            else if((amount + currentJourney.getAmountPaid()) > dayPassCost)
+                            else if((amount + cTripFare) > dayPassCost)
                             {
-                                currentJourney.setAmountPaid((amount + currentJourney.getAmountPaid() - dayPassCost));
+                                currentJourney.setAmountPaid((dayPassCost - amount));
                                 if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
                                     return -1; //insufficient credit.
                                 exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
@@ -179,6 +180,7 @@ namespace CSSD_Transport.Equipment
             String s = currentLocation.getLocation();
             DateTime t = getTime();
             Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
+            SetOfJourneys.Instance.addJourney(theJourney);
         }
 
         // this is entirely to simulate location updating for testing

@@ -50,7 +50,7 @@ namespace CSSD_Transport.UI.Travel_UI
         private void btnExitStation_Click(object sender, System.EventArgs e)
         {
             this.Close();
-            new frmGateExit().Show();
+            new frmGateExit(cboBoxLine.SelectedValue.ToString(), currentStation).Show();
         }
     }
 }

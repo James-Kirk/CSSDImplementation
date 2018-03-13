@@ -13,18 +13,21 @@ namespace CSSD_Transport.UI.Travel_UI
 {
     public partial class frmGateExit : Form
     {
-        public frmGateExit()
+        string currentLine, currentLocation;
+        public frmGateExit(string line, string currentLocation)
         {
+            currentLine = line;
+            this.currentLocation = currentLocation;
             InitializeComponent();
         }
 
         private void btnExitGate_Click(object sender, EventArgs e)
         {
             float currentBalance = 0;
-            DigitalReader currentReader = new DigitalReader("Bus", 1);
+            DigitalReader currentReader = new DigitalReader("Bus", 1, currentLocation);
             try
             {
-                currentReader.readTokenAtExit(1);// to return float
+                currentBalance = currentReader.readTokenAtExit(2, currentLine);// to return float
                 if (currentBalance < 0)
                 {
                     MessageBox.Show("Insufficient funds");
@@ -34,9 +37,9 @@ namespace CSSD_Transport.UI.Travel_UI
                     MessageBox.Show("Remaining Balance: " + currentBalance);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Smart card unregistered, please visit imformation helpdesk");
+                MessageBox.Show(ex.Message);
             }
            
         }
