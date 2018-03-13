@@ -77,7 +77,7 @@ namespace CSSD_Transport.Equipment.Tests
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
             reader.readTokenAtEntry(2);
-            reader.setLocation(new Journeys.Location("Green Park")); // may be using this wrong for RailMap?
+            reader.setLocation(new Journeys.Location("Great Portland Street")); // may be using this wrong for RailMap?
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance() - FareRules.Instance.getCostPerStation();
             Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2));
@@ -163,20 +163,6 @@ namespace CSSD_Transport.Equipment.Tests
             Assert.AreEqual("Train", anotherReader.getReaderType());
         }
 
-        [TestMethod()]
-        public void entryPermittedTestBasic()
-        {
-            var reader = new DigitalReader("Bus", 1);
-            Assert.AreEqual(true, reader.entryPermitted());
-        }
-
-        [TestMethod()]
-        public void entryDeniedTestBasic()
-        {
-            var reader = new DigitalReader("Bus", 1);
-            Assert.AreEqual(false, reader.entryDenied());
-        }
-        
         [TestMethod()]
         public void getTimeTestBasic()
         {
