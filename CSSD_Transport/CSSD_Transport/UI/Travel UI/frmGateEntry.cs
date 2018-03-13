@@ -24,6 +24,9 @@ namespace CSSD_Transport.UI.Travel_UI
             if(currentReader.readTokenAtEntry(2))
             {
                 MessageBox.Show("Gate Open");
+                new frmRailTravelSim().Show();
+                this.Hide();
+                
             }
             else
             {
