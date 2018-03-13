@@ -76,8 +76,10 @@ namespace CSSD_Transport.Equipment.Tests
         {
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Baker Street"));
             reader.readTokenAtEntry(2);
-            reader.setLocation(new Journeys.Location("Great Portland Street")); // may be using this wrong for RailMap?
+            reader.setLocation(new Journeys.Location("Great Portland Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Great Portland Street"));
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance() - FareRules.Instance.getCostPerStation();
             Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2));
@@ -88,8 +90,10 @@ namespace CSSD_Transport.Equipment.Tests
         {
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Baker Street"));
             reader.readTokenAtEntry(2);
             reader.setLocation(new Journeys.Location("Kings Cross"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Kings Cross"));
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance() - (FareRules.Instance.getCostPerStation() * 2);
             Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2));
@@ -100,6 +104,7 @@ namespace CSSD_Transport.Equipment.Tests
         {
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Baker Street"));
             reader.readTokenAtEntry(2);
             Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
             float expectedBalance = anAccount.getBalance();
@@ -111,6 +116,7 @@ namespace CSSD_Transport.Equipment.Tests
         {
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Baker Street"));
             reader.readTokenAtEntry(2);
             DateTime aDateTime = DateTime.Now.AddMinutes(15);
             reader.setCurrentTime(aDateTime);
@@ -132,8 +138,10 @@ namespace CSSD_Transport.Equipment.Tests
         {
             var reader = new DigitalReader("Train", 1);
             reader.setLocation(new Journeys.Location("Baker Street"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Baker Street"));
             reader.readTokenAtEntry(3); // Doom guy has enough to get on but not enough to complete a journey
             reader.setLocation(new Journeys.Location("Kennington"));
+            // reader.setLocation(SetOfJourneys.Instance.findLocation("Kennington"));
             float expectedResult = -1f;
             Assert.AreEqual(expectedResult, reader.readTokenAtExit(3));
         }
@@ -153,6 +161,8 @@ namespace CSSD_Transport.Equipment.Tests
             var reader = new DigitalReader("Bus", 1);
             reader.readTokenAtExit(999999);
         }
+
+        // public void readTokenAtExitTestDifferentLines
 
         [TestMethod()]
         public void getReaderTypeTestBasic()
@@ -178,6 +188,6 @@ namespace CSSD_Transport.Equipment.Tests
         }
 
         // create journey tests
-
+        
     }
 }

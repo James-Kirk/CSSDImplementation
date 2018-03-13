@@ -30,48 +30,36 @@ namespace CSSD_Transport.Equipment
             currentLocation = new Location("Baker Street");
         }
 
+        // Scanner into the transport - train station barrier/conductor's reader
         public bool readTokenAtEntry(int id)
         {
-            Token aToken = SetOfTokens.Instance.findToken(id);
-            if (aToken == null)
+            Token aToken = SetOfTokens.Instance.findToken(id);  // find a token based off of the scanned ID
+            if (aToken == null) // if not found, they can't enter the system
             {
                 return entryDenied;
             }
             else
             {
-                bool sufficientCredit = aToken.hasSufficientCredit();
-                if (aToken.getType() == TokenType.SmartCard)
-                { 
-                    SmartCard smartCard = (SmartCard)aToken;   // static casting to a smart card
-                    Account cardAccount = smartCard.getAccount();
-                    float minAmount = FareRules.Instance.getMinAmount();
-                    float cardAccountBalance = cardAccount.getBalance();
-                    // TODO - isn't all of this the same route as taken later on in here?
-                    // ASK MARK If we can make it not shit
-                    if (cardAccountBalance < minAmount) // if lower than the minimum amount on the smartcard, do not allow
-                        return entryDenied;
-                }
-
                 String readerType = getReaderType();
 
-                if (sufficientCredit)
+                if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
                 {
                     if (readerType == "Bus")
                     {
-                        playAudio();
+                        playAudio();    // TADA :D
                     }
                     else
                     {
-                        gate.operateGate();
+                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
                         
                     }
-                    aToken.incrementJourney();
-                    createJourney(aToken);
-                    return entryPermitted;
+                    aToken.incrementJourney();  // adds to total journeys on this token
+                    createJourney(aToken);  // creates a journey and links this token
+                    return entryPermitted;  // returns true to the UI for whatever handling required
                 }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
-                //Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
+                // Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
                 return entryDenied;
             }
         }
