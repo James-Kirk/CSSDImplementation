@@ -34,7 +34,7 @@ namespace CSSD_Transport.Journeys
         public float getAmountForAllJourneys(int id)
         {
             float sum = 0;
-            List<Journey> a = (List<Journey>)this.Where(n => n.getTokenId() == id);
+            List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
             foreach (var J in a)
             {
                 sum += J.getAmountPaid();

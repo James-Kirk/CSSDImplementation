@@ -67,23 +67,22 @@ namespace CSSD_Transport.Equipment
         // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
         // catch in UI, invalid token exception - BW
         // -1 is insufficient credit, otherwise current balance - BW
-        public float readTokenAtExit(int id)
+        public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-                throw new ArgumentException("Parameter cannot be null", "original");
+                throw new ArgumentException("Smart Card unregistered Visit information Helpdesk");
             if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
 				{
 					case TokenType.SmartCard:
-                        Journey a;
-                        //get recent journey (not implemented)
-                        //if(FareRules.Instance.getNumForDayPass() < exitToken.getNumOfJourneys())
+                        
+                        Journey currentJourney = SetOfJourneys.Instance.findTokensMostRecentJourney(id);
                         int todaysJourneys = exitToken.getNumOfJourneys();
                         int dayPass = FareRules.Instance.getNumForDayPass();
                         bool alreadyPaid = exitToken.hasDiscount();
-                        a.setAmountPaid(0.0f); // set journey cost at the start why would we do it after?
+                        currentJourney.setAmountPaid(FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation())); // set journey cost at the start why would we do it after?
                         if (dayPass <= todaysJourneys && !alreadyPaid)
                         {
                             float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
@@ -94,35 +93,43 @@ namespace CSSD_Transport.Equipment
                             {
                                 exitToken.getAccount().updateBalance(amount - dayPassCost); //refunds any cost over daypass
                                 exitToken.setDiscounted(true);
-                                //update journey
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
                                 return exitToken.getAccount().getCreditAmount();
                             }
-                            else if((amount + a.getAmountPaid()) > dayPassCost)
+                            else if((amount + currentJourney.getAmountPaid()) > dayPassCost)
                             {
-                                a.setAmountPaid((amount + a.getAmountPaid() - dayPassCost));
-                                if (a.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                                currentJourney.setAmountPaid((amount + currentJourney.getAmountPaid() - dayPassCost));
+                                if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
                                     return -1; //insufficient credit.
-                                exitToken.getAccount().updateBalance(-a.getAmountPaid());
+                                exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
                                 exitToken.setDiscounted(true);
-                                //update journey 
-                                //reutrn balance left
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
+                                return exitToken.getAccount().getCreditAmount();
                             }
+                        }
+                        if (alreadyPaid)
+                        {
+                            currentJourney.setEndDate(DateTime.Now);
+                            currentJourney.setToLocation(currentLocation.getLocation());
+                            return exitToken.getAccount().getCreditAmount();
                         }
                         else
                         {
-                            if (a.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                            if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
                                 return -1; //insufficient credit.
                             else
                             {
-                                exitToken.getAccount().updateBalance(-a.getAmountPaid());
-                                //update journey 
+                                exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
-						break;
 				}
 			}
-			return false;
+            throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");
         }
 
         public String getReaderType()
