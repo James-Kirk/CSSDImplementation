@@ -20,6 +20,7 @@ namespace CSSD_Transport.UI
 
         private void btnSimSmartCard_Click(object sender, EventArgs e)
         {
+            /*
             if (btnSimSmartCard.Text == "Cancel")
             {
                 btnSimSmartCard.Text = "Simulate Smart Card";
@@ -32,12 +33,13 @@ namespace CSSD_Transport.UI
                 txtPin.Visible = true;
                 btnConfirm.Visible = true;
             }
+            */
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             //SOME FORM OF PASS HASHING SHOULD BE DONE HERE
-            Account a = login("James", txtPin.Text);
+            Account a = login(txtUsername.Text, txtPin.Text);
             if (a != null)
             {
                 frmMainMenu mm = new frmMainMenu(a);
