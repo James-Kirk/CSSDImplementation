@@ -18,7 +18,18 @@ namespace CSSD_Transport.Journeys
 
 			return sum;
         }
-		public Journey findMostRecentJourney()
+        public float getAmountForAllJourneys(int id)
+        {
+            float sum = 0;
+            List<Journey> a = (List<Journey>)this.Where(n => n.getTokenId() == id);
+            foreach (var J in a)
+            {
+                sum += J.getAmountPaid();
+            }
+
+            return sum;
+        }
+        public Journey findMostRecentJourney()
 		{
 			return this[this.Count];
         }

@@ -90,7 +90,25 @@ namespace CSSD_Transport.Equipment
 				switch(exitToken.getType())
 				{
 					case TokenType.SmartCard:
-						
+                        //get recent journey (not implemented)
+                        //if(FareRules.Instance.getNumForDayPass() < exitToken.getNumOfJourneys())
+                        int todaysJourneys = exitToken.getNumOfJourneys();
+                        int dayPass = FareRules.Instance.getNumForDayPass();
+                        bool alreadyPaid = exitToken.hasDiscount();
+                        if (dayPass <= todaysJourneys && !alreadyPaid)
+                        {
+                            float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
+                            float amount = 20.0f; //get totalAmountPaid
+                            if (amount > FareRules.Instance.getDayPassCost())
+                            {
+                                exitToken.getAccount().updateBalance(amount - dayPassCost);
+                            }
+                            else
+                            {
+                                exitToken.getAccount().updateBalance(dayPassCost - amount);
+                            }
+                        }
+
 						break;
 				}
 			}

@@ -13,6 +13,8 @@ namespace CSSD_Transport.Journeys
 		private const float minAmount = 5.0f; 
 		private const int dayPassNum = 7;
 		private const float costPerStation = 0.75f;
+        private const float dayPassCost = 15.0f;
+
 
         private static FareRules aFareRule;
 
@@ -45,7 +47,9 @@ namespace CSSD_Transport.Journeys
 
 		public float getMinAmount() => minAmount;
 
-		public int getNumForDayPass() => dayPassNum;
+        public float getDayPassCost() => dayPassCost;
+
+        public int getNumForDayPass() => dayPassNum;
 
 		public FareRules getFareRules() => aFareRule;
 
