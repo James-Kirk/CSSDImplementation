@@ -9,6 +9,7 @@ namespace CSSD_Transport.UI.Travel_UI
     {
         string currentStation;
         float totalTravelCost = 0;
+        int tokenId;
         public frmRailTravelSim()
         {
             InitializeComponent();
@@ -17,6 +18,7 @@ namespace CSSD_Transport.UI.Travel_UI
             currentStation = "Victoria";
             updateCurrentLocation();
             lblCurrentTravelCosts.Text = "Current Cost: 0.00";
+            
         }
 
         private void cboBoxLine_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -43,6 +45,12 @@ namespace CSSD_Transport.UI.Travel_UI
         {
             lblNewCost.Text = "New Cost: " + (totalTravelCost +
               FareRules.Instance.calculateFare(cboBoxLine.SelectedValue.ToString(), currentStation, cboBoxStation.SelectedValue.ToString())).ToString("F2");
+        }
+
+        private void btnExitStation_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+            new frmGateExit().Show();
         }
     }
 }

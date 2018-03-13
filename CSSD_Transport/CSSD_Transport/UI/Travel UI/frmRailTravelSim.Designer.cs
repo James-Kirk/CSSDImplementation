@@ -36,6 +36,7 @@
             this.btnTravel = new System.Windows.Forms.Button();
             this.lblCurrentTravelCosts = new System.Windows.Forms.Label();
             this.lblNewCost = new System.Windows.Forms.Label();
+            this.btnExitStation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cboBoxStation
@@ -111,11 +112,22 @@
             this.lblNewCost.TabIndex = 8;
             this.lblNewCost.Text = "New Cost: ";
             // 
+            // btnExitStation
+            // 
+            this.btnExitStation.Location = new System.Drawing.Point(245, 179);
+            this.btnExitStation.Name = "btnExitStation";
+            this.btnExitStation.Size = new System.Drawing.Size(75, 25);
+            this.btnExitStation.TabIndex = 9;
+            this.btnExitStation.Text = "Exit Station";
+            this.btnExitStation.UseVisualStyleBackColor = true;
+            this.btnExitStation.Click += new System.EventHandler(this.btnExitStation_Click);
+            // 
             // frmRailTravelSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 233);
+            this.Controls.Add(this.btnExitStation);
             this.Controls.Add(this.lblNewCost);
             this.Controls.Add(this.lblCurrentTravelCosts);
             this.Controls.Add(this.btnTravel);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.Button btnTravel;
         private System.Windows.Forms.Label lblCurrentTravelCosts;
         private System.Windows.Forms.Label lblNewCost;
+        private System.Windows.Forms.Button btnExitStation;
     }
 }

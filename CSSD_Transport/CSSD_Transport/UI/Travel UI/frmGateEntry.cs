@@ -1,4 +1,6 @@
 ﻿using CSSD_Transport.Equipment;
+using CSSD_Transport.Journeys;
+using CSSD_Transport.Tokens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ namespace CSSD_Transport.UI.Travel_UI
 {
     public partial class frmGateEntry : Form
     {
+        int tokenId = 2;
         public frmGateEntry()
         {
             InitializeComponent();
@@ -21,12 +24,11 @@ namespace CSSD_Transport.UI.Travel_UI
         private void btnEnterGate_Click(object sender, EventArgs e)
         {
             DigitalReader currentReader = new DigitalReader("Bus", 1);
-            if(currentReader.readTokenAtEntry(2))
+            if(currentReader.readTokenAtEntry(tokenId))
             {
                 MessageBox.Show("Gate Open");
                 new frmRailTravelSim().Show();
                 this.Hide();
-                
             }
             else
             {
