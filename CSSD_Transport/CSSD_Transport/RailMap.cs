@@ -78,7 +78,6 @@ namespace CSSD_Transport.Util
 			List<String> names = new List<String>();
 			foreach(var l in railLines)
 				names.Add(l.Item1);
-            //names.Sort();
 			return names;
 		}
 
@@ -87,7 +86,6 @@ namespace CSSD_Transport.Util
 			List<String> names = new List<String>();
 			foreach (var s in getLine(lineName))
 				names.Add(s.getLocation());
-           // names.Sort();
 			return names;
 		}
 
@@ -109,16 +107,28 @@ namespace CSSD_Transport.Util
 		///<param name = "Loc2" >Name of the destination station</param>
 		public int getDistance(String lineName, String Loc1, String Loc2)
 		{
+			if (Loc1 == Loc2)
+				return -1;
 			List<Location> line = railLines.Find(i => i.Item1 == lineName).Item2;
+			bool l1Found = false, l2Found = false;
 			int loc1IDX = 0;
 			int loc2IDX = 0;
 			for (int i = 0; i < line.Count; i++)
 			{
 				if (line[i].getLocation() == Loc1)
+				{
 					loc1IDX = i;
+					l1Found = true;
+				}
 				else if (line[i].getLocation() == Loc2)
+				{
 					loc2IDX = i;
+					l2Found = true;
+				}
 			}
+
+			if (l1Found == false || l2Found == false)
+				return -1;
 
 			return Math.Abs(loc2IDX - loc1IDX);
 		}
