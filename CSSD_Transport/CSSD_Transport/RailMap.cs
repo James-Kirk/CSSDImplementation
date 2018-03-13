@@ -91,6 +91,19 @@ namespace CSSD_Transport.Util
 			return names;
 		}
 
+        public Location getLocation(String name)
+        {
+            foreach(var L in railLines)
+            {
+                foreach(var S in L.Item2)
+                {
+                    if (S.getLocation() == name)
+                        return S;
+                }
+            }
+            return null;
+        }
+
 		///<param name = "lineName" >String for the name of the Rail Line</param>
 		///<param name = "Loc1" >Name of the starting station</param>
 		///<param name = "Loc2" >Name of the destination station</param>
