@@ -19,10 +19,11 @@ namespace CSSD_Transport.Journeys
 		private DateTime startDate;
 		private DateTime endDate;
 		private float amountPaid;
+        private bool pre_paid = false;
 
         public Journey(Token t, String aFromLocation, String aToLocation, DateTime aStartDate, DateTime aEndDate, float paid)
         {
-			journeyID = idCounter++;
+			journeyID = ++idCounter;
             tokenUsed = t;
             fromLocation = aFromLocation;
             toLocation = aToLocation;
@@ -47,5 +48,9 @@ namespace CSSD_Transport.Journeys
 		public void setEndDate(DateTime d) => endDate = d;
 
 		public float getAmountPaid() => amountPaid;
+
+        public void setPaid(bool paid) => pre_paid = paid;
+
+        public bool getPaid() => pre_paid;
 	}
 }
