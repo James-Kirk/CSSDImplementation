@@ -51,6 +51,7 @@
             this.btnBookTickets.TabIndex = 2;
             this.btnBookTickets.Text = "Book Tickets";
             this.btnBookTickets.UseVisualStyleBackColor = true;
+            this.btnBookTickets.Click += new System.EventHandler(this.btnBookTickets_Click);
             // 
             // btnTopUp
             // 
