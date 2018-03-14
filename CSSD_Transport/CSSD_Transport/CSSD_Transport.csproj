@@ -222,6 +222,10 @@
     <EmbeddedResource Include="UI\Travel UI\frmRailTravelSim.resx">
       <DependentUpon>frmRailTravelSim.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.FareRules.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.Journey.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.Location.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.SetOfJourneys.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

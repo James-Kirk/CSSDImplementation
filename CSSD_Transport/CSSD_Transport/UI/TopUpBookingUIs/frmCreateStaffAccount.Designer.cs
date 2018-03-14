@@ -40,6 +40,7 @@
             this.lblPassMatchVal = new System.Windows.Forms.Label();
             this.btnCreateStaffAccount = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblUsernameTaken = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPassword
@@ -67,6 +68,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUser
             // 
@@ -132,7 +134,7 @@
             // 
             // btnCreateStaffAccount
             // 
-            this.btnCreateStaffAccount.Location = new System.Drawing.Point(183, 214);
+            this.btnCreateStaffAccount.Location = new System.Drawing.Point(12, 214);
             this.btnCreateStaffAccount.Name = "btnCreateStaffAccount";
             this.btnCreateStaffAccount.Size = new System.Drawing.Size(89, 35);
             this.btnCreateStaffAccount.TabIndex = 5;
@@ -142,7 +144,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 214);
+            this.btnCancel.Location = new System.Drawing.Point(183, 214);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 35);
             this.btnCancel.TabIndex = 4;
@@ -150,11 +152,20 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // lblUsernameTaken
+            // 
+            this.lblUsernameTaken.AutoSize = true;
+            this.lblUsernameTaken.Location = new System.Drawing.Point(229, 29);
+            this.lblUsernameTaken.Name = "lblUsernameTaken";
+            this.lblUsernameTaken.Size = new System.Drawing.Size(0, 13);
+            this.lblUsernameTaken.TabIndex = 19;
+            // 
             // frmCreateStaffAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.lblUsernameTaken);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreateStaffAccount);
             this.Controls.Add(this.lblPassMatchVal);
@@ -188,5 +199,6 @@
         private System.Windows.Forms.Label lblPassMatchVal;
         private System.Windows.Forms.Button btnCreateStaffAccount;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblUsernameTaken;
     }
 }

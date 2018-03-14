@@ -70,11 +70,11 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
                         lblPassStrengthVal.Text = "Fair";
                         break;
                     case 4:
-                        lblPassStrengthVal.ForeColor = Color.PaleGreen;
+                        lblPassStrengthVal.ForeColor = Color.Green;
                         lblPassStrengthVal.Text = "Good";
                         break;
                     case 5:
-                        lblPassStrengthVal.ForeColor = Color.Green;
+                        lblPassStrengthVal.ForeColor = Color.ForestGreen;
                         lblPassStrengthVal.Text = "Strong";
                         break;
                 }
@@ -85,7 +85,7 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
 
         private void txtConfirmPass_TextChanged(object sender, EventArgs e)
         {
-            if (txtConfirmPass.Text.Equals(txtPass.Text))
+            if (passwordsMatch())
             {
                 lblPassMatchVal.Text = "✓";
                 lblPassMatchVal.ForeColor = Color.Green;
@@ -97,6 +97,10 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
             }
         }
 
+        private bool passwordsMatch()
+        {
+            return txtConfirmPass.Text.Equals(txtPass.Text);
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -104,10 +108,50 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
 
         private void btnCreateStaffAccount_Click(object sender, EventArgs e)
         {
-            //if (SetOfStaffAccounts)
-            //{
+            if (String.IsNullOrEmpty(txtUsername.Text))
+            {
+                MessageBox.Show("Please Enter a username", "No username");
+            }
+            else if (SetOfStaffAccounts.Instance.userNameExists(txtUsername.Text))
+            {
+                MessageBox.Show("Username Taken", "Username Taken");
+            }
+            else if (checkPasswordStrength() == -1)
+            {
+                MessageBox.Show("Password Too Short", "Password Too Short");
+            }
+            else if (!passwordsMatch())
+            {
+                MessageBox.Show("Passwords Dont Match", "Passwords Dont Match");
+            }
+            else
+            {
+                try
+                {
+                    new StaffAccount(txtUsername.Text, txtPass.Text);
+                    MessageBox.Show("Account Added");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error Adding account");
+                    throw;
+                }
+                this.Close();
+            }
+        }
 
-           // }
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (!SetOfStaffAccounts.Instance.userNameExists(txtUsername.Text))
+            {
+                lblUsernameTaken.Text = "✓ OK";
+                lblUsernameTaken.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblUsernameTaken.Text = "X Taken";
+                lblUsernameTaken.ForeColor = Color.Red;
+            }
         }
     }
 }

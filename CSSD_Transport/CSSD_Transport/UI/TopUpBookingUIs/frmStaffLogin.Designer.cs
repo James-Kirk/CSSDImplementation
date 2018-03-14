@@ -33,7 +33,7 @@
             this.txtPin = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnCreateAccount = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             // txtPin
             // 
             this.txtPin.Location = new System.Drawing.Point(101, 115);
-            this.txtPin.MaxLength = 4;
+            this.txtPin.MaxLength = 50;
             this.txtPin.Name = "txtPin";
             this.txtPin.Size = new System.Drawing.Size(100, 20);
             this.txtPin.TabIndex = 7;
@@ -81,14 +81,15 @@
             this.btnCreateAccount.UseVisualStyleBackColor = true;
             this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Location = new System.Drawing.Point(197, 198);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 32);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(197, 198);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 32);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnLogin
             // 
@@ -98,6 +99,7 @@
             this.btnLogin.TabIndex = 11;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // frmStaffLogin
             // 
@@ -105,7 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPin);
@@ -125,7 +127,7 @@
         private System.Windows.Forms.TextBox txtPin;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnCreateAccount;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLogin;
     }
 }
