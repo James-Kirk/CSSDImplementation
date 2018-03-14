@@ -34,7 +34,10 @@ namespace CSSD_Transport.Journeys
 
 		public uint getID() => journeyID;
 
-		public string getStartLocation() => fromLocation;
+        public DateTime getStartDate() => startDate;
+        public DateTime getEndDate() => endDate;
+
+        public string getStartLocation() => fromLocation;
 
 		public string getEndLocation() => toLocation;
 

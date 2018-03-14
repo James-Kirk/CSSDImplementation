@@ -35,6 +35,7 @@ namespace CSSD_Transport.UI.Travel_UI
                 else if (currentBalance > 0)
                 {
                     MessageBox.Show("Remaining Balance: " + currentBalance);
+                    this.Close();
                 }
             }
             catch (Exception ex)

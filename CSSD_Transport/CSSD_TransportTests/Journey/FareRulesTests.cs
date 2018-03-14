@@ -59,7 +59,7 @@ namespace CSSD_Transport.Journeys.Tests
 		[TestMethod()]
         public void calculateDiscountTest()
         {
-			Assert.AreEqual(0.0f, FareRules.Instance.calculateDiscount(5));
+			Assert.AreEqual(FareRules.Instance.getDayPassCost(), FareRules.Instance.calculateDiscount(5));
         }
 
         [TestMethod()]

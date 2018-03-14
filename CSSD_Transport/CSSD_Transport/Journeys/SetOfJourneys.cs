@@ -60,14 +60,16 @@ namespace CSSD_Transport.Journeys
 
         public Journey findTokensMostRecentJourney(int id)
         {
-
+            List<Journey> js = new List<Journey>();
             foreach (var item in journeys)
             {
                 if (item.getTokenId() == id)
                 {
-                    return item;
+                    js.Add(item);
                 }
             }
+            if (js.Any())
+                return js.Last();
             return null;
             //List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
             //return a[a.Count - 1];

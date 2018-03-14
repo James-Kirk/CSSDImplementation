@@ -97,8 +97,14 @@ namespace CSSD_Transport.Equipment
                         int todaysJourneys = exitToken.getNumOfJourneys();
                         int dayPass = FareRules.Instance.getNumForDayPass();
                         bool alreadyPaid = exitToken.hasDiscount();
+                        if (currentJourney.getStartLocation() == currentLocation.getLocation() && (currentTime.Subtract(currentJourney.getStartDate()).TotalMinutes< 15))
+                        {
+                            currentJourney.setEndDate(DateTime.Now);
+                            currentJourney.setToLocation(currentLocation.getLocation());
+                            exitToken.setScanned(false);
+                            return exitToken.getAccount().getCreditAmount();
+                        }
                         float cTripFare = FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation());
-                        //currentJourney.setAmountPaid(FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation())); // set journey cost at the start why would we do it after?
                         if (dayPass <= todaysJourneys && !alreadyPaid)
                         {
                             float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
@@ -111,6 +117,7 @@ namespace CSSD_Transport.Equipment
                                 exitToken.setDiscounted(true);
                                 currentJourney.setEndDate(DateTime.Now);
                                 currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
                                 return exitToken.getAccount().getCreditAmount();
                             }
                             else if((amount + cTripFare) > dayPassCost)
@@ -122,6 +129,7 @@ namespace CSSD_Transport.Equipment
                                 exitToken.setDiscounted(true);
                                 currentJourney.setEndDate(DateTime.Now);
                                 currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
@@ -129,10 +137,13 @@ namespace CSSD_Transport.Equipment
                         {
                             currentJourney.setEndDate(DateTime.Now);
                             currentJourney.setToLocation(currentLocation.getLocation());
+                            currentJourney.setAmountPaid(0.0f);
+                            exitToken.setScanned(false);
                             return exitToken.getAccount().getCreditAmount();
                         }
                         else
                         {
+                            currentJourney.setAmountPaid(cTripFare);
                             if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
                                 return -1; //insufficient credit.
                             else
@@ -140,6 +151,7 @@ namespace CSSD_Transport.Equipment
                                 exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
                                 currentJourney.setEndDate(DateTime.Now);
                                 currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
@@ -156,13 +168,13 @@ namespace CSSD_Transport.Equipment
         // Ben says get rid
         public DateTime getTime()
         {
-            return currentTime;
+            return DateTime.Now;
         }
 
         // Ben says get rid
         public DateTime getDay()
         {
-            return currentTime;
+            return DateTime.Now;
         }
 
         public void playAudio()
