@@ -89,6 +89,12 @@
     <Compile Include="UI\TopUpBookingUIs\frmBegin.Designer.cs">
       <DependentUpon>frmBegin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\TopUpBookingUIs\frmBookTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TopUpBookingUIs\frmBookTicket.Designer.cs">
+      <DependentUpon>frmBookTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TopUpBookingUIs\frmInsertNoteSim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </Compile>
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmBegin.resx">
       <DependentUpon>frmBegin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopUpBookingUIs\frmBookTicket.resx">
+      <DependentUpon>frmBookTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmInsertNoteSim.resx">
       <DependentUpon>frmInsertNoteSim.cs</DependentUpon>
