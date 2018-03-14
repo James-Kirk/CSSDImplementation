@@ -60,6 +60,7 @@ namespace CSSD_Transport.Equipment
                 else if(aToken.getType() == TokenType.Ticket)
                 {
                     Ticket t = (aToken as Ticket);
+
                     if(t.getStart() == currentLocation)
                     {
                         if (readerType == "Bus")
@@ -70,10 +71,6 @@ namespace CSSD_Transport.Equipment
                         createJourney(aToken);  // creates a journey and links this token
                         return entryPermitted;
                     }
-                }
-                else if(aToken.getType() == TokenType.SmartCard)
-                {
-
                 }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
