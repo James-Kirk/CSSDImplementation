@@ -19,7 +19,7 @@ namespace CSSD_Transport.Equipment
         private GateController gate = new GateController();
 
         // TODO Current location should probably be in the constructor here too
-        public DigitalReader(String aReaderType, int aDigitalReaderID)
+        public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
         {
             if(aReaderType == "Waffle Iron")
             {
@@ -27,7 +27,7 @@ namespace CSSD_Transport.Equipment
             }
             this.readerType = aReaderType;
             this.digitalReaderID = aDigitalReaderID;
-            currentLocation = new Location("Baker Street");
+            this.currentLocation = new Location(currentLocation);
         }
 
         /// <summary>Scanner into the transport - train station barrier/conductor's reader</summary> 
@@ -83,22 +83,82 @@ namespace CSSD_Transport.Equipment
         // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
         // catch in UI, invalid token exception - BW
         // -1 is insufficient credit, otherwise current balance - BW
-        public bool readTokenAtExit(int id)
+        public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-				return entryDenied;
-
-			if(exitToken.getScannedStatus())
+                throw new ArgumentException("Smart Card unregistered Visit information Helpdesk");
+            if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
 				{
 					case TokenType.SmartCard:
-						
-						break;
+                        
+                        Journey currentJourney = SetOfJourneys.Instance.findTokensMostRecentJourney(id);
+                        int todaysJourneys = exitToken.getNumOfJourneys();
+                        int dayPass = FareRules.Instance.getNumForDayPass();
+                        bool alreadyPaid = exitToken.hasDiscount();
+                        if (currentJourney.getStartLocation() == currentLocation.getLocation() && (currentTime.Subtract(currentJourney.getStartDate()).TotalMinutes< 15))
+                        {
+                            currentJourney.setEndDate(DateTime.Now);
+                            currentJourney.setToLocation(currentLocation.getLocation());
+                            exitToken.setScanned(false);
+                            return exitToken.getAccount().getCreditAmount();
+                        }
+                        float cTripFare = FareRules.Instance.calculateFare(line, currentJourney.getStartLocation(), currentLocation.getLocation());
+                        if (dayPass <= todaysJourneys && !alreadyPaid)
+                        {
+                            float dayPassCost = FareRules.Instance.calculateDiscount(todaysJourneys);
+                            float amount = SetOfJourneys.Instance.getAmountForAllJourneys(id); //get totalAmountPaid
+                            //although actually putting in checks makes this entirely redundant so good job group b
+                            //why would you ever refund when you can just stop it going above the amount.
+                            if (amount  > dayPassCost)
+                            {
+                                exitToken.getAccount().updateBalance(amount- dayPassCost); //refunds any cost over daypass
+                                exitToken.setDiscounted(true);
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
+                                return exitToken.getAccount().getCreditAmount();
+                            }
+                            else if((amount + cTripFare) > dayPassCost)
+                            {
+                                currentJourney.setAmountPaid((dayPassCost - amount));
+                                if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                                    return -1; //insufficient credit.
+                                exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
+                                exitToken.setDiscounted(true);
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
+                                return exitToken.getAccount().getCreditAmount();
+                            }
+                        }
+                        if (alreadyPaid)
+                        {
+                            currentJourney.setEndDate(DateTime.Now);
+                            currentJourney.setToLocation(currentLocation.getLocation());
+                            currentJourney.setAmountPaid(0.0f);
+                            exitToken.setScanned(false);
+                            return exitToken.getAccount().getCreditAmount();
+                        }
+                        else
+                        {
+                            currentJourney.setAmountPaid(cTripFare);
+                            if (currentJourney.getAmountPaid() > exitToken.getAccount().getCreditAmount())
+                                return -1; //insufficient credit.
+                            else
+                            {
+                                exitToken.getAccount().updateBalance(-currentJourney.getAmountPaid());
+                                currentJourney.setEndDate(DateTime.Now);
+                                currentJourney.setToLocation(currentLocation.getLocation());
+                                exitToken.setScanned(false);
+                                return exitToken.getAccount().getCreditAmount();
+                            }
+                        }
 				}
 			}
-			return false;
+            throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");
         }
 
         public String getReaderType()
@@ -109,13 +169,13 @@ namespace CSSD_Transport.Equipment
         // Ben says get rid
         public DateTime getTime()
         {
-            return currentTime;
+            return DateTime.Now;
         }
 
         // Ben says get rid
         public DateTime getDay()
         {
-            return currentTime;
+            return DateTime.Now;
         }
 
         public void playAudio()
@@ -130,6 +190,7 @@ namespace CSSD_Transport.Equipment
             String s = currentLocation.getLocation();
             DateTime t = getTime();
             Journey theJourney = new Journey(aToken, s, "", t, DateTime.MinValue, 0.00f);
+            SetOfJourneys.Instance.addJourney(theJourney);
         }
 
         // this is entirely to simulate location updating for testing
