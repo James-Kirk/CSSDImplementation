@@ -24,6 +24,10 @@ namespace CSSD_Transport.Accounts
 		public string getType() => type;
 		public float getCreditAmount() => creditAmount;
 
+		/// <summary>
+		/// Updates the accounts balance by a given number
+		/// </summary>
+		/// <param name="amount">The amount to update by (float)</param>
 		public void updateBalance(float amount)
 		{
             this.creditAmount += amount;
@@ -34,6 +38,12 @@ namespace CSSD_Transport.Accounts
             return this.creditAmount;
         }
         
+		/// <summary>
+		/// Processes a top-up via the PaymentHandler
+		/// </summary>
+		/// <param name="amount">The amount to top-up</param>
+		/// <param name="m">String m</param>
+		/// <returns></returns>
 		public bool processTopUp(float amount, string m)
 		{
             if(Transaction.PaymentHandler.authorise(amount, m, ""))

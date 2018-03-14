@@ -58,21 +58,32 @@ namespace CSSD_Transport.Util
 			set { instance = value; }
 		}
 
+		///<summary>Add a location to a given line</summary>
+		///<param name = "line" >The name of the line</param>
+		///<param name = "location" >The location object to be added</param>
 		public void addLocation(String line, Location location)
 		{
 			railLines.Find(i => i.Item1 == line).Item2.Add(location);
 		}
 
+		///<summary>Add a line to the main list</summary>
+		///<param name = "name" >String: the name of the RailLine</param>
+		///<param name = "line" >List of locations, containing the stations for the line </param>
 		public void addLine(String name, List<Location> line)
 		{
 			railLines.Add(new Tuple<String, List<Location>>(name, line));
 		}
 
+		///<summary>Retreive the list of station locations for a given line</summary>
+		///<returns>Returns a List of Locations</returns>
+		///<param name = "name" >String for the name of rail line</param>
 		public List<Location> getLine(String name)
 		{
 			return railLines.Find(i => i.Item1 == name).Item2;
 		}
 
+		///<summary>Retreive the list of line names</summary>
+		///<returns>Returns a List of Strings</returns>
 		public List<String> getLineNames()
 		{
 			List<String> names = new List<String>();
@@ -81,6 +92,9 @@ namespace CSSD_Transport.Util
 			return names;
 		}
 
+		///<summary>Retreive the list of station names for a given line</summary>
+		///<returns>Returns a List of Strings</returns>
+		///<param name = "lineName" >String for the name of rail line</param>
 		public List<String> getStationNames(String lineName)
 		{
 			List<String> names = new List<String>();
@@ -89,7 +103,10 @@ namespace CSSD_Transport.Util
 			return names;
 		}
 
-        public Location getLocation(String name)
+		///<summary>Gets the location object by name from the rail lines</summary>
+		///<returns>Returns a Location object. Null if error.</returns>
+		///<param name = "name" >String for the name of the station location</param>
+		public Location getLocation(String name)
         {
             foreach(var L in railLines)
             {
@@ -102,6 +119,8 @@ namespace CSSD_Transport.Util
             return null;
         }
 
+		///<summary>Computes the distance between two stations on a given line</summary>
+		///<returns>Returns the absolute value of the distance. Returns -1 if there is an error.</returns>
 		///<param name = "lineName" >String for the name of the Rail Line</param>
 		///<param name = "Loc1" >Name of the starting station</param>
 		///<param name = "Loc2" >Name of the destination station</param>

@@ -11,7 +11,7 @@ namespace CSSD_Transport.Journeys
 	public class FareRules
 	{
 		private const float minAmount = 5.0f; 
-		private const int dayPassNum =7;
+		private const int dayPassNum = 7;
 		private const float costPerStation = 0.75f;
         private const float dayPassCost = 7.0f;
 
@@ -33,6 +33,12 @@ namespace CSSD_Transport.Journeys
             }
         }
 
+		///<summary>Calculates the fare for a joruney between two stations</summary>
+		///<param name = "lineName" >String: the name of the RailLine</param>
+		///<param name = "line" >The name of the line to travel on</param>
+		///<param name = "from" >Name of starting station</param>
+		///<param name = "to" >Name of destination station</param>
+		///<returns>Returns the fare as a float based on the distance and cost per station</returns>
 		public float calculateFare(string lineName, string from, string to)
 		{
 			int distance = RailMap.Instance.getDistance(lineName, from, to);
