@@ -20,7 +20,7 @@ namespace CSSD_Transport.Equipment
         
         public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
         {
-            if(aReaderType == "Waffle Iron")
+            if(aReaderType != "Bus" && aReaderType != "Train" || aReaderType == null)
             {
                 throw new ArgumentException();
             }
