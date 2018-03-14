@@ -32,6 +32,7 @@ namespace CSSD_Transport.Equipment
 
         /// <summary>Scanner into the transport - train station barrier/conductor's reader</summary> 
         /// <returns>EntryPermitted or EntryDenied</returns>
+		/// <param name="id">The id of the token</param>
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);  // find a token based off of the scanned ID
