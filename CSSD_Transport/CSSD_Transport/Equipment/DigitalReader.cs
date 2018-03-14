@@ -43,27 +43,11 @@ namespace CSSD_Transport.Equipment
             else
             {
                 String readerType = getReaderType();
-
-                if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
-                {
-                    if (readerType == "Bus")
-                    {
-                        playAudio();    // TADA :D
-                    }
-                    else
-                    {
-                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
-                        
-                    }
-                    aToken.incrementJourney();  // adds to total journeys on this token
-                    createJourney(aToken);  // creates a journey and links this token
-                    return entryPermitted;  // returns true to the UI for whatever handling required
-                }
-                else if(aToken.getType() == TokenType.Ticket)
+                if (aToken.getType() == TokenType.Ticket)
                 {
                     Ticket t = (aToken as Ticket);
 
-                    if(t.getStart() == currentLocation)
+                    if (t.getStart().getLocation() == currentLocation.getLocation())
                     {
                         if (readerType == "Bus")
                             playAudio();            // TADA :D
@@ -74,21 +58,33 @@ namespace CSSD_Transport.Equipment
                         return entryPermitted;
                     }
                 }
+                else if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
+                {
+                    if (readerType == "Bus")
+                    {
+                        playAudio();    // TADA :D
+                    }
+                    else
+                    {
+                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
+
+                    }
+                    aToken.incrementJourney();  // adds to total journeys on this token
+                    createJourney(aToken);  // creates a journey and links this token
+                    return entryPermitted;  // returns true to the UI for whatever handling required
+                }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
                 // Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
                 return entryDenied;
             }
         }
-
-        // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
-        // catch in UI, invalid token exception - BW
-        // -1 is insufficient credit, otherwise current balance - BW
+ 
         public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-                throw new ArgumentException("Smart Card unregistered Visit information Helpdesk");
+                throw new ArgumentException("Travel Token not valid!");
             if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
@@ -157,6 +153,17 @@ namespace CSSD_Transport.Equipment
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
+                    case TokenType.Ticket:  // if it's a ticket, just check the end location matches the current location
+                        Ticket t = (exitToken as Ticket);
+                        if (t.getEnd().getLocation() == currentLocation.getLocation())
+                        {
+                            return 0;   // entry allowed
+                        }
+                        else
+                        {
+                            return -1; // entry not allowed
+                        }
+
 				}
 			}
             throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");

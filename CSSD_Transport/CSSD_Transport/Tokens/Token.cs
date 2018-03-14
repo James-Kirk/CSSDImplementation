@@ -19,7 +19,8 @@ namespace CSSD_Transport.Tokens
 	{
 		protected int tokenID;
 		protected Account tokenUser;
-		protected TokenType tokenType;
+        protected static int tokenCount = 0;
+        protected TokenType tokenType;
 		protected bool scanned;
 		protected int journeyCounter;
 		protected bool discounted;

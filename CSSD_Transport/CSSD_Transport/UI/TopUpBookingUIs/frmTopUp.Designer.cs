@@ -40,7 +40,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 282);
+            this.btnCancel.Location = new System.Drawing.Point(186, 173);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 37);
             this.btnCancel.TabIndex = 4;
@@ -84,7 +84,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirm.Location = new System.Drawing.Point(186, 282);
+            this.btnConfirm.Location = new System.Drawing.Point(12, 173);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(86, 37);
             this.btnConfirm.TabIndex = 13;
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 330);
+            this.ClientSize = new System.Drawing.Size(284, 237);
             this.Controls.Add(this.btnPayAgain);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtTopUpAmount);

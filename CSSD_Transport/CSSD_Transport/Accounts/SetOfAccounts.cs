@@ -15,11 +15,11 @@ namespace CSSD_Transport.Accounts
 		{
 			//TEMPORARY
 			//This hardcode adds the accounts to the system, but should really be handled by Serialisation!
-			accounts.Add(new NormalAccount("James", "Bob", DateTime.Now));
-			accounts.Add(new NormalAccount("Doom", "Guy", DateTime.Now));
-			accounts.Add(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
-            this.findAccount("James", "Bob").updateBalance(20);
-            this.findAccount("Doom", "Guy").updateBalance(5);
+			accounts.Add(new NormalAccount("James", "1234", DateTime.Now));
+			accounts.Add(new NormalAccount("Doom", "Guys", DateTime.Now));
+			accounts.Add(new NormalAccount("Leroy", "Jenk", DateTime.Now));
+            this.findAccount("James", "1234").updateBalance(20);
+            this.findAccount("Doom", "Guys").updateBalance(5);
 		}
 
         // Only allows 1 set of accounts to be created.

@@ -12,13 +12,34 @@ namespace CSSD_Transport.Tokens
 	public class Ticket : Token
 	{
         private Location start, end;
+        private DateTime departure;
+        private bool printed;
 
-        public Ticket(Location start, Location end, Account aTokenUser, int id)
+        public Ticket(Location start, Location end, Account aTokenUser, DateTime departure)
         {
             this.start = start;
             this.end = end;
             this.tokenUser = aTokenUser;
+            this.departure = departure;
+            this.printed = false;
             tokenType = TokenType.Ticket;
+            tokenID = tokenCount;
+            tokenCount++;
+        }
+
+        public String getDepartureString()
+        {
+            return departure.ToString();
+        }
+        
+        public bool getPrintedStatus()
+        {
+            return printed;
+        }
+
+        public void setPrintedStatus(bool status)
+        {
+            this.printed = status;
         }
 
         public Location getStart() => start;
