@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CSSD_Transport.Journey;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,28 +28,56 @@ namespace CSSD_Transport.Journeys.Tests
 
 		}
 
-        [TestMethod()]
+		[TestMethod()]
+		public void calculateFareSeperateLines()
+		{
+			string Line1 = "Circle";
+			string Loc1 = "Aldgate";
+			string Loc2 = "Brixton";
+
+			float fareActual = FareRules.Instance.calculateFare(Line1, Loc1, Loc2);
+
+			float fareExpected = -1 * FareRules.Instance.getCostPerStation();
+
+			Assert.AreEqual(fareActual, fareExpected);
+		}
+
+		[TestMethod()]
+		public void calculateFareSameStation()
+		{
+			string Line1 = "Circle";
+			string Loc1 = "Aldgate";
+			string Loc2 = "Aldgate";
+
+			float fareActual = FareRules.Instance.calculateFare(Line1, Loc1, Loc2);
+
+			float fareExpected = -1 * FareRules.Instance.getCostPerStation();
+
+			Assert.AreEqual(fareActual, fareExpected);
+		}
+
+		[TestMethod()]
         public void calculateDiscountTest()
         {
-            Assert.Fail();
+			Assert.AreEqual(0.0f, FareRules.Instance.calculateDiscount(5));
         }
 
         [TestMethod()]
         public void getMinAmountTest()
         {
-            Assert.Fail();
+			Assert.AreEqual(5.0f, FareRules.Instance.getMinAmount());
         }
 
         [TestMethod()]
         public void getNumForDayPassTest()
         {
-            Assert.Fail();
+			Assert.AreEqual(FareRules.Instance.getNumForDayPass(), 7);
         }
 
         [TestMethod()]
         public void getFareRulesTest()
         {
-            Assert.Fail();
+			Assert.AreEqual(FareRules.Instance, FareRules.Instance.getFareRules());
         }
     }
 }
