@@ -42,27 +42,11 @@ namespace CSSD_Transport.Equipment
             else
             {
                 String readerType = getReaderType();
-
-                if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
-                {
-                    if (readerType == "Bus")
-                    {
-                        playAudio();    // TADA :D
-                    }
-                    else
-                    {
-                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
-                        
-                    }
-                    aToken.incrementJourney();  // adds to total journeys on this token
-                    createJourney(aToken);  // creates a journey and links this token
-                    return entryPermitted;  // returns true to the UI for whatever handling required
-                }
-                else if(aToken.getType() == TokenType.Ticket)
+                if (aToken.getType() == TokenType.Ticket)
                 {
                     Ticket t = (aToken as Ticket);
 
-                    if(t.getStart() == currentLocation)
+                    if (t.getStart().getLocation() == currentLocation.getLocation())
                     {
                         if (readerType == "Bus")
                             playAudio();            // TADA :D
@@ -72,6 +56,21 @@ namespace CSSD_Transport.Equipment
                         createJourney(aToken);  // creates a journey and links this token
                         return entryPermitted;
                     }
+                }
+                else if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
+                {
+                    if (readerType == "Bus")
+                    {
+                        playAudio();    // TADA :D
+                    }
+                    else
+                    {
+                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
+
+                    }
+                    aToken.incrementJourney();  // adds to total journeys on this token
+                    createJourney(aToken);  // creates a journey and links this token
+                    return entryPermitted;  // returns true to the UI for whatever handling required
                 }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
@@ -155,7 +154,7 @@ namespace CSSD_Transport.Equipment
                         }
                     case TokenType.Ticket:  // if it's a ticket, just check the end location matches the current location
                         Ticket t = (exitToken as Ticket);
-                        if (t.getEnd() == currentLocation)
+                        if (t.getEnd().getLocation() == currentLocation.getLocation())
                         {
                             return 0;   // entry allowed
                         }

@@ -23,8 +23,8 @@ namespace CSSD_Transport.Tokens
             this.departure = departure;
             this.printed = false;
             tokenType = TokenType.Ticket;
+            tokenID = tokenCount;
             tokenCount++;
-            this.tokenID = tokenCount;
         }
 
         public String getDepartureString()

@@ -55,5 +55,15 @@ namespace CSSD_Transport.Tokens
 
             return ticketStrings;
         }
+
+        public List<int> getTokens()
+        {
+            List<int> tokensList = new List<int>();
+            foreach (Token t in tokens)
+            {
+                tokensList.Add(t.getID());
+            }
+            return tokensList;
+        }
 	}
 }
