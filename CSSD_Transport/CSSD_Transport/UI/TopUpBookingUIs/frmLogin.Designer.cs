@@ -35,14 +35,15 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSimSmartCard
             // 
-            this.btnSimSmartCard.Location = new System.Drawing.Point(12, 199);
+            this.btnSimSmartCard.Location = new System.Drawing.Point(130, 135);
             this.btnSimSmartCard.Name = "btnSimSmartCard";
             this.btnSimSmartCard.Size = new System.Drawing.Size(112, 37);
-            this.btnSimSmartCard.TabIndex = 0;
+            this.btnSimSmartCard.TabIndex = 3;
             this.btnSimSmartCard.Text = "Cancel";
             this.btnSimSmartCard.UseVisualStyleBackColor = true;
             this.btnSimSmartCard.Click += new System.EventHandler(this.btnSimSmartCard_Click);
@@ -55,10 +56,11 @@
             this.txtPin.Size = new System.Drawing.Size(100, 20);
             this.txtPin.TabIndex = 1;
             this.txtPin.UseSystemPasswordChar = true;
+            this.txtPin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPin_KeyDown);
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(145, 199);
+            this.btnConfirm.Location = new System.Drawing.Point(12, 135);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(112, 37);
             this.btnConfirm.TabIndex = 2;
@@ -72,7 +74,7 @@
             this.lblUser.Location = new System.Drawing.Point(28, 67);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(58, 13);
-            this.lblUser.TabIndex = 3;
+            this.lblUser.TabIndex = 4;
             this.lblUser.Text = "Username:";
             // 
             // lblPassword
@@ -81,7 +83,7 @@
             this.lblPassword.Location = new System.Drawing.Point(31, 97);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 4;
+            this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password:";
             // 
             // txtUsername
@@ -89,13 +91,24 @@
             this.txtUsername.Location = new System.Drawing.Point(93, 64);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtUsername.TabIndex = 5;
+            this.txtUsername.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(103, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Login";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(258, 192);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUser);
@@ -118,5 +131,6 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label label1;
     }
 }

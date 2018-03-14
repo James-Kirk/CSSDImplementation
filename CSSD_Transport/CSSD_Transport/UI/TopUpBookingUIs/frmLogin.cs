@@ -57,5 +57,13 @@ namespace CSSD_Transport.UI
         {
            return AccountServer.processLogin(user, pass);
         }
+
+        private void txtPin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnConfirm_Click(sender, e);
+            }
+        }
     }
 }

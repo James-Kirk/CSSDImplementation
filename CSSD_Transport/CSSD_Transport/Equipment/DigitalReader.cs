@@ -79,15 +79,12 @@ namespace CSSD_Transport.Equipment
                 return entryDenied;
             }
         }
-
-        // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
-        // catch in UI, invalid token exception - BW
-        // -1 is insufficient credit, otherwise current balance - BW
+ 
         public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-                throw new ArgumentException("Smart Card unregistered Visit information Helpdesk");
+                throw new ArgumentException("Travel Token not valid!");
             if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
@@ -156,6 +153,17 @@ namespace CSSD_Transport.Equipment
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
+                    case TokenType.Ticket:  // if it's a ticket, just check the end location matches the current location
+                        Ticket t = (exitToken as Ticket);
+                        if (t.getEnd() == currentLocation)
+                        {
+                            return 0;   // entry allowed
+                        }
+                        else
+                        {
+                            return -1; // entry not allowed
+                        }
+
 				}
 			}
             throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");

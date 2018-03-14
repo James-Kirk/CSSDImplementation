@@ -12,9 +12,9 @@ namespace CSSD_Transport.Tokens
 
 		public SetOfTokens()
         {
-            tokens.Add(new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenkins")),  false, 0));
-            tokens.Add(new SmartCard(2, (SetOfAccounts.Instance.findAccount("James", "Bob")),  false, 0));
-            tokens.Add(new SmartCard(3, (SetOfAccounts.Instance.findAccount("Doom", "Guy")),  false, 0));
+            tokens.Add(new SmartCard(1, (SetOfAccounts.Instance.findAccount("Leroy", "Jenk")),  false, 0));
+            tokens.Add(new SmartCard(2, (SetOfAccounts.Instance.findAccount("James", "1234")),  false, 0));
+            tokens.Add(new SmartCard(3, (SetOfAccounts.Instance.findAccount("Doom", "Guys")),  false, 0));
         }
 
 		public static SetOfTokens Instance

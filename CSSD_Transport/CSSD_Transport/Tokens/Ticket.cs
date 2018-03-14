@@ -12,8 +12,9 @@ namespace CSSD_Transport.Tokens
 	public class Ticket : Token
 	{
         private Location start, end;
+        private DateTime departure;
 
-        public Ticket(Location start, Location end, Account aTokenUser, int id)
+        public Ticket(Location start, Location end, Account aTokenUser, int id, DateTime departure )
         {
             this.start = start;
             this.end = end;
