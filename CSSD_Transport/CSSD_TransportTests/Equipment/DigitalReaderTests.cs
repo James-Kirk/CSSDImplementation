@@ -191,6 +191,19 @@ namespace CSSD_Transport.Equipment.Tests
         }
 
         [TestMethod()]
+        public void readTokenAtExitTestMultipleLines()
+        {
+            var reader = new DigitalReader("Bus", "Victoria");
+            sc.updateAccountBalance(50);
+            float expected = sc.getAccount().getBalance() - (FareRules.Instance.getCostPerStation() * 2);
+            reader.setLocation(RailMap.Instance.getLocation("Westminster"));
+            reader.readTokenAtEntry(sc.getID());
+            reader.setLocation(RailMap.Instance.getLocation("Pimlico"));
+            float actual = reader.readTokenAtExit(sc.getID(), "Victoria");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
         public void getReaderTypeTestBasic()
         {
             var reader = new DigitalReader("Bus", "Victoria");
