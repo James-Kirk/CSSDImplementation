@@ -57,6 +57,21 @@ namespace CSSD_Transport.Equipment
                     createJourney(aToken);  // creates a journey and links this token
                     return entryPermitted;  // returns true to the UI for whatever handling required
                 }
+                else if(aToken.getType() == TokenType.Ticket)
+                {
+                    Ticket t = (aToken as Ticket);
+
+                    if(t.getStart() == currentLocation)
+                    {
+                        if (readerType == "Bus")
+                            playAudio();            // TADA :D
+                        else
+                            gate.operateGate();     // opens the gate while user is standing on scanner, then closes
+                        aToken.incrementJourney();  // adds to total journeys on this token
+                        createJourney(aToken);  // creates a journey and links this token
+                        return entryPermitted;
+                    }
+                }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
                 // Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
