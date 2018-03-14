@@ -8,12 +8,32 @@ using System.Threading.Tasks;
 using CSSD_Transport.Accounts;
 using CSSD_Transport.Journeys;
 using CSSD_Transport.Util;
+using CSSD_Transport.Tokens;
 
 namespace CSSD_Transport.Equipment.Tests
 {
     [TestClass()]
     public class DigitalReaderTests
-    {   
+    {
+        private NormalAccount ac;
+        private SmartCard sc;
+        private NormalAccount ac2;
+        private SmartCard sc2;
+
+        [TestInitialize]
+        public void digitalReaderSetup()
+        {
+            ac = new NormalAccount("Ben", "Watt", DateTime.Now);
+            sc = new SmartCard(ac, false, 0);
+            ac2 = new NormalAccount("Alex", "Ogde", DateTime.Now);
+            sc2 = new SmartCard(ac2, false, 0);
+
+            SetOfAccounts.Instance.addAccount(ac);
+            SetOfAccounts.Instance.addAccount(ac2);
+            SetOfTokens.Instance.addToken(sc);
+            SetOfTokens.Instance.addToken(sc2);
+        }
+
         [TestMethod()]
         [ExpectedException(typeof(ArgumentException))]
         public void digitalReaderConstructionTestInvalidType()
@@ -46,15 +66,17 @@ namespace CSSD_Transport.Equipment.Tests
         [TestMethod()]
         public void readTokenAtEntryTestBasicBus()
         {
+            sc.updateAccountBalance(10);
             var reader = new DigitalReader("Bus", 1, "Victoria");
-            Assert.AreEqual(true, reader.readTokenAtEntry(2));
+            Assert.AreEqual(true, reader.readTokenAtEntry(sc.getID()));
         }
 
         [TestMethod()]
         public void readTokenAtEntryTestBasicTrain()
         {
+            sc.updateAccountBalance(10);
             var reader = new DigitalReader("Train", 1, "Victoria");
-            Assert.AreEqual(true, reader.readTokenAtEntry(2));
+            Assert.AreEqual(true, reader.readTokenAtEntry(sc.getID()));
         }
 
         [TestMethod()]
@@ -69,42 +91,42 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtEntryTestInsufficientFunds()
         {
             var reader = new DigitalReader("Bus", 4, "Victoria");
-            Assert.AreEqual(false, reader.readTokenAtEntry(1));
+            Assert.AreEqual(false, reader.readTokenAtEntry(sc2.getID()));
         }
 
         [TestMethod()]
         public void readTokenAtExitTestBasic()
         {
+            sc.updateAccountBalance(10);
             var reader = new DigitalReader("Train", 1, "Victoria");
             reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
-            reader.readTokenAtEntry(2);
+            reader.readTokenAtEntry(sc.getID());
             reader.setLocation(RailMap.Instance.getLocation("Great Portland Street"));
-            Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
-            float expectedBalance = anAccount.getBalance() - FareRules.Instance.getCostPerStation();
-            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2, "Circle"));
+            float expectedBalance = ac.getBalance() - FareRules.Instance.getCostPerStation();
+            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(sc.getID(), "Circle"));
         }
          
         [TestMethod()]
         public void readTokenAtExitTestMultipleStops()
         {
+            sc.updateAccountBalance(10);
             var reader = new DigitalReader("Train", 1, "Victoria");
             reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
-            reader.readTokenAtEntry(2);
+            reader.readTokenAtEntry(sc.getID());
             reader.setLocation(RailMap.Instance.getLocation("Kings Cross"));
-            Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
-            float expectedBalance = anAccount.getBalance() - (FareRules.Instance.getCostPerStation() * 3);
-            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2, "Circle"));
+            float expectedBalance = ac.getBalance() - (FareRules.Instance.getCostPerStation() * 3);
+            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(sc.getID(), "Circle"));
         }
 
         [TestMethod()]
         public void readTokenAtExitTestSameStopNoCharge()
         {
+            sc.updateAccountBalance(10);
             var reader = new DigitalReader("Train", 1, "Victoria");
             reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
-            reader.readTokenAtEntry(2);
-            Account anAccount = SetOfAccounts.Instance.findAccount("James", "Bob");
-            float expectedBalance = anAccount.getBalance();
-            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(2, "Circle"));
+            reader.readTokenAtEntry(sc.getID());
+            float expectedBalance = ac.getBalance();
+            Assert.AreEqual(expectedBalance, reader.readTokenAtExit(sc.getID(), "Circle"));
         }
 
         [TestMethod()]
@@ -112,18 +134,19 @@ namespace CSSD_Transport.Equipment.Tests
         public void readTokenAtExitTestNoEntryScan()
         {
             var reader = new DigitalReader("Train", 1, "Victoria");
-            reader.readTokenAtExit(2, "Circle");
+            reader.readTokenAtExit(sc.getID(), "Circle");
         }
 
         [TestMethod()]
         public void readTokenAtExitInsufficientFunds()
         {
+            sc2.updateAccountBalance(5);
             var reader = new DigitalReader("Train", 1, "Victoria");
             reader.setLocation(RailMap.Instance.getLocation("Baker Street"));
-            reader.readTokenAtEntry(3); // Doom guy has enough to get on but not enough to complete a journey
+            reader.readTokenAtEntry(sc2.getID());
             reader.setLocation(RailMap.Instance.getLocation("Victoria"));
             float expectedResult = -1f;
-            Assert.AreEqual(expectedResult, reader.readTokenAtExit(3, "Circle"));
+            Assert.AreEqual(expectedResult, reader.readTokenAtExit(sc2.getID(), "Circle"));
         }
 
         [TestMethod()]

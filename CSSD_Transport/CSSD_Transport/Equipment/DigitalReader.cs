@@ -17,8 +17,7 @@ namespace CSSD_Transport.Equipment
         private DateTime currentTime;
         private Location currentLocation;
         private GateController gate = new GateController();
-
-        // TODO Current location should probably be in the constructor here too
+        
         public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
         {
             if(aReaderType == "Waffle Iron")
@@ -79,7 +78,11 @@ namespace CSSD_Transport.Equipment
                 return entryDenied;
             }
         }
- 
+
+        /// <summary>Scanner out of the transport - train station barrier/conductor's reader</summary> 
+        /// <returns>Balance left on account, -1 means it has been denied, 0 is primarily for pre-paid tickets</returns>
+        /// <param name="id">The id of the token</param>
+        /// <param name="line">The name of the line on (circle/victoria)</param>
         public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
@@ -174,13 +177,11 @@ namespace CSSD_Transport.Equipment
             return readerType;
         }
            
-        // Ben says get rid
         public DateTime getTime()
         {
             return DateTime.Now;
         }
-
-        // Ben says get rid
+        
         public DateTime getDay()
         {
             return DateTime.Now;
