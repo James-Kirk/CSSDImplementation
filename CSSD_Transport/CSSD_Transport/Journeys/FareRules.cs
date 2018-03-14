@@ -11,7 +11,7 @@ namespace CSSD_Transport.Journeys
 	public class FareRules
 	{
 		private const float minAmount = 5.0f; 
-		private const int dayPassNum =7;
+		private const int dayPassNum = 7;
 		private const float costPerStation = 0.75f;
         private const float dayPassCost = 7.0f;
 
