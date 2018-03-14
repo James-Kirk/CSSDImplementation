@@ -108,7 +108,7 @@ namespace CSSD_Transport.Util
 		public int getDistance(String lineName, String Loc1, String Loc2)
 		{
 			if (Loc1 == Loc2)
-				return -1;
+				return 0;
 			List<Location> line = railLines.Find(i => i.Item1 == lineName).Item2;
 			bool l1Found = false, l2Found = false;
 			int loc1IDX = 0;
