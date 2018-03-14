@@ -157,9 +157,38 @@ namespace CSSD_Transport.Equipment.Tests
             reader.readTokenAtExit(999999, "Circle");
         }
 
-        // public void readTokenAtExitTestDifferentLines
+        [TestMethod()]
+        public void readTokenAtExitTestDayPassOneTrip()
+        {
+            var reader = new DigitalReader("Bus", "Victoria");
+            sc.updateAccountBalance(50);
+            float dpCost = FareRules.Instance.getDayPassCost();
+            float expected = sc.getAccount().getBalance() - dpCost;
+            reader.setLocation(RailMap.Instance.getLocation("Edgware Road"));
+            reader.readTokenAtEntry(sc.getID());
+            reader.setLocation(RailMap.Instance.getLocation("Victoria"));
+            float actual = reader.readTokenAtExit(sc.getID(), "Circle");
+            Assert.AreEqual(expected, actual);
+        }
 
-        // public void readTokenAtExitTestDayPassAllowed
+        [TestMethod()]
+        public void readTokenAtExitTestDayPassMultipleTrips()
+        {
+            var reader = new DigitalReader("Bus", "Victoria");
+            sc.updateAccountBalance(50);
+            float dpCost = FareRules.Instance.getDayPassCost();
+            float expected = sc.getAccount().getBalance() - dpCost;
+            reader.setLocation(RailMap.Instance.getLocation("Edgware Road"));
+            reader.readTokenAtEntry(sc.getID());
+            reader.setLocation(RailMap.Instance.getLocation("Kings Cross"));
+            reader.readTokenAtExit(sc.getID(), "Circle");
+
+            reader.setLocation(RailMap.Instance.getLocation("Kings Cross"));
+            reader.readTokenAtEntry(sc.getID());
+            reader.setLocation(RailMap.Instance.getLocation("Victoria"));
+            float actual = reader.readTokenAtExit(sc.getID(), "Circle");
+            Assert.AreEqual(expected, actual);
+        }
 
         [TestMethod()]
         public void getReaderTypeTestBasic()
@@ -183,8 +212,5 @@ namespace CSSD_Transport.Equipment.Tests
             var reader = new DigitalReader("Bus", "Victoria");
             Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), reader.getDay().ToString("yyyy-MM-dd"));
         }
-
-        // create journey tests
-        
     }
 }
