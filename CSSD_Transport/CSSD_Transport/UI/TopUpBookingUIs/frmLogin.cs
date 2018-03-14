@@ -13,9 +13,12 @@ namespace CSSD_Transport.UI
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        private frmBegin prev;
+
+        public frmLogin(frmBegin prev)
         {
             InitializeComponent();
+            this.prev = prev;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -51,6 +54,17 @@ namespace CSSD_Transport.UI
         private void frmLogin_VisibleChanged(object sender, EventArgs e)
         {
             txtPin.Text = "";
+        }
+
+        private void btnBackToSim_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnSimSmartCard_Click(object sender, EventArgs e)
+        {
+            prev.Visible = true;
+            this.Close();
         }
     }
 }

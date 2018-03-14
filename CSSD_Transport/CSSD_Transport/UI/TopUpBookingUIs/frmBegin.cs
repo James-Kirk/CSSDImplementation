@@ -12,7 +12,7 @@ namespace CSSD_Transport.UI
 
         private void btnBegin_Click(object sender, EventArgs e)
         {
-            frmLogin frmLog = new frmLogin();
+            frmLogin frmLog = new frmLogin(this);
             frmLog.Show();
             this.Visible = false;
         }

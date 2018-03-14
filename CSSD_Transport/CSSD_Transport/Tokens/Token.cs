@@ -18,6 +18,7 @@ namespace CSSD_Transport.Tokens
 	public abstract class Token
 	{
 		protected int tokenID;
+        protected static int tokenCount;
 		protected Account tokenUser;
 		protected TokenType tokenType;
 		protected bool scanned;

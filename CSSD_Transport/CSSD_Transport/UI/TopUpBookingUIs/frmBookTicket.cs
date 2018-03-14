@@ -54,7 +54,7 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
 
                 DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureTime.Hour, departureTime.Minute, 0);
 
-                Token bookingToken = new Ticket(startLocation, endLocation, bookingAccount, 73, departure);
+                Token bookingToken = new Ticket(startLocation, endLocation, bookingAccount, departure);
                 SetOfTokens.Instance.addToken(bookingToken);
 
                 // Need to do pricing properly

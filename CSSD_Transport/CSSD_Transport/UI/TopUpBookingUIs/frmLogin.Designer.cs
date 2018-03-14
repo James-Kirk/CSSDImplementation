@@ -46,6 +46,7 @@
             this.btnSimSmartCard.TabIndex = 3;
             this.btnSimSmartCard.Text = "Cancel";
             this.btnSimSmartCard.UseVisualStyleBackColor = true;
+            this.btnSimSmartCard.Click += new System.EventHandler(this.btnSimSmartCard_Click);
             // 
             // txtPin
             // 

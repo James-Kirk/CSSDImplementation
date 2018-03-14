@@ -26,7 +26,7 @@ namespace CSSD_Transport.UI
 
         private void btnMyTrips_Click(object sender, EventArgs e)
         {
-            frmTrips trips = new frmTrips(this);
+            frmTrips trips = new frmTrips(this, currentAccount);
             this.Visible = false;
             trips.Show();
         }

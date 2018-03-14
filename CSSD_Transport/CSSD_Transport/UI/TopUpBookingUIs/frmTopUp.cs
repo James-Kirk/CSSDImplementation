@@ -17,7 +17,7 @@ namespace CSSD_Transport.UI
         {
             this.frmPrevious = prev;
             InitializeComponent();
-            txtCurrentBalance.Text = prev.currentAccount.getBalance().ToString("N2");
+            txtCurrentBalance.Text = frmPrevious.currentAccount.getBalance().ToString("N2");
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -47,11 +47,17 @@ namespace CSSD_Transport.UI
             lblTopUpAmount.Visible = false;
             btnPayAgain.Visible = true;
             txtTopUpAmount.Visible = false;
+            btnConfirm.Visible = false;
         }
 
         private void btnPayAgain_Click(object sender, EventArgs e)
         {
-
+            lblTopUpAmount.Visible = true;
+            btnPayAgain.Visible = false;
+            txtTopUpAmount.Visible = true;
+            txtTopUpAmount.Text = "";
+            txtCurrentBalance.Text = frmPrevious.currentAccount.getBalance().ToString("N2");
+            btnConfirm.Visible = true;
         }
     }
 }

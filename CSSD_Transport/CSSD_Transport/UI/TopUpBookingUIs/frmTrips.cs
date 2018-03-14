@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
+using CSSD_Transport.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,19 +16,31 @@ namespace CSSD_Transport.UI
     public partial class frmTrips : Form
     {
         frmMainMenu frmPrevious;
-        public frmTrips(frmMainMenu prev)
+        Account account;
+        public frmTrips(frmMainMenu prev, Account account)
         {
-            frmPrevious = prev;
             InitializeComponent();
-            lbxMyTrips.Items.Add("Victoria - Baker Street");
-            lbxMyTrips.Items.Add("Piccadilly Circus - Trafalgar Square");
-            lbxMyTrips.Items.Add("Euston - Green Park");
+            frmPrevious = prev;
+            this.account = account;
+            lbxMyTrips.DataSource = SetOfTokens.Instance.getAccountTickets(account);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             frmPrevious.Visible = true;
             this.Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            String selection = lbxMyTrips.GetItemText(lbxMyTrips.SelectedItem);
+            String[] splits = selection.Split(' ');
+            int tokenId = Int32.Parse(splits[0]);
+
+            Ticket ticket = (Ticket)SetOfTokens.Instance.findToken(tokenId);
+            ticket.setPrintedStatus(true);
+            lbxMyTrips.DataSource = null;
+            lbxMyTrips.DataSource = SetOfTokens.Instance.getAccountTickets(account);
         }
     }
 }
