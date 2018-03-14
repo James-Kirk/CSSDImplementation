@@ -9,11 +9,12 @@ namespace CSSD_Transport.Equipment
 {
     public class DigitalReader
 	{
+		private static int digitalReaderCount = 0;
+
 		private const bool entryDenied = false;
 		private const bool entryPermitted = true;
 
         private int digitalReaderID;
-        private int digitalReaderCount = 0;
         private String readerType;
         private DateTime currentTime;
         private Location currentLocation;
@@ -26,8 +27,7 @@ namespace CSSD_Transport.Equipment
                 throw new ArgumentException();
             }
             this.readerType = aReaderType;
-            this.digitalReaderID = digitalReaderCount;
-            this.digitalReaderCount++;
+			this.digitalReaderID = digitalReaderCount++;
             this.currentLocation = new Location(currentLocation);
         }
 
