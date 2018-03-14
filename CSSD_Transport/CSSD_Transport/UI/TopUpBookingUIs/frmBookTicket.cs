@@ -62,7 +62,7 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
             }
             else
             {   // Account doesn't have enough funds
-                
+                MessageBox.Show("Not enough funds on your account!", "", MessageBoxButtons.OK);
             }
         }
 

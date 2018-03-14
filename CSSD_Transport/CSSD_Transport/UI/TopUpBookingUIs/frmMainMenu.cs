@@ -15,10 +15,13 @@ namespace CSSD_Transport.UI
     public partial class frmMainMenu : Form
     {
         public Account currentAccount;
-        public frmMainMenu(Account currentAccount)
+        private frmLogin prev;
+        public frmMainMenu(Account currentAccount, frmLogin prev)
         {
             this.currentAccount = currentAccount;
+            this.prev = prev;
             InitializeComponent();
+            lblWelcome.Text = "Welcome " + this.currentAccount.getUsername() + "!";
         }
 
         private void btnMyTrips_Click(object sender, EventArgs e)
@@ -40,6 +43,12 @@ namespace CSSD_Transport.UI
             frmBookTicket bookTicket = new frmBookTicket(this, currentAccount);
             bookTicket.Show();
             this.Visible = false;   
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            prev.Visible = true;
+            this.Close();
         }
     }
 }

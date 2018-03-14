@@ -46,7 +46,6 @@
             this.btnSimSmartCard.TabIndex = 3;
             this.btnSimSmartCard.Text = "Cancel";
             this.btnSimSmartCard.UseVisualStyleBackColor = true;
-            this.btnSimSmartCard.Click += new System.EventHandler(this.btnSimSmartCard_Click);
             // 
             // txtPin
             // 
@@ -117,6 +116,7 @@
             this.Controls.Add(this.btnSimSmartCard);
             this.Name = "frmLogin";
             this.Text = "frmLogin";
+            this.VisibleChanged += new System.EventHandler(this.frmLogin_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
