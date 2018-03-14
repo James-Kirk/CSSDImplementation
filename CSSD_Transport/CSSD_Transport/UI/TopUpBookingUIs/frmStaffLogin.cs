@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSSD_Transport.UI.TopUpBookingUIs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace CSSD_Transport.UI
         public frmStaffLogin()
         {
             InitializeComponent();
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            new frmCreateStaffAccount().ShowDialog();
         }
     }
 }

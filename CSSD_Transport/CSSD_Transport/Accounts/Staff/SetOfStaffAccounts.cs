@@ -32,5 +32,11 @@ namespace CSSD_Transport.Accounts
         {
             return accounts.Find(i => i.getUsername() == username && i.getPassword() == password);
         }
+
+        public bool userNameExists(string username)
+        {
+            StaffAccount ac = accounts.Find(i => i.getUsername() == username);
+            return ac == null ? false:true;
+        }
 	}
 }
