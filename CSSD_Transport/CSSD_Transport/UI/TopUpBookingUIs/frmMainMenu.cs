@@ -37,9 +37,9 @@ namespace CSSD_Transport.UI
 
         private void btnBookTickets_Click(object sender, EventArgs e)
         {
-            frmBookTicket bookTicket = new frmBookTicket(this);
+            frmBookTicket bookTicket = new frmBookTicket(this, currentAccount);
             bookTicket.Show();
-            this.Visible = false;
+            this.Visible = false;   
         }
     }
 }

@@ -33,12 +33,9 @@ namespace CSSD_Transport.Accounts
         {
             return this.creditAmount;
         }
-
-        // TODO: WHAT IS THIS m PARAMETER  - EF
-        // NOTE: changed to bool. not in accordance with UML.
+        
 		public bool processTopUp(float amount, string m)
 		{
-            // TODO: i have no fucking idea what strings they want passing in. - EF
             if(Transaction.PaymentHandler.authorise(amount, m, ""))
             {
                 updateBalance(amount);

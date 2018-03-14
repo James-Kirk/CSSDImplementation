@@ -38,12 +38,18 @@
             this.btnCancelBook = new System.Windows.Forms.Button();
             this.btnConfirmBooking = new System.Windows.Forms.Button();
             this.btnCalculateCost = new System.Windows.Forms.Button();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.lblStart = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lblLine
             // 
             this.lblLine.AutoSize = true;
-            this.lblLine.Location = new System.Drawing.Point(12, 64);
+            this.lblLine.Location = new System.Drawing.Point(12, 15);
             this.lblLine.Name = "lblLine";
             this.lblLine.Size = new System.Drawing.Size(30, 13);
             this.lblLine.TabIndex = 0;
@@ -52,7 +58,7 @@
             // lblStartLocation
             // 
             this.lblStartLocation.AutoSize = true;
-            this.lblStartLocation.Location = new System.Drawing.Point(12, 94);
+            this.lblStartLocation.Location = new System.Drawing.Point(12, 45);
             this.lblStartLocation.Name = "lblStartLocation";
             this.lblStartLocation.Size = new System.Drawing.Size(32, 13);
             this.lblStartLocation.TabIndex = 1;
@@ -61,7 +67,7 @@
             // lblDestinationName
             // 
             this.lblDestinationName.AutoSize = true;
-            this.lblDestinationName.Location = new System.Drawing.Point(12, 123);
+            this.lblDestinationName.Location = new System.Drawing.Point(12, 74);
             this.lblDestinationName.Name = "lblDestinationName";
             this.lblDestinationName.Size = new System.Drawing.Size(63, 13);
             this.lblDestinationName.TabIndex = 2;
@@ -71,7 +77,7 @@
             // 
             this.cboLine.FormattingEnabled = true;
             this.cboLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboLine.Location = new System.Drawing.Point(81, 61);
+            this.cboLine.Location = new System.Drawing.Point(81, 12);
             this.cboLine.Name = "cboLine";
             this.cboLine.Size = new System.Drawing.Size(121, 21);
             this.cboLine.TabIndex = 3;
@@ -80,7 +86,7 @@
             // cboStart
             // 
             this.cboStart.FormattingEnabled = true;
-            this.cboStart.Location = new System.Drawing.Point(81, 91);
+            this.cboStart.Location = new System.Drawing.Point(81, 42);
             this.cboStart.Name = "cboStart";
             this.cboStart.Size = new System.Drawing.Size(121, 21);
             this.cboStart.TabIndex = 4;
@@ -88,7 +94,7 @@
             // cboDestination
             // 
             this.cboDestination.FormattingEnabled = true;
-            this.cboDestination.Location = new System.Drawing.Point(81, 120);
+            this.cboDestination.Location = new System.Drawing.Point(81, 71);
             this.cboDestination.Name = "cboDestination";
             this.cboDestination.Size = new System.Drawing.Size(121, 21);
             this.cboDestination.TabIndex = 5;
@@ -96,7 +102,7 @@
             // lblBookingCost
             // 
             this.lblBookingCost.AutoSize = true;
-            this.lblBookingCost.Location = new System.Drawing.Point(12, 29);
+            this.lblBookingCost.Location = new System.Drawing.Point(213, 45);
             this.lblBookingCost.Name = "lblBookingCost";
             this.lblBookingCost.Size = new System.Drawing.Size(85, 13);
             this.lblBookingCost.TabIndex = 6;
@@ -104,7 +110,7 @@
             // 
             // btnCancelBook
             // 
-            this.btnCancelBook.Location = new System.Drawing.Point(15, 210);
+            this.btnCancelBook.Location = new System.Drawing.Point(15, 183);
             this.btnCancelBook.Name = "btnCancelBook";
             this.btnCancelBook.Size = new System.Drawing.Size(75, 34);
             this.btnCancelBook.TabIndex = 7;
@@ -114,7 +120,7 @@
             // 
             // btnConfirmBooking
             // 
-            this.btnConfirmBooking.Location = new System.Drawing.Point(112, 209);
+            this.btnConfirmBooking.Location = new System.Drawing.Point(216, 182);
             this.btnConfirmBooking.Name = "btnConfirmBooking";
             this.btnConfirmBooking.Size = new System.Drawing.Size(90, 35);
             this.btnConfirmBooking.TabIndex = 8;
@@ -124,19 +130,77 @@
             // 
             // btnCalculateCost
             // 
-            this.btnCalculateCost.Location = new System.Drawing.Point(15, 167);
+            this.btnCalculateCost.Location = new System.Drawing.Point(116, 183);
             this.btnCalculateCost.Name = "btnCalculateCost";
-            this.btnCalculateCost.Size = new System.Drawing.Size(75, 37);
+            this.btnCalculateCost.Size = new System.Drawing.Size(75, 34);
             this.btnCalculateCost.TabIndex = 9;
             this.btnCalculateCost.Text = "Calculate Cost";
             this.btnCalculateCost.UseVisualStyleBackColor = true;
             this.btnCalculateCost.Click += new System.EventHandler(this.btnCalculateCost_Click);
             // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dtpStartDate.Location = new System.Drawing.Point(116, 110);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(120, 20);
+            this.dtpStartDate.TabIndex = 10;
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dtpEndDate.Location = new System.Drawing.Point(116, 145);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(120, 20);
+            this.dtpEndDate.TabIndex = 11;
+            // 
+            // lblStart
+            // 
+            this.lblStart.AutoSize = true;
+            this.lblStart.Location = new System.Drawing.Point(45, 113);
+            this.lblStart.Name = "lblStart";
+            this.lblStart.Size = new System.Drawing.Size(56, 13);
+            this.lblStart.TabIndex = 12;
+            this.lblStart.Text = "Departing:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(56, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Arriving:";
+            // 
+            // dtpStartTime
+            // 
+            this.dtpStartTime.CustomFormat = "HH:mm";
+            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartTime.Location = new System.Drawing.Point(243, 109);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.Size = new System.Drawing.Size(88, 20);
+            this.dtpStartTime.TabIndex = 14;
+            // 
+            // dtpEndTime
+            // 
+            this.dtpEndTime.CustomFormat = "HH:mm";
+            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndTime.Location = new System.Drawing.Point(243, 145);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.Size = new System.Drawing.Size(88, 20);
+            this.dtpEndTime.TabIndex = 15;
+            // 
             // frmBookTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 256);
+            this.ClientSize = new System.Drawing.Size(343, 229);
+            this.Controls.Add(this.dtpEndTime);
+            this.Controls.Add(this.dtpStartTime);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblStart);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.btnCalculateCost);
             this.Controls.Add(this.btnConfirmBooking);
             this.Controls.Add(this.btnCancelBook);
@@ -166,5 +230,11 @@
         private System.Windows.Forms.Button btnCancelBook;
         private System.Windows.Forms.Button btnConfirmBooking;
         private System.Windows.Forms.Button btnCalculateCost;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.Label lblStart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpStartTime;
+        private System.Windows.Forms.DateTimePicker dtpEndTime;
     }
 }

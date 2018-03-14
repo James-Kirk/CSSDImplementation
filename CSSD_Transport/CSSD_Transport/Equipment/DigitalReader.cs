@@ -30,7 +30,8 @@ namespace CSSD_Transport.Equipment
             currentLocation = new Location("Baker Street");
         }
 
-        // Scanner into the transport - train station barrier/conductor's reader
+        /// <summary>Scanner into the transport - train station barrier/conductor's reader</summary> 
+        /// <returns>EntryPermitted or EntryDenied</returns>
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);  // find a token based off of the scanned ID
