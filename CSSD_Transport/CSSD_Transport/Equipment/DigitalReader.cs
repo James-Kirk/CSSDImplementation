@@ -13,19 +13,21 @@ namespace CSSD_Transport.Equipment
 		private const bool entryPermitted = true;
 
         private int digitalReaderID;
+        private int digitalReaderCount = 0;
         private String readerType;
         private DateTime currentTime;
         private Location currentLocation;
         private GateController gate = new GateController();
         
-        public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
+        public DigitalReader(String aReaderType, string currentLocation)
         {
             if(aReaderType != "Bus" && aReaderType != "Train" || aReaderType == null)
             {
                 throw new ArgumentException();
             }
             this.readerType = aReaderType;
-            this.digitalReaderID = aDigitalReaderID;
+            this.digitalReaderID = digitalReaderCount;
+            this.digitalReaderCount++;
             this.currentLocation = new Location(currentLocation);
         }
 

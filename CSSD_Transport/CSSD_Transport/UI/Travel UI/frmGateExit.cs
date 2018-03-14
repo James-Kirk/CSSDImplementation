@@ -26,7 +26,7 @@ namespace CSSD_Transport.UI.Travel_UI
         private void btnExitGate_Click(object sender, EventArgs e)
         {
             float currentBalance = 0;
-            DigitalReader currentReader = new DigitalReader("Bus", 1, currentLocation);
+            DigitalReader currentReader = new DigitalReader("Bus", currentLocation);
             try
             {
                 currentBalance = currentReader.readTokenAtExit(tokenId, currentLine);// to return float

@@ -29,7 +29,7 @@ namespace CSSD_Transport.UI.Travel_UI
 
         private void btnEnterGate_Click(object sender, EventArgs e)
         {
-            DigitalReader currentReader = new DigitalReader("Bus", 1 , this.start);
+            DigitalReader currentReader = new DigitalReader("Bus" , this.start);
             tokenId = (int)cbxTokens.SelectedValue;
             if(currentReader.readTokenAtEntry(tokenId))
             {
