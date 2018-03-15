@@ -220,7 +220,7 @@ namespace CSSD_Transport.Equipment
         /// Creates a journey on entry and puts it into the SetOfJourneys (no destination as of yet)
         /// </summary>
         /// <param name="aToken">
-        /// 
+        /// Token used for the journey
         /// </param>
         public void createJourney(Token aToken)
         {
@@ -231,13 +231,23 @@ namespace CSSD_Transport.Equipment
             SetOfJourneys.Instance.addJourney(theJourney);
         }
 
-        // this is entirely to simulate location updating for testing
+        /// <summary>
+        /// Used to update location of digital reader (for example if it's on a bus)
+        /// </summary>
+        /// <param name="aLocation">
+        /// New location
+        /// </param>
         public void setLocation(Location aLocation)
         {
             this.currentLocation = aLocation;
         }
 
-        // this is entirely to simulate current time updating for testing
+        /// <summary>
+        /// Used to update time of digital reader, used for simulation
+        /// </summary>
+        /// <param name="aDateTime">
+        /// New date/time
+        /// </param>
         public void setCurrentTime(DateTime aDateTime)
         {
             this.currentTime = aDateTime;
