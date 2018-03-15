@@ -53,11 +53,10 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
                 DateTime departureTime = dtpStartTime.Value;
 
                 DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureTime.Hour, departureTime.Minute, 0);
-
+                // Make ticket and add it to set of all tokens
                 Token bookingToken = new Ticket(startLocation, endLocation, bookingAccount, departure);
                 SetOfTokens.Instance.addToken(bookingToken);
-
-                // Need to do pricing properly
+                // Updates the account balance - user won't be charged again at the gate               
                 bookingAccount.updateBalance(-(tripCost));
             }
             else
