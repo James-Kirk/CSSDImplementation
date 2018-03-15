@@ -30,6 +30,7 @@
         {
             this.btnEnterGate = new System.Windows.Forms.Button();
             this.cbxTokens = new System.Windows.Forms.ComboBox();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEnterGate
@@ -50,11 +51,22 @@
             this.cbxTokens.Size = new System.Drawing.Size(121, 21);
             this.cbxTokens.TabIndex = 1;
             // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(59, 205);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(159, 44);
+            this.btnReturn.TabIndex = 2;
+            this.btnReturn.Text = "Return to Sim";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmGateEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.cbxTokens);
             this.Controls.Add(this.btnEnterGate);
             this.Name = "frmGateEntry";
@@ -67,5 +79,6 @@
 
         private System.Windows.Forms.Button btnEnterGate;
         private System.Windows.Forms.ComboBox cbxTokens;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

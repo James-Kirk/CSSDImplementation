@@ -64,6 +64,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -125,6 +126,12 @@
     </Compile>
     <Compile Include="UI\TopUpBookingUIs\frmBookTicket.Designer.cs">
       <DependentUpon>frmBookTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TopUpBookingUIs\frmCreateStaffAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TopUpBookingUIs\frmCreateStaffAccount.Designer.cs">
+      <DependentUpon>frmCreateStaffAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\TopUpBookingUIs\frmInsertNoteSim.cs">
       <SubType>Form</SubType>
@@ -210,6 +217,9 @@
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmBookTicket.resx">
       <DependentUpon>frmBookTicket.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopUpBookingUIs\frmCreateStaffAccount.resx">
+      <DependentUpon>frmCreateStaffAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmInsertNoteSim.resx">
       <DependentUpon>frmInsertNoteSim.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopUpBookingUIs\frmStaffUI.resx">
+      <DependentUpon>frmStaffUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TopUpBookingUIs\frmTopUp.resx">
       <DependentUpon>frmTopUp.cs</DependentUpon>
@@ -241,6 +254,10 @@
       <DependentUpon>frmRailTravelSim.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.FareRules.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.Journey.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.Location.datasource" />
+    <None Include="Properties\DataSources\CSSD_Transport.Journeys.SetOfJourneys.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

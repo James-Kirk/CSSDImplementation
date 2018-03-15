@@ -31,12 +31,15 @@ namespace CSSD_Transport.UI
             this.Close();
         }
 
+        /// <summary>Preview UI design pattern, it all updates on selection changes</summary>
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            // gets and parses the selection for just the token ID
             String selection = lbxMyTrips.GetItemText(lbxMyTrips.SelectedItem);
             String[] splits = selection.Split(' ');
             int tokenId = Int32.Parse(splits[0]);
 
+            // finds the ticket, marks it as printed to prevent printing multiple times then refreshes the list box
             Ticket ticket = (Ticket)SetOfTokens.Instance.findToken(tokenId);
             ticket.setPrintedStatus(true);
             lbxMyTrips.DataSource = null;

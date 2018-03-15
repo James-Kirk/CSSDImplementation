@@ -27,10 +27,13 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
             lblBookingCost.Text = "Cost of Booking: 0.00";
             this.frmPrevious = prev;
             this.bookingAccount = currentAccount;
+            // Set data sources of the combo boxes to the stations on the selected line
             cboStart.DataSource = RailMap.Instance.getStationNames(cboLine.SelectedValue.ToString());
             cboDestination.DataSource = RailMap.Instance.getStationNames(cboLine.SelectedValue.ToString());
+            // Set nice defaults, Kings Cross -> Embankment
             cboStart.SelectedIndex = 4;
             cboDestination.SelectedIndex = 11;
+            // Sets nice defaults for time, the current day but an hour ahead
             dtpStartDate.Value = DateTime.Now;
             dtpStartTime.Value = DateTime.Now.AddHours(1);
         }
@@ -49,16 +52,29 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
                 Location startLocation = RailMap.Instance.getLocation(cboStart.SelectedValue.ToString());
                 Location endLocation = RailMap.Instance.getLocation(cboDestination.SelectedValue.ToString());
 
-                DateTime departureDate = dtpStartDate.Value;
-                DateTime departureTime = dtpStartTime.Value;
+                if (startLocation.getLocation() == endLocation.getLocation())
+                {
+                    MessageBox.Show("Cannot have the same location from/to!", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    DateTime departureDate = dtpStartDate.Value;
+                    DateTime departureTime = dtpStartTime.Value;
 
-                DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureTime.Hour, departureTime.Minute, 0);
-
-                Token bookingToken = new Ticket(startLocation, endLocation, bookingAccount, departure);
-                SetOfTokens.Instance.addToken(bookingToken);
-
-                // Need to do pricing properly
-                bookingAccount.updateBalance(-(tripCost));
+                    DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureTime.Hour, departureTime.Minute, 0);
+                    if (DateTime.Compare(departure, DateTime.Now) >= 0)
+                    {
+                        // Make ticket and add it to set of all tokens
+                        Token bookingToken = new Ticket(startLocation, endLocation, bookingAccount, departure);
+                        SetOfTokens.Instance.addToken(bookingToken);
+                        // Updates the account balance - user won't be charged again at the gate               
+                        bookingAccount.updateBalance(-(tripCost));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Date/Time is in the past!", "", MessageBoxButtons.OK);
+                    }
+                }
             }
             else
             {   // Account doesn't have enough funds
@@ -72,12 +88,14 @@ namespace CSSD_Transport.UI.TopUpBookingUIs
             cboDestination.DataSource = RailMap.Instance.getStationNames(cboLine.SelectedValue.ToString());
         }
 
+        /// <summary>Preview UI design pattern, it all updates on selection changes</summary>
         private void cboStart_SelectedValueChanged(object sender, EventArgs e)
         {            
             tripCost = FareRules.Instance.calculateFare(cboLine.SelectedValue.ToString(), cboStart.SelectedValue.ToString(), cboDestination.SelectedValue?.ToString());
             lblBookingCost.Text = "Cost of Booking: " + tripCost;
         }
 
+        /// <summary>Preview UI design pattern, it all updates on selection changes</summary>
         private void cboDestination_SelectedValueChanged(object sender, EventArgs e)
         {
             tripCost = FareRules.Instance.calculateFare(cboLine.SelectedValue.ToString(), cboStart.SelectedValue.ToString(), cboDestination.SelectedValue?.ToString());

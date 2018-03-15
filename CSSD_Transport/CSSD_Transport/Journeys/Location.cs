@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Journeys
 {
-	public class Location
+    [Serializable]
+    public class Location
 	{
 		private string locationName;
 		private double lat;

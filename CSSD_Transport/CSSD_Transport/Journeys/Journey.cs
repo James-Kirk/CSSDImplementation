@@ -8,7 +8,8 @@ using CSSD_Transport.Tokens;
 
 namespace CSSD_Transport.Journeys
 {
-	public class Journey
+    [Serializable]
+    public class Journey
 	{
 		private static uint idCounter = 0;
 
@@ -42,8 +43,7 @@ namespace CSSD_Transport.Journeys
 		public string getEndLocation() => toLocation;
 
 		public int getTokenId() => tokenUsed.getID();
-
-		//TODO: Added param i, not present in UML
+        
 		public void setAmountPaid(float i) => amountPaid = i;
 
 		public void setToLocation(string s) => toLocation = s;

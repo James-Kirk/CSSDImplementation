@@ -42,5 +42,11 @@ namespace CSSD_Transport.UI.Travel_UI
                 MessageBox.Show("Invalid Entry Token/Insufficient Funds");
             }
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            prev.Visible = true;
+            this.Close();
+        }
     }
 }

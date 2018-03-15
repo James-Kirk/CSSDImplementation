@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CSSD_Transport.Accounts;
 
 using CSSD_Transport.Util;
+using CSSD_Transport.Journeys;
+using CSSD_Transport.Tokens;
 
 namespace CSSD_Transport
 {
@@ -35,6 +37,9 @@ namespace CSSD_Transport
             //SetOfAccounts.Instance.addAccount(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
             //// USE TO CREATE A NORMAL ACCOUNT
             //SetOfAccounts.Instance.addAccount(new NormalAccount("ASDFGH", "1234", DateTime.Now));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Kings Cross", DateTime.Now, DateTime.Now.AddMinutes(15) , 9.50f));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Westminster", DateTime.Now, DateTime.Now.AddMinutes(12), 0.75f));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Baker Street", DateTime.Now, DateTime.Now.AddMinutes(37), 8.75f));
 
             //// USE FOR STAFF LOGIN FUNCTIONALITY
             //StaffAccount x = SetOfStaffAccounts.Instance.FindStaffAccount("EllieFuller", "password");
@@ -43,7 +48,7 @@ namespace CSSD_Transport
             //Account y = SetOfAccounts.Instance.findAccount("ASDFGH", "1234");
 
             //this will need to be called at the very end of program ALWAYS
-            Serialization.saveAll();
+            //Serialization.saveAll();
             this.Close();
         }
     }

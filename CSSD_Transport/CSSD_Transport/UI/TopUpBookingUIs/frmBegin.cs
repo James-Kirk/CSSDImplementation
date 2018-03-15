@@ -27,5 +27,17 @@ namespace CSSD_Transport.UI
             frmEntry.Show();
             this.Visible = false;
         }
+
+        private void btnStaffLogin_Click(object sender, EventArgs e)
+        {
+            frmStaffLogin frmStaff = new frmStaffLogin(this);
+            frmStaff.Show();
+            this.Visible = false;
+        }
+
+        private void cbxBeginLine_SelectedValueChanged(object sender, EventArgs e)
+        {
+            cbxStart.DataSource = RailMap.Instance.getStationNames(cbxBeginLine.SelectedValue.ToString());
+        }
     }
 }

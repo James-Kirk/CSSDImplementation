@@ -9,7 +9,8 @@ using CSSD_Transport.Accounts;
 
 namespace CSSD_Transport.Tokens
 {
-	public class Ticket : Token
+    [Serializable]
+    public class Ticket : Token
 	{
         private Location start, end;
         private DateTime departure;

@@ -9,7 +9,8 @@ using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Tokens
 {
-	public class SmartCard : Token
+    [Serializable]
+    public class SmartCard : Token
 	{
         public SmartCard(Account aTokenUser, bool newScanned, int aJourneyCounter)
         {

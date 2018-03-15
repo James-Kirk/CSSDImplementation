@@ -62,7 +62,7 @@ namespace CSSD_Transport.Accounts.Tests
         {
             // Setup
             var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
-            float expected = 30;
+            float expected = 0.0f;
 
             // Method
             float actual = account.getCreditAmount();

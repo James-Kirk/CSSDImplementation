@@ -34,12 +34,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxStart = new System.Windows.Forms.ComboBox();
+            this.btnStaffLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBegin
             // 
             this.btnBegin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnBegin.Location = new System.Drawing.Point(45, 12);
+            this.btnBegin.Location = new System.Drawing.Point(50, 12);
             this.btnBegin.Name = "btnBegin";
             this.btnBegin.Size = new System.Drawing.Size(184, 67);
             this.btnBegin.TabIndex = 0;
@@ -65,6 +66,7 @@
             this.cbxBeginLine.Name = "cbxBeginLine";
             this.cbxBeginLine.Size = new System.Drawing.Size(121, 21);
             this.cbxBeginLine.TabIndex = 2;
+            this.cbxBeginLine.SelectedValueChanged += new System.EventHandler(this.cbxBeginLine_SelectedValueChanged);
             // 
             // label1
             // 
@@ -92,11 +94,23 @@
             this.cbxStart.Size = new System.Drawing.Size(121, 21);
             this.cbxStart.TabIndex = 5;
             // 
+            // btnStaffLogin
+            // 
+            this.btnStaffLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnStaffLogin.Location = new System.Drawing.Point(50, 268);
+            this.btnStaffLogin.Name = "btnStaffLogin";
+            this.btnStaffLogin.Size = new System.Drawing.Size(184, 67);
+            this.btnStaffLogin.TabIndex = 6;
+            this.btnStaffLogin.Text = "Staff Login";
+            this.btnStaffLogin.UseVisualStyleBackColor = true;
+            this.btnStaffLogin.Click += new System.EventHandler(this.btnStaffLogin_Click);
+            // 
             // frmBegin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 377);
+            this.Controls.Add(this.btnStaffLogin);
             this.Controls.Add(this.cbxStart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -118,5 +132,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxStart;
+        private System.Windows.Forms.Button btnStaffLogin;
     }
 }
