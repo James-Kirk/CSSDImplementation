@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CSSD_Transport.Tokens;
 using CSSD_Transport.Accounts;
+using CSSD_Transport.Journeys;
+using CSSD_Transport.Util;
 
 namespace CSSD_Transport.Token.Tests
 {
@@ -58,21 +60,61 @@ namespace CSSD_Transport.Token.Tests
         }
 
         [TestMethod()]
-        public void hasSufficientCreditTest()
+        public void hasSufficientCreditTestTicket()
         {
-            Assert.Fail();
+            tokenSetup();
+            bool expected = true;
+            tk = new Ticket(RailMap.Instance.getLocation("Baker Street"), RailMap.Instance.getLocation("Kings Cross"), ac1, DateTime.Now);
+            bool actual = tk.hasSufficientCredit();
+            Assert.AreEqual(expected, actual);
+           
+        }
+        [TestMethod()]
+        public void hasSufficientCreditTestSmartCard()
+        {
+            tokenSetup();
+            ac1.updateBalance(3);
+            bool expected = false;
+            sc = new SmartCard(ac1, false, 0);
+            bool actual = sc.hasSufficientCredit();
+            Assert.AreEqual(expected, actual);
+            ac1.updateBalance(5);
+            expected = true;
+            actual = sc.hasSufficientCredit();
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
-        public void incrementJourneyTest()
+        public void incrementJourneyTestSmartCard()
         {
-            Assert.Fail();
+            tokenSetup();
+            sc = new SmartCard(ac1, false, 0);
+            sc.incrementJourney();
+            int expected = 1;
+            int actual = sc.getNumOfJourneys();
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
-        public void setScannedTest()
+        public void setScannedTestSmartCard()
         {
-            Assert.Fail();
+            tokenSetup();
+            sc = new SmartCard(ac1, false, 0);
+            sc.setScanned(true);
+            bool expected = true;
+            bool actual = sc.getScannedStatus();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void setScannedTestTicket()
+        {
+            tokenSetup();
+            tk = new Ticket(RailMap.Instance.getLocation("Baker Street"), RailMap.Instance.getLocation("Kings Cross"), ac1, DateTime.Now);
+            tk.setScanned(true);
+            bool expected = true;
+            bool actual = tk.getScannedStatus();
+            Assert.AreEqual(expected, actual);
         }
     }
 }

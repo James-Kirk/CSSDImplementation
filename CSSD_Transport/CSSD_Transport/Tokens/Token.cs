@@ -38,6 +38,9 @@ namespace CSSD_Transport.Tokens
         
 		public bool hasSufficientCredit()
         {
+            if (this.tokenType == TokenType.Ticket)
+                return true;
+
             float min = FareRules.Instance.getFareRules().getMinAmount();
             float accountCredit = tokenUser.getBalance();
             if (accountCredit < min)
