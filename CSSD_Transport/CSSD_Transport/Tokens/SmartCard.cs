@@ -11,9 +11,10 @@ namespace CSSD_Transport.Tokens
 {
 	public class SmartCard : Token
 	{
-        public SmartCard(int id, Account aTokenUser, bool newScanned, int aJourneyCounter)
+        public SmartCard(Account aTokenUser, bool newScanned, int aJourneyCounter)
         {
-            tokenID = id;
+            tokenID = tokenCount;
+            tokenCount++;
             tokenUser = aTokenUser;
             tokenType = TokenType.SmartCard;
             scanned = newScanned;

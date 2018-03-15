@@ -9,6 +9,8 @@ namespace CSSD_Transport.Equipment
 {
     public class DigitalReader
 	{
+		private static int digitalReaderCount = 0;
+
 		private const bool entryDenied = false;
 		private const bool entryPermitted = true;
 
@@ -17,21 +19,21 @@ namespace CSSD_Transport.Equipment
         private DateTime currentTime;
         private Location currentLocation;
         private GateController gate = new GateController();
-
-        // TODO Current location should probably be in the constructor here too
-        public DigitalReader(String aReaderType, int aDigitalReaderID, string currentLocation)
+        
+        public DigitalReader(String aReaderType, string currentLocation)
         {
-            if(aReaderType == "Waffle Iron")
+            if(aReaderType != "Bus" && aReaderType != "Train" || aReaderType == null)
             {
                 throw new ArgumentException();
             }
             this.readerType = aReaderType;
-            this.digitalReaderID = aDigitalReaderID;
+			this.digitalReaderID = digitalReaderCount++;
             this.currentLocation = new Location(currentLocation);
         }
 
         /// <summary>Scanner into the transport - train station barrier/conductor's reader</summary> 
         /// <returns>EntryPermitted or EntryDenied</returns>
+		/// <param name="id">The id of the token</param>
         public bool readTokenAtEntry(int id)
         {
             Token aToken = SetOfTokens.Instance.findToken(id);  // find a token based off of the scanned ID
@@ -42,27 +44,11 @@ namespace CSSD_Transport.Equipment
             else
             {
                 String readerType = getReaderType();
-
-                if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
-                {
-                    if (readerType == "Bus")
-                    {
-                        playAudio();    // TADA :D
-                    }
-                    else
-                    {
-                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
-                        
-                    }
-                    aToken.incrementJourney();  // adds to total journeys on this token
-                    createJourney(aToken);  // creates a journey and links this token
-                    return entryPermitted;  // returns true to the UI for whatever handling required
-                }
-                else if(aToken.getType() == TokenType.Ticket)
+                if (aToken.getType() == TokenType.Ticket)
                 {
                     Ticket t = (aToken as Ticket);
 
-                    if(t.getStart() == currentLocation)
+                    if (t.getStart().getLocation() == currentLocation.getLocation())
                     {
                         if (readerType == "Bus")
                             playAudio();            // TADA :D
@@ -73,6 +59,21 @@ namespace CSSD_Transport.Equipment
                         return entryPermitted;
                     }
                 }
+                else if (aToken.hasSufficientCredit())   // checks account has minimum credit to enter system  
+                {
+                    if (readerType == "Bus")
+                    {
+                        playAudio();    // TADA :D
+                    }
+                    else
+                    {
+                        gate.operateGate();     // opens the gate while user is standing on scanner, then closes
+
+                    }
+                    aToken.incrementJourney();  // adds to total journeys on this token
+                    createJourney(aToken);  // creates a journey and links this token
+                    return entryPermitted;  // returns true to the UI for whatever handling required
+                }
 
                 // if reader is on a bus & there is not enough credit (or there is no token), entry is denied
                 // Changed from sequence diagram check is redundant if they dont have sufficient credit entry always denied.
@@ -80,14 +81,15 @@ namespace CSSD_Transport.Equipment
             }
         }
 
-        // this should return the current balance to be displayed on the UI (accountBalance left / you don't have enough moolah)
-        // catch in UI, invalid token exception - BW
-        // -1 is insufficient credit, otherwise current balance - BW
+        /// <summary>Scanner out of the transport - train station barrier/conductor's reader</summary> 
+        /// <returns>Balance left on account, -1 means it has been denied, 0 is primarily for pre-paid tickets</returns>
+        /// <param name="id">The id of the token</param>
+        /// <param name="line">The name of the line on (circle/victoria)</param>
         public float readTokenAtExit(int id, string line)
         {
 			Token exitToken = SetOfTokens.Instance.findToken(id);
 			if (exitToken == null)
-                throw new ArgumentException("Smart Card unregistered Visit information Helpdesk");
+                throw new ArgumentException("Travel Token not valid!");
             if (exitToken.getScannedStatus())
 			{
 				switch(exitToken.getType())
@@ -156,6 +158,17 @@ namespace CSSD_Transport.Equipment
                                 return exitToken.getAccount().getCreditAmount();
                             }
                         }
+                    case TokenType.Ticket:  // if it's a ticket, just check the end location matches the current location
+                        Ticket t = (exitToken as Ticket);
+                        if (t.getEnd().getLocation() == currentLocation.getLocation())
+                        {
+                            return 0;   // entry allowed
+                        }
+                        else
+                        {
+                            return -1; // entry not allowed
+                        }
+
 				}
 			}
             throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");
@@ -166,13 +179,11 @@ namespace CSSD_Transport.Equipment
             return readerType;
         }
            
-        // Ben says get rid
         public DateTime getTime()
         {
             return DateTime.Now;
         }
-
-        // Ben says get rid
+        
         public DateTime getDay()
         {
             return DateTime.Now;

@@ -10,14 +10,16 @@ namespace CSSD_Transport.UI.Travel_UI
         string currentStation;
         float totalTravelCost = 0;
         int tokenId;
-        public frmRailTravelSim()
+        public frmRailTravelSim(string station, int tokenId)
         {
             InitializeComponent();
+            this.tokenId = tokenId;
             cboBoxLine.DataSource = RailMap.Instance.getLineNames();
             cboBoxStation.DataSource = RailMap.Instance.getStationNames(cboBoxLine.SelectedValue.ToString());
-            currentStation = "Victoria";
+            this.currentStation = station;
             updateCurrentLocation();
             lblCurrentTravelCosts.Text = "Current Cost: 0.00";
+            lblNewCost.Text = "New Cost: 0.00";
             
         }
 
@@ -50,7 +52,7 @@ namespace CSSD_Transport.UI.Travel_UI
         private void btnExitStation_Click(object sender, System.EventArgs e)
         {
             this.Close();
-            new frmGateExit(cboBoxLine.SelectedValue.ToString(), currentStation).Show();
+            new frmGateExit(cboBoxLine.SelectedValue.ToString(), currentStation, tokenId).Show();
         }
     }
 }

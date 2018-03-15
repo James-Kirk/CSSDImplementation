@@ -57,16 +57,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Accounts\AccountTests.cs" />
-    <Compile Include="Accounts\SetOfAccountsTests.cs" />
     <Compile Include="Equipment\DigitalReaderTests.cs" />
     <Compile Include="Journey\FareRulesTests.cs" />
-    <Compile Include="Journey\JourneyTests.cs" />
-    <Compile Include="Journey\LocationTests.cs" />
-    <Compile Include="Journey\SetOfJourneysTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Token\PassesTests.cs" />
-    <Compile Include="Token\SetOfTokensTests.cs" />
-    <Compile Include="Token\SmartCardTests.cs" />
+    <Compile Include="RailMapTests.cs" />
     <Compile Include="Token\TokenTests.cs" />
   </ItemGroup>
   <ItemGroup>

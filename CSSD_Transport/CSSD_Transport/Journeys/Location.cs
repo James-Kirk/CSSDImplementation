@@ -8,7 +8,7 @@ namespace CSSD_Transport.Journeys
 {
 	public class Location
 	{
-		private string locationName = "";
+		private string locationName;
 		private double lat;
 		private double lon;
 
