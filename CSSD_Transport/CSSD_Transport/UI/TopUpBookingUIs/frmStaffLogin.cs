@@ -15,9 +15,11 @@ namespace CSSD_Transport.UI
 {
     public partial class frmStaffLogin : Form
     {
-        public frmStaffLogin()
+        frmBegin prevForm;
+        public frmStaffLogin(frmBegin prev)
         {
             InitializeComponent();
+            this.prevForm = prev;
         }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
@@ -30,19 +32,26 @@ namespace CSSD_Transport.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+            prevForm.Show();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(SetOfStaffAccounts.Instance.FindStaffAccount(txtUsername.Text, txtPin.Text) != null)
             {
-                new frmStaffUI().Show();
+                new frmStaffUI(this).Show();
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Invalid Login");
             }
+        }
+
+        private void frmStaffLogin_VisibleChanged(object sender, EventArgs e)
+        {
+            txtPin.Text = "";
+            txtUsername.Text = "";
         }
     }
 }

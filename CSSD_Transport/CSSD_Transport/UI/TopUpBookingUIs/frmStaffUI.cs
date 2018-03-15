@@ -15,12 +15,14 @@ namespace CSSD_Transport.UI
 {
     public partial class frmStaffUI : Form
     {
-        public frmStaffUI()
+        frmStaffLogin prevForm;
+        public frmStaffUI(frmStaffLogin prev)
         {
             InitializeComponent();
             this.lsbJourneys.DataSource = formatData(SetOfJourneys.Instance.getAllJourneys());
             this.cboLineFilter.DataSource = RailMap.Instance.getLineNames();
             this.lblPassengers.Text += this.lsbJourneys.Items.Count;
+            this.prevForm = prev;
         }
 
         private List<string> formatData(List<Journey> journeys)
@@ -65,5 +67,13 @@ namespace CSSD_Transport.UI
             this.lsbJourneys.DataSource = formatData(SetOfJourneys.Instance.getAllJourneys());
             this.lblPassengers.Text = "Total Number Of Travelers: " + this.lsbJourneys.Items.Count;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            prevForm.Show();
+        }
+
+
     }
 }

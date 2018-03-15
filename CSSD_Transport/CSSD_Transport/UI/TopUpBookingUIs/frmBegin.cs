@@ -30,7 +30,7 @@ namespace CSSD_Transport.UI
 
         private void btnStaffLogin_Click(object sender, EventArgs e)
         {
-            frmStaffLogin frmStaff = new frmStaffLogin();
+            frmStaffLogin frmStaff = new frmStaffLogin(this);
             frmStaff.Show();
             this.Visible = false;
         }
