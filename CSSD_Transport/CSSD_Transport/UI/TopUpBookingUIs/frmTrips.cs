@@ -30,7 +30,8 @@ namespace CSSD_Transport.UI
             frmPrevious.Visible = true;
             this.Close();
         }
-        
+
+        /// <summary>Preview UI design pattern, it all updates on selection changes</summary>
         private void btnPrint_Click(object sender, EventArgs e)
         {
             // gets and parses the selection for just the token ID

@@ -66,6 +66,7 @@
             this.cbxBeginLine.Name = "cbxBeginLine";
             this.cbxBeginLine.Size = new System.Drawing.Size(121, 21);
             this.cbxBeginLine.TabIndex = 2;
+            this.cbxBeginLine.SelectedValueChanged += new System.EventHandler(this.cbxBeginLine_SelectedValueChanged);
             // 
             // label1
             // 

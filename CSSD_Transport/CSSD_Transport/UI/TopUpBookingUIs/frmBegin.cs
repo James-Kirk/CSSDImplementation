@@ -34,5 +34,10 @@ namespace CSSD_Transport.UI
             frmStaff.Show();
             this.Visible = false;
         }
+
+        private void cbxBeginLine_SelectedValueChanged(object sender, EventArgs e)
+        {
+            cbxStart.DataSource = RailMap.Instance.getStationNames(cbxBeginLine.SelectedValue.ToString());
+        }
     }
 }
