@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace CSSD_Transport.Tokens
 {
-	public class SetOfTokens
+    [Serializable]
+    public class SetOfTokens
 	{
 		private List<Token> tokens = new List<Token>();
 		private static SetOfTokens instance;
@@ -36,8 +37,9 @@ namespace CSSD_Transport.Tokens
 
         public List<String> getAccountTickets(Account a)
         {
-            List<Token> tks = tokens.FindAll(t => t.getAccount() == a && t.getType() == TokenType.Ticket);
-            List<Ticket> tickets = new List<Ticket>();
+            List<Token> tks = tokens.FindAll(t => t.getAccount().getUsername() == a.getUsername() && t.getType() == TokenType.Ticket);
+            
+            List <Ticket> tickets = new List<Ticket>();
 
             foreach (Token t in tks)
             {

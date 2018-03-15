@@ -174,27 +174,54 @@ namespace CSSD_Transport.Equipment
             throw new ArgumentException("SmartCard never scanned on entry visit information helpdesk");
         }
 
+        /// <summary>
+        /// Getter for the type of digital reader
+        /// </summary>
+        /// <returns>
+        /// String of type of reader, such as Train
+        /// </returns>
         public String getReaderType()
         {
             return readerType;
         }
-           
+
+        /// <summary>
+        /// Getter for current time according to reader
+        /// </summary>   
+        /// <returns>
+        /// DateTime object of current time
+        /// </returns>
         public DateTime getTime()
         {
             return DateTime.Now;
         }
-        
+
+        /// <summary>
+        /// Getter for current date according to reader
+        /// </summary>   
+        /// <returns>
+        /// DateTime object of current day
+        /// </returns>
         public DateTime getDay()
         {
             return DateTime.Now;
         }
 
+        /// <summary>
+        /// Plays the windows tada! noise (cute as heck)
+        /// </summary>   
         public void playAudio()
         {
             SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\tada.wav");
             simpleSound.Play();
         }
-
+        
+        /// <summary>
+        /// Creates a journey on entry and puts it into the SetOfJourneys (no destination as of yet)
+        /// </summary>
+        /// <param name="aToken">
+        /// 
+        /// </param>
         public void createJourney(Token aToken)
         {
             aToken.setScanned(true);
