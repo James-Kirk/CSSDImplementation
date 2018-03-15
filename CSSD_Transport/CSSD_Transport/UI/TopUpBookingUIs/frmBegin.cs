@@ -27,5 +27,12 @@ namespace CSSD_Transport.UI
             frmEntry.Show();
             this.Visible = false;
         }
+
+        private void btnStaffLogin_Click(object sender, EventArgs e)
+        {
+            frmStaffLogin frmStaff = new frmStaffLogin();
+            frmStaff.Show();
+            this.Visible = false;
+        }
     }
 }

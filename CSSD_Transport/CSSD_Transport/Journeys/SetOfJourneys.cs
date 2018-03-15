@@ -76,5 +76,20 @@ namespace CSSD_Transport.Journeys
             //List<Journey> a = (List<Journey>)journeys.Where(n => n.getTokenId() == id);
             //return a[a.Count - 1];
         }
-	}
+
+        public List<Journey> getAllJourneys()
+        {
+            return journeys;
+        }
+
+        public List<Journey> getJourneysByStations(string stationName)
+        {
+            return journeys.FindAll(j => j.getStartLocation() == stationName || j.getEndLocation() == stationName);
+        }
+
+        public List<Journey> getJourneysByDate(DateTime dt , List<Journey> js)
+        {
+            return js.FindAll(j => j.getStartDate().Date == dt.Date || j.getEndDate().Date == dt.Date);
+        }
+    }
 }
