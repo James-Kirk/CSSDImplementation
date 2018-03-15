@@ -51,7 +51,7 @@ namespace CSSD_Transport.Journeys.Tests
 
 			float fareActual = FareRules.Instance.calculateFare(Line1, Loc1, Loc2);
 
-			float fareExpected = -1 * FareRules.Instance.getCostPerStation();
+			float fareExpected = 0 * FareRules.Instance.getCostPerStation();
 
 			Assert.AreEqual(fareActual, fareExpected);
 		}
