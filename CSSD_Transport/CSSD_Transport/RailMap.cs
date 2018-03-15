@@ -21,31 +21,31 @@ namespace CSSD_Transport.Util
 		{
 			//Creating and adding a line to the map
 			List<Location> CircleLine = new List<Location>();
-			CircleLine.Add(new Location("Edgware Road"));
-			CircleLine.Add(new Location("Baker Street"));
-			CircleLine.Add(new Location("Great Portland Street"));
-			CircleLine.Add(new Location("Euston Square"));
-			CircleLine.Add(new Location("Kings Cross"));
-			CircleLine.Add(new Location("Farringdon"));
-			CircleLine.Add(new Location("Moorgate"));
-			CircleLine.Add(new Location("Liverpool Street"));
-			CircleLine.Add(new Location("Aldgate"));
-			CircleLine.Add(new Location("Tower Hill"));
-			CircleLine.Add(new Location("Monument"));
-			CircleLine.Add(new Location("Embankment"));
-			CircleLine.Add(new Location("Westminster"));
-			CircleLine.Add(new Location("Victoria"));
+			CircleLine.Add(new Location("Edgware Road", 51.519860, -0.167810));
+			CircleLine.Add(new Location("Baker Street", 51.523158, -0.156863));
+			CircleLine.Add(new Location("Great Portland Street", 51.523742, -0.143918));
+			CircleLine.Add(new Location("Euston Square", 51.525569, -0.136046));
+			CircleLine.Add(new Location("Kings Cross", 51.531640, -0.124423));
+			CircleLine.Add(new Location("Farringdon", 51.520208, -0.104818));
+			CircleLine.Add(new Location("Moorgate", 51.518465, -0.088388));
+			CircleLine.Add(new Location("Liverpool Street", 51.518752, -0.081437));
+			CircleLine.Add(new Location("Aldgate", 51.514240, -0.075660));
+			CircleLine.Add(new Location("Tower Hill", 51.510620, -0.074790));
+			CircleLine.Add(new Location("Monument", 51.513107, -0.088556));
+			CircleLine.Add(new Location("Embankment", 51.507255, -0.122194));
+			CircleLine.Add(new Location("Westminster", 51.501320, -0.124836));
+			CircleLine.Add(new Location("Victoria", 51.495210, -0.143898));
 		
 			List<Location> VictoriaLine = new List<Location>();
-			VictoriaLine.Add(new Location("Euston"));
-			VictoriaLine.Add(new Location("Warren Street"));
-			VictoriaLine.Add(new Location("Oxford Circus"));
-			VictoriaLine.Add(new Location("Green Park"));
-			VictoriaLine.Add(new Location("Victoria"));
-			VictoriaLine.Add(new Location("Pimlico"));
-			VictoriaLine.Add(new Location("Vauxhall"));
-			VictoriaLine.Add(new Location("Stockwell"));
-			VictoriaLine.Add(new Location("Brixton"));
+			VictoriaLine.Add(new Location("Euston", 51.528140, -0.133900));
+			VictoriaLine.Add(new Location("Warren Street", 51.524616, -0.138180));
+			VictoriaLine.Add(new Location("Oxford Circus", 51.515212, -0.141855));
+			VictoriaLine.Add(new Location("Green Park", 51.506912, -0.142850));
+			VictoriaLine.Add(new Location("Victoria", 51.495210, -0.143898));
+			VictoriaLine.Add(new Location("Pimlico", 51.489100, -0.133740));
+			VictoriaLine.Add(new Location("Vauxhall", 51.486190, -0.122860));
+			VictoriaLine.Add(new Location("Stockwell", 51.472290, -0.122816));
+			VictoriaLine.Add(new Location("Brixton", 51.462896, -0.113511));
 
 			railLines.Add(new Tuple<String, List<Location>>("Circle", CircleLine));
 			railLines.Add(new Tuple<String, List<Location>>("Victoria", VictoriaLine));
