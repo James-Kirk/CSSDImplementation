@@ -17,10 +17,10 @@ namespace CSSD_Transport.Journeys
 			this.locationName = locationName;
 		}
 
-		public Location(string locationName, double lattitude, double longitude)
+		public Location(string locationName, double latitude, double longitude)
 		{
 			this.locationName = locationName;
-			lat = lattitude;
+			lat = latitude;
 			lon = longitude;
 		}
 
