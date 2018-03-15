@@ -14,6 +14,8 @@ namespace CSSD_Transport.Accounts
         public Account() { }
         public Account(string username, string password)
         {
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+                throw new ArgumentException();
             this.username = username;
             this.password = password;
             this.creditAmount = 0.0f;
@@ -30,6 +32,8 @@ namespace CSSD_Transport.Accounts
 		/// <param name="amount">The amount to update by (float)</param>
 		public void updateBalance(float amount)
 		{
+            if (amount == 0)
+                throw new ArgumentException();
             this.creditAmount += amount;
 		}
 
@@ -46,6 +50,7 @@ namespace CSSD_Transport.Accounts
 		/// <returns></returns>
 		public bool processTopUp(float amount, string m)
 		{
+           
             if(Transaction.PaymentHandler.authorise(amount, m, ""))
             {
                 updateBalance(amount);

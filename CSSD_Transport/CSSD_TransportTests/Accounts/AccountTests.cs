@@ -45,16 +45,12 @@ namespace CSSD_Transport.Accounts.Tests
             // Setup
             var account = new NormalAccount("Will Smith", "Fre$hPrince", DateTime.Now);
             string expected = "Normal";
-            var anonAccount = new AnonymousAccount();
-            string anonExpected = "Anonymous";
 
             // Method
             string actual = account.getType();
-            string anonActual = anonAccount.getType();
 
             // Assertion
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(anonExpected, anonActual);
         }
 
         [TestMethod()]
@@ -80,7 +76,7 @@ namespace CSSD_Transport.Accounts.Tests
             float negativeExpected = 10;
 
             // Method
-            account.updateBalance(15);
+            account.updateBalance(30);
             float actual = account.getCreditAmount();
             account.updateBalance(-20);
             float negativeActual = account.getCreditAmount();

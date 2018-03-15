@@ -11,7 +11,7 @@ namespace CSSD_Transport.Accounts
 		public DateTime getDOB() => DOB;
 
         // call base constructor
-        public NormalAccount(string u, string p, DateTime dob) : base(u, p) { this.DOB = dob; }
+        public NormalAccount(string u, string p, DateTime dob) : base(u, p) { this.DOB = dob; this.type = "Normal";}
 
 		public void forgotAccount()
 		{
