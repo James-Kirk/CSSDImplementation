@@ -9,13 +9,12 @@ using CSSD_Transport.Journeys;
 
 namespace CSSD_Transport.Tokens
 {
-
-	public enum TokenType
+    public enum TokenType
 	{
 		SmartCard, Pass, Ticket, Biometric
 	}
-
-	public abstract class Token
+    [Serializable]
+    public abstract class Token
 	{
 		protected int tokenID;
 		protected Account tokenUser;

@@ -8,7 +8,8 @@ using CSSD_Transport.Tokens;
 
 namespace CSSD_Transport.Journeys
 {
-	public class Journey
+    [Serializable]
+    public class Journey
 	{
 		private static uint idCounter = 0;
 
