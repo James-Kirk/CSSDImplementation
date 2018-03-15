@@ -27,8 +27,9 @@ namespace CSSD_Transport.Tokens
 		public bool getScannedStatus() => scanned;
 
 		public TokenType getType() => tokenType;
+
         public Account getAccount() => tokenUser;
-        //Journey Counter wont work correctly since we would need to reset it everyday better to check via journeys
+
         public int getNumOfJourneys() => journeyCounter;
 
 		public int getID() => tokenID;
