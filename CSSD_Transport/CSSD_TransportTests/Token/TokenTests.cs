@@ -15,6 +15,7 @@ namespace CSSD_Transport.Token.Tests
     {
         private Ticket tk;
         private SmartCard sc;
+        private SmartCard sc2;
         private NormalAccount ac1;
         private NormalAccount ac2;
 
@@ -25,36 +26,48 @@ namespace CSSD_Transport.Token.Tests
             ac2 = new NormalAccount("Ellie", "Full", DateTime.Now);
             tk = new Ticket(new Journeys.Location("Kings Cross"), new Journeys.Location("Victoria"), ac1, DateTime.Now);
             sc = new SmartCard(ac2, false, 0);
+            sc2 = new SmartCard(ac2, false, 1);
         }
 
         [TestMethod()]
-        public void getScannedStatusTest()
+        public void getScannedStatusTestBasic()
         {
-            Assert.Fail();
+            Assert.AreEqual(false, sc.getScannedStatus());
+            Assert.AreEqual(false, tk.getScannedStatus());
         }
 
         [TestMethod()]
-        public void getTypeTest()
+        public void getTypeTestTicketAndSmartCard()
         {
-            Assert.Fail();
+            Assert.AreEqual(tk.getType(), TokenType.Ticket);
+            Assert.AreEqual(sc.getType(), TokenType.SmartCard);
         }
 
         [TestMethod()]
-        public void getNumOfJourneysTest()
+        public void getNumOfJourneysTestZero()
         {
-            Assert.Fail();
+            Assert.AreEqual(sc.getNumOfJourneys(), 0);
+            Assert.AreEqual(tk.getNumOfJourneys(), 0);
+        }
+
+        [TestMethod()]
+        public void getNumOfJourneysTestMultiple()
+        {
+            Assert.AreEqual(sc2.getNumOfJourneys(), 1);
         }
 
         [TestMethod()]
         public void getIDTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(tk.getID(), 12);
+            Assert.AreEqual(sc.getID(), 13);
         }
 
         [TestMethod()]
         public void hasDiscountTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(tk.hasDiscount(), false);
+            Assert.AreEqual(sc.hasDiscount(), false);
         }
 
         [TestMethod()]
