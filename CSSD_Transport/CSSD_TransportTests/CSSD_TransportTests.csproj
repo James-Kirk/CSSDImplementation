@@ -60,6 +60,7 @@
     <Compile Include="Equipment\DigitalReaderTests.cs" />
     <Compile Include="Journey\FareRulesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RailMapTests.cs" />
     <Compile Include="Token\TokenTests.cs" />
   </ItemGroup>
   <ItemGroup>
