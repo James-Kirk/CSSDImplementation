@@ -53,5 +53,19 @@ namespace CSSD_Transport.Util.Tests
             // Assertion
             Assert.AreEqual(expected, actual);
         }
+        
+        public void updateDestinationToCurrentStationtest()
+        {
+            // Setup
+            GoogleMap map = new GoogleMap("Moorgate", null);
+            map.updateDestination("Moorgate");
+            PointLatLng expected = new PointLatLng(0.0, 0.0);
+
+            // Method
+            PointLatLng actual = map.getDestinationLocation();
+
+            // Assertion
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

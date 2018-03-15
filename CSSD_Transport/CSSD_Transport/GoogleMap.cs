@@ -60,23 +60,37 @@ namespace CSSD_Transport
 
         public void updateDestination(string updatedDestination)
         {
-            if (r != null) { r.Clear(); }
+            if (destinationLocation == findLocation(updatedDestination))
+                return;
             destinationLocation = findLocation(updatedDestination);
+            if (destinationLocation == currentLocation)
+                return; 
             endMarker.Position = destinationLocation;
 
-            MapRoute route = GoogleMapProvider.Instance.GetRoute(currentLocation, destinationLocation, false, false, 15);
-            r = new GMapRoute(route.Points, "Your journey");
-            
+          //  if (r != null) { r.Clear(); }
+            form.map.Overlays.Clear();
+
+
+
+            // MapRoute route = GoogleMapProvider.Instance.GetRoute(currentLocation, destinationLocation, false, false, 15);
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(currentLocation);
+            points.Add(destinationLocation);
+            r = new GMapRoute(points, "Your journey");
+
+            //r = new GMapRoute(route.Points, "Your journey");
+
             r.Stroke.Width = 2;
             r.Stroke.Color = Color.Red;
 
             form.lblDistance.Text = "Distance: " + r.Distance.ToString() + "km";
-            
+            form.map.Overlays.Add(markerOverlay);
+            form.map.Overlays.Add(routeOverlay);
+
+            routeOverlay.Routes.Clear();
             routeOverlay.Routes.Add(r);
             markerOverlay.Markers.Add(endMarker);
 
-            form.map.Overlays.Add(markerOverlay);
-            form.map.Overlays.Add(routeOverlay);
             form.map.ZoomAndCenterRoute(r);
         }
 

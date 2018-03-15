@@ -173,6 +173,7 @@
             // 
             // lblDistance
             // 
+            this.lblDistance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDistance.AutoSize = true;
             this.lblDistance.Location = new System.Drawing.Point(574, 183);
             this.lblDistance.Name = "lblDistance";
