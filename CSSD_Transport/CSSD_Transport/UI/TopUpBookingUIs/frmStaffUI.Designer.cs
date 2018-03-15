@@ -39,6 +39,7 @@
             this.ckbDateFilter = new System.Windows.Forms.CheckBox();
             this.lblPassengers = new System.Windows.Forms.Label();
             this.ckbStationFilter = new System.Windows.Forms.CheckBox();
+            this.btnLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.setOfJourneysBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,11 +127,22 @@
             this.ckbStationFilter.Text = "Filter By Station";
             this.ckbStationFilter.UseVisualStyleBackColor = true;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(12, 289);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 27);
+            this.btnLogout.TabIndex = 9;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmStaffUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 328);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.ckbStationFilter);
             this.Controls.Add(this.lblPassengers);
             this.Controls.Add(this.ckbDateFilter);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.CheckBox ckbDateFilter;
         private System.Windows.Forms.Label lblPassengers;
         private System.Windows.Forms.CheckBox ckbStationFilter;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
