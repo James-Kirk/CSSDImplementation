@@ -71,7 +71,7 @@ namespace CSSD_Transport.Journeys.Tests
         [TestMethod()]
         public void getNumForDayPassTest()
         {
-			Assert.AreEqual(FareRules.Instance.getNumForDayPass(), 7);
+			Assert.AreEqual(FareRules.Instance.getNumForDayPass(), 1);
         }
 
         [TestMethod()]
