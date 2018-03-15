@@ -37,9 +37,9 @@ namespace CSSD_Transport
             //SetOfAccounts.Instance.addAccount(new NormalAccount("Leroy", "Jenkins", DateTime.Now));
             //// USE TO CREATE A NORMAL ACCOUNT
             //SetOfAccounts.Instance.addAccount(new NormalAccount("ASDFGH", "1234", DateTime.Now));
-            SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Kings Cross", DateTime.Now, DateTime.Now.AddMinutes(15) , 9.50f));
-            SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Westminster", DateTime.Now, DateTime.Now.AddMinutes(12), 0.75f));
-            SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Baker Street", DateTime.Now, DateTime.Now.AddMinutes(37), 8.75f));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Kings Cross", DateTime.Now, DateTime.Now.AddMinutes(15) , 9.50f));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Westminster", DateTime.Now, DateTime.Now.AddMinutes(12), 0.75f));
+            //SetOfJourneys.Instance.addJourney(new Journey(SetOfTokens.Instance.findToken(0), "Victoria", "Baker Street", DateTime.Now, DateTime.Now.AddMinutes(37), 8.75f));
 
             //// USE FOR STAFF LOGIN FUNCTIONALITY
             //StaffAccount x = SetOfStaffAccounts.Instance.FindStaffAccount("EllieFuller", "password");
